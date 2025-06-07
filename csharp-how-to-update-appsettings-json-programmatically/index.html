@@ -1035,7 +1035,7 @@ thank you very much for this super explanation of appsettings.</p>
 <p>Is there a way to change the contents of a secrets.json file programmatically as well?  </p>
 <p>Best regards<br>
 Patrick</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-update-appsettings-json-programmatically/?replytocom=13426#respond" data-commentid="13426" data-postid="7223" data-belowelement="div-comment-13426" data-respondelement="respond" data-replyto="Reply to Patrick" aria-label="Reply to Patrick">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1070,7 +1070,7 @@ secretsObject.Password = &quot;bye&quot;;</p>
 var updatedSecretsJson = JsonSerializer.Serialize(secretsObject);<br>
 File.WriteAllText(secretsPath, updatedSecretsJson);</p>
 <p>One thing to note, secrets.json is a subset of appsettings.json, so be careful what you deserialize it into, otherwise you might unintentionally override every setting. This is why I&#8217;m loading it into a dynamic object in this example (instead of loading it into Config class shown throughout this article).</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-update-appsettings-json-programmatically/?replytocom=13432#respond" data-commentid="13432" data-postid="7223" data-belowelement="div-comment-13432" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1096,7 +1096,7 @@ File.WriteAllText(secretsPath, updatedSecretsJson);</p>
 
 				<div class="comment-content" itemprop="text">
 					<p>Thank you very much 🙂 It worked well!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-update-appsettings-json-programmatically/?replytocom=13558#respond" data-commentid="13558" data-postid="7223" data-belowelement="div-comment-13558" data-respondelement="respond" data-replyto="Reply to Patrick" aria-label="Reply to Patrick">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1118,7 +1118,7 @@ File.WriteAllText(secretsPath, updatedSecretsJson);</p>
 
 				<div class="comment-content" itemprop="text">
 					<p>Thank you so much for the great example and great explanation. I&#8217;m using it for my project.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-update-appsettings-json-programmatically/?replytocom=25719#respond" data-commentid="25719" data-postid="7223" data-belowelement="div-comment-25719" data-respondelement="respond" data-replyto="Reply to David" aria-label="Reply to David">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1139,7 +1139,7 @@ File.WriteAllText(secretsPath, updatedSecretsJson);</p>
 
 				<div class="comment-content" itemprop="text">
 					<p>You&#8217;re welcome! I&#8217;m happy to hear you&#8217;re able to use this in a project</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-update-appsettings-json-programmatically/?replytocom=25806#respond" data-commentid="25806" data-postid="7223" data-belowelement="div-comment-25806" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1150,18 +1150,7 @@ File.WriteAllText(secretsPath, updatedSecretsJson);</p>
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/csharp-how-to-update-appsettings-json-programmatically/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="7223" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

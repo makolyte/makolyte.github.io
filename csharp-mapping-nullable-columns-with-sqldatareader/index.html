@@ -565,7 +565,7 @@ Name=Alice BirthYear=2022</code></span><small class="shcb-language" id="shcb-lan
 				<div class="comment-content" itemprop="text">
 					<p>For me reader.IsDBNull() did not accept a string for the column name, it wanted an int, so I used reader.GetOrdinal(string name) to get this. I am using .NET core 3.1, I don&#8217;t know if that is why it is different.</p>
 <p>I&#8217;ve always wanted to reduce the number is IsDbNull checks in my code so thank you for this.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-mapping-nullable-columns-with-sqldatareader/?replytocom=14867#respond" data-commentid="14867" data-postid="3706" data-belowelement="div-comment-14867" data-respondelement="respond" data-replyto="Reply to Anthony Clarke" aria-label="Reply to Anthony Clarke">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -589,7 +589,7 @@ Name=Alice BirthYear=2022</code></span><small class="shcb-language" id="shcb-lan
 <p>Regarding IsDBNull(string), this is an extension method in System.Data.Common.dll. To use this extension method, add <em>using System.Data;</em>. Note: This is part of the framework (including .NET Core 3.1). </p>
 <p>Your solution to use reader.GetOrdinal(string) is good. Internally, that&#8217;s what the IsDBNull(string) extension method is doing.</p>
 <p>By the way, thanks for pointing this out. I forgot to put <em>using System.Data;</em> in the SqlDataReaderExtensions code example.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-mapping-nullable-columns-with-sqldatareader/?replytocom=14884#respond" data-commentid="14884" data-postid="3706" data-belowelement="div-comment-14884" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -600,18 +600,7 @@ Name=Alice BirthYear=2022</code></span><small class="shcb-language" id="shcb-lan
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/csharp-mapping-nullable-columns-with-sqldatareader/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="3706" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

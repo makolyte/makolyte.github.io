@@ -925,7 +925,7 @@ width: 91px;
 
 				<div class="comment-content" itemprop="text">
 					<p>I can&#8217;t get this to work with a parameterized query.  Doesn&#8217;t seem to work&#8230;</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-unit-test-code-that-uses-dapper/?replytocom=12288#respond" data-commentid="12288" data-postid="4027" data-belowelement="div-comment-12288" data-respondelement="respond" data-replyto="Reply to Chris" aria-label="Reply to Chris">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -947,7 +947,7 @@ width: 91px;
 				<div class="comment-content" itemprop="text">
 					<p>I updated the article to answer your question. Please see section <a href="/csharp-how-to-unit-test-code-that-uses-dapper/#Unit_test_a_parameterized_query">Unit test a parameterized query</a>.</p>
 <p>In short, you have three options for setting up the mock to match the &#8216;object param&#8217; parameter: 1) Use It.IsAny&lt;object&gt;() 2) Use It.Is&lt;object&gt; + reflection or 3) Pass in a non-anonymous type instead and then use, for example, It.Is&lt;Movie&gt;(m =&gt; m.Year == 2010) to directly check the parameter</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-unit-test-code-that-uses-dapper/?replytocom=12300#respond" data-commentid="12300" data-postid="4027" data-belowelement="div-comment-12300" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -968,7 +968,7 @@ width: 91px;
 
 				<div class="comment-content" itemprop="text">
 					<p>Perfect.  Thanks!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-unit-test-code-that-uses-dapper/?replytocom=12323#respond" data-commentid="12323" data-postid="4027" data-belowelement="div-comment-12323" data-respondelement="respond" data-replyto="Reply to Chris" aria-label="Reply to Chris">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -998,7 +998,7 @@ width: 91px;
 
 				<div class="comment-content" itemprop="text">
 					<p>Hi, This code returns nothing causing test fails.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-unit-test-code-that-uses-dapper/?replytocom=43475#respond" data-commentid="43475" data-postid="4027" data-belowelement="div-comment-43475" data-respondelement="respond" data-replyto="Reply to J" aria-label="Reply to J">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1022,7 +1022,7 @@ width: 91px;
 <p>I&#8217;m assuming you mean the Mock object is returning nothing.<br>
 1. Check the setup conditions. You can put a breakpoint and debug and see what calls were made on the Mock and figure out why it didn&#8217;t match the conditions.</p>
 <p>2. Be sure to have the repository use the thing you&#8217;re mocking (DapperWrapper), otherwise yeah, the Mock will do nothing.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-unit-test-code-that-uses-dapper/?replytocom=43544#respond" data-commentid="43544" data-postid="4027" data-belowelement="div-comment-43544" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1048,7 +1048,7 @@ width: 91px;
 
 				<div class="comment-content" itemprop="text">
 					<p>It doesn&#8217;t make sense, you can use repository interface to reach the same purpose. However, to real test a dapper method, you probably have to connect to a database.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-unit-test-code-that-uses-dapper/?replytocom=51506#respond" data-commentid="51506" data-postid="4027" data-belowelement="div-comment-51506" data-respondelement="respond" data-replyto="Reply to Steven Zhang" aria-label="Reply to Steven Zhang">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1071,7 +1071,7 @@ width: 91px;
 					<p>Hi Steven,</p>
 <p>1. No, mocking out the repository is not the same as mocking out just Dapper. To simplify, you have Code -&gt; Repository -&gt; Dapper -&gt; Database. The purpose of mocking out just Dapper is to remove the external dependency on the Database while at the same time keeping the real Repository code so it gets ran in the test. Sure, if you don&#8217;t want to unit test the real Repository code, then mock it out. </p>
 <p>2. In unit tests, you don&#8217;t want to connect to (and therefore depend upon) external systems. That makes the tests slow and fragile. That&#8217;s why you mock out Dapper &#8211; to remove the dependency on the database in the unit tests. In integration tests, you actually connect to the database and execute SQL queries. These are slower and fragile compared to unit tests, so you don&#8217;t run them as often. It&#8217;s a good idea to have multiple levels of testing &#8211; unit tests, integration tests, end to end tests, manual QA testing, etc&#8230; &#8211; they serve different purposes and are all important.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-unit-test-code-that-uses-dapper/?replytocom=51537#respond" data-commentid="51537" data-postid="4027" data-belowelement="div-comment-51537" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1098,7 +1098,7 @@ width: 91px;
 				<div class="comment-content" itemprop="text">
 					<p>But by modifying the repository now, how do I call the repository from a service, is it<br>
 not working?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-unit-test-code-that-uses-dapper/?replytocom=51883#respond" data-commentid="51883" data-postid="4027" data-belowelement="div-comment-51883" data-respondelement="respond" data-replyto="Reply to Marcia" aria-label="Reply to Marcia">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1121,7 +1121,7 @@ not working?</p>
 					<p>Hi Marcia,</p>
 <p>I&#8217;m not seeing all the details here, so I can&#8217;t really give a specific answer. I&#8217;m going to guess you&#8217;re using the repository in ASP.NET Core already and now it&#8217;s failing because it can&#8217;t create the repository instance. This is because the repository now has a dependency on DapperWrapper. You&#8217;ll need to register DapperWrapper (i.e. with builder.Services.AddSingleton) in the initialization code. </p>
 <p>If this doesn&#8217;t answer your question, please provide more details.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-unit-test-code-that-uses-dapper/?replytocom=51895#respond" data-commentid="51895" data-postid="4027" data-belowelement="div-comment-51895" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1142,7 +1142,7 @@ not working?</p>
 
 				<div class="comment-content" itemprop="text">
 					<p>Thanks for the reply. I also was able to add QueryMultiple to the wrapper, but I´m not able to unit test because GridReader is an internal class. Any suggestion?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-unit-test-code-that-uses-dapper/?replytocom=54802#respond" data-commentid="54802" data-postid="4027" data-belowelement="div-comment-54802" data-respondelement="respond" data-replyto="Reply to Marcia" aria-label="Reply to Marcia">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1164,7 +1164,7 @@ not working?</p>
 				<div class="comment-content" itemprop="text">
 					<p>Hey Marcia, now that&#8217;s a tricky challenge! I looked into this and I believe the simplest option is to use GridReader inside the QueryMultiple() wrapper method to get the results and return them in a tuple. That eliminates the need to deal wit the very-complicated GridReader class in the unit tests.</p>
 <p>I updated the article and added a section showing how to do this approach: <a href="/csharp-how-to-unit-test-code-that-uses-dapper/#Dealing_with_QueryMultiple" rel="ugc">Dealing with QueryMultiple()</a></p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-unit-test-code-that-uses-dapper/?replytocom=54890#respond" data-commentid="54890" data-postid="4027" data-belowelement="div-comment-54890" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1230,18 +1230,7 @@ not working?</p>
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/csharp-how-to-unit-test-code-that-uses-dapper/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="4027" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

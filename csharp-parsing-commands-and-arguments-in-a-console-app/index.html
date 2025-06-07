@@ -846,7 +846,7 @@ Copyright (C) 2021 scc
 
 				<div class="comment-content" itemprop="text">
 					<p>It seems the approach with base ICommand for all command doesn&#8217;t work any longer with CommandLine NuGet &#8211; the code can&#8217;t be compiled because of the error like &#8216;error CS1929: &#8216;ParserResult&#8217; does not contain a definition for &#8216;WithParsed&#8217; and the best extension method overload &#8216;ParserResultExtensions.WithParsed(ParserResult, Action)&#8217; requires a receiver of type &#8216;ParserResult&#8221;</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-parsing-commands-and-arguments-in-a-console-app/?replytocom=52558#respond" data-commentid="52558" data-postid="3830" data-belowelement="div-comment-52558" data-respondelement="respond" data-replyto="Reply to AntonK" aria-label="Reply to AntonK">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -873,7 +873,7 @@ Parser.Default.ParseArguments&lt;<strong>PushCommand</strong>&gt;(args).WithPars
 Parser.Default.ParseArguments&lt;<strong>PushCommand</strong>&gt;(args).WithParsed&lt;<strong>PushCommand</strong>&gt;(t =&gt; t.Execute());</p>
 <p>If you have multiple commands, you can use the interface with WithParsed without a problem (as shown in the article):<br>
 Parser.Default.ParseArguments&lt;<strong>PushCommand</strong>,<strong>CommitCommand</strong>&gt;(args).WithParsed&lt;<strong>ICommand</strong>&gt;(t =&gt; t.Execute());</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-parsing-commands-and-arguments-in-a-console-app/?replytocom=52561#respond" data-commentid="52561" data-postid="3830" data-belowelement="div-comment-52561" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -899,7 +899,7 @@ Parser.Default.ParseArguments&lt;<strong>PushCommand</strong>,<strong>CommitComm
 
 				<div class="comment-content" itemprop="text">
 					<p>This does not work if we need to inject dependencies in the constructor of the command classes</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-parsing-commands-and-arguments-in-a-console-app/?replytocom=62508#respond" data-commentid="62508" data-postid="3830" data-belowelement="div-comment-62508" data-respondelement="respond" data-replyto="Reply to Alfurquan Zahedi" aria-label="Reply to Alfurquan Zahedi">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -921,7 +921,7 @@ Parser.Default.ParseArguments&lt;<strong>PushCommand</strong>,<strong>CommitComm
 				<div class="comment-content" itemprop="text">
 					<p>I&#8217;m assuming you&#8217;re talking about the CommandLineParser approach. Yeah, it doesn&#8217;t support dependency injection. Someone made a library that helps with this: <a href="https://github.com/JaronrH/CommandLineParser.DependencyInjection" rel="nofollow ugc">https://github.com/JaronrH/CommandLineParser.DependencyInjection</a>. I haven&#8217;t personally ran into this specific scenario before, but other devs seem like to using this library for DI w/ CommandLineParser. Hope that helps.</p>
 <p>Ref: <a href="https://github.com/commandlineparser/commandline/issues/466#issuecomment-531835467" rel="nofollow ugc">https://github.com/commandlineparser/commandline/issues/466#issuecomment-531835467</a></p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-parsing-commands-and-arguments-in-a-console-app/?replytocom=62532#respond" data-commentid="62532" data-postid="3830" data-belowelement="div-comment-62532" data-respondelement="respond" data-replyto="Reply to Mak" aria-label="Reply to Mak">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -932,18 +932,7 @@ Parser.Default.ParseArguments&lt;<strong>PushCommand</strong>,<strong>CommitComm
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/csharp-parsing-commands-and-arguments-in-a-console-app/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="3830" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

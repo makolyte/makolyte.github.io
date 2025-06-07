@@ -522,7 +522,7 @@ width: 91px;
 					<p>Hi,<br>
 &#8230;. httpClient.Send(request); &#8230;.<br>
 HttpClient class has not method Send(), it has SendAsync()  only</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-send-synchronous-requests-with-httpclient/?replytocom=51204#respond" data-commentid="51204" data-postid="16192" data-belowelement="div-comment-51204" data-respondelement="respond" data-replyto="Reply to BorisL" aria-label="Reply to BorisL">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -544,7 +544,7 @@ HttpClient class has not method Send(), it has SendAsync()  only</p>
 				<div class="comment-content" itemprop="text">
 					<p>Hi,</p>
 <p>The Send() method is available in .NET 5 and above.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-send-synchronous-requests-with-httpclient/?replytocom=51299#respond" data-commentid="51299" data-postid="16192" data-belowelement="div-comment-51299" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -565,7 +565,7 @@ HttpClient class has not method Send(), it has SendAsync()  only</p>
 
 				<div class="comment-content" itemprop="text">
 					<p>So what would be the way in .Net 4.8 Projects?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-send-synchronous-requests-with-httpclient/?replytocom=54927#respond" data-commentid="54927" data-postid="16192" data-belowelement="div-comment-54927" data-respondelement="respond" data-replyto="Reply to Robin" aria-label="Reply to Robin">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -591,7 +591,7 @@ HttpClient class has not method Send(), it has SendAsync()  only</p>
 var content = Task.Run(() =&gt; response.Content.ReadAsStringAsync()).GetAwaiter().GetResult();</code></p>
 <p>I tested this in .NET Framework 4.8 in a WinForms app. Be sure to test this thoroughly in a realistic scenario for your application.</p>
 <p>The downside to this approach is it wastes a thread (2 are blocked instead of just 1). That only really matters if you&#8217;re sending tons of concurrent requests in your application, like in a high throughput web server. I would guess that&#8217;s not the case (otherwise you wouldn&#8217;t be wanting to send sync requests in the first place).</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-send-synchronous-requests-with-httpclient/?replytocom=54951#respond" data-commentid="54951" data-postid="16192" data-belowelement="div-comment-54951" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -610,18 +610,7 @@ var content = Task.Run(() =&gt; response.Content.ReadAsStringAsync()).GetAwaiter
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/csharp-how-to-send-synchronous-requests-with-httpclient/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="16192" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

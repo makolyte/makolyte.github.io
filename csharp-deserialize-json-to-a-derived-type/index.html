@@ -829,7 +829,7 @@ width: 91px;
 				<div class="comment-content" itemprop="text">
 					<p>Works great. As far as I see the approach using the JsonConverer-property only works if your base class is abstract. Otherwise you would get recursion for serializing the base type.</p>
 <p>Using the options approach you can remove the converter in case you want to deserialize as the base type. Or do you have only other idea how to handle this?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-deserialize-json-to-a-derived-type/?replytocom=18502#respond" data-commentid="18502" data-postid="11571" data-belowelement="div-comment-18502" data-respondelement="respond" data-replyto="Reply to Kedned" aria-label="Reply to Kedned">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -851,7 +851,7 @@ width: 91px;
 				<div class="comment-content" itemprop="text">
 					<p>You&#8217;re right &#8211; using the JsonConverter attribute with a non-abstract class causes StackOverflowException (due to infinite recursion). Thanks for pointing that out. I&#8217;ll update the article and put a warning in that section.</p>
 <p>To answer your question: You got it. In that scenario, use the options approach instead (and be sure to <a href="/csharp-deserialize-json-to-a-derived-type/#Remove_custom_converter_from_the_options">remove the custom converter from the options</a> to prevent infinite recursion).</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-deserialize-json-to-a-derived-type/?replytocom=18567#respond" data-commentid="18567" data-postid="11571" data-belowelement="div-comment-18567" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -877,7 +877,7 @@ width: 91px;
 
 				<div class="comment-content" itemprop="text">
 					<p>Hi, I&#8217;ve tried to use the second method, but what do you recommend if there is no specified subtype at deserialization, but there is a JsonSubtype? Is there a way for the deserializer to know on its own which JsonSubtype is being serialized/deserialized, in case of a JSON with multiple derived classes?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-deserialize-json-to-a-derived-type/?replytocom=50489#respond" data-commentid="50489" data-postid="11571" data-belowelement="div-comment-50489" data-respondelement="respond" data-replyto="Reply to Mika" aria-label="Reply to Mika">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -900,7 +900,7 @@ width: 91px;
 					<p>Hi,</p>
 <p>If the JSON doesn&#8217;t contain any explicit type info (and you&#8217;re not getting it something like a request header etc&#8230; either), then one option is to try to detect the correct subtype by looking for unique fields. This is definitely not ideal, but it works as a last resort approach when no type info is being given to you explicitly.</p>
 <p>For example: let&#8217;s say you have base type Person and two types &#8211; Coder:Person with property Language and Driver:Person with property Car. If the JSON contains a field called &#8220;Language&#8221;, you can assume it&#8217;s the Coder subtype. You can use JsonDocument to check if a property exists.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-deserialize-json-to-a-derived-type/?replytocom=50606#respond" data-commentid="50606" data-postid="11571" data-belowelement="div-comment-50606" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -911,18 +911,7 @@ width: 91px;
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/csharp-deserialize-json-to-a-derived-type/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="11571" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

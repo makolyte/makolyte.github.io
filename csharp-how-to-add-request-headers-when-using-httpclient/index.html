@@ -602,7 +602,7 @@ width: 91px;
 				<div class="comment-content" itemprop="text">
 					<p>Good examples but what are the allowed values for the scheme parameter for AuthenticationHeaderValue ? </p>
 <p>Is this just the &#8220;username&#8221; and set by whoever coded up the API?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-add-request-headers-when-using-httpclient/?replytocom=12997#respond" data-commentid="12997" data-postid="7911" data-belowelement="div-comment-12997" data-respondelement="respond" data-replyto="Reply to david gray" aria-label="Reply to david gray">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -623,7 +623,7 @@ width: 91px;
 
 				<div class="comment-content" itemprop="text">
 					<p>There are a few standard <a href="https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml" rel="nofollow ugc">HTTP auth schemes </a>, such as Basic and Bearer, but AuthenticationHeaderValue doesn&#8217;t validate what you pass in. It just formats it properly for you. You&#8217;ll want to set the auth headers according to what the web API you&#8217;re integrating with requires.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-add-request-headers-when-using-httpclient/?replytocom=12999#respond" data-commentid="12999" data-postid="7911" data-belowelement="div-comment-12999" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -649,7 +649,7 @@ width: 91px;
 
 				<div class="comment-content" itemprop="text">
 					<p>I am using DefaultRequestHeaders.Add to add ClientId and ClientSecret to hit one of the mulesoft endpoints but I was asked to add a GUID in every request header to successfully hit the endpoint. I am generating the GUID in code but in order to add it to headers along with existing ClientId and ClientSecret, how can I do that?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-add-request-headers-when-using-httpclient/?replytocom=18656#respond" data-commentid="18656" data-postid="7911" data-belowelement="div-comment-18656" data-respondelement="respond" data-replyto="Reply to Sunny" aria-label="Reply to Sunny">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -672,7 +672,7 @@ width: 91px;
 					<p>Hi Sunny,</p>
 <p>Keep using HttpClient.DefaultRequestHeaders.Add for the two headers that are the same for all requests &#8211; ClientId and ClientSecret.</p>
 <p>For the other header, where you are generating a unique value for each request, you&#8217;ll have to build an HttpRequestMessage, use HttpRequestMessage.Headers.Add(), and send it with HttpClient.SendAsync(). Check the <strong>&#8220;Add a header per request&#8221;</strong> section in the article for a code example.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-add-request-headers-when-using-httpclient/?replytocom=18661#respond" data-commentid="18661" data-postid="7911" data-belowelement="div-comment-18661" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -701,7 +701,7 @@ width: 91px;
 <p>Is it safe to use &#8220;PostAsJsonAsync&#8221; if we have single HttpClient instance?<br>
 Like HttpClient.PostAsJsonAsync(uri, value) &#8212; Is this Thread safe?</p>
 <p>Thanks</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-add-request-headers-when-using-httpclient/?replytocom=28686#respond" data-commentid="28686" data-postid="7911" data-belowelement="div-comment-28686" data-respondelement="respond" data-replyto="Reply to Arsh" aria-label="Reply to Arsh">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -722,7 +722,7 @@ Like HttpClient.PostAsJsonAsync(uri, value) &#8212; Is this Thread safe?</p>
 
 				<div class="comment-content" itemprop="text">
 					<p>Yes, it&#8217;s thread-safe.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-add-request-headers-when-using-httpclient/?replytocom=28797#respond" data-commentid="28797" data-postid="7911" data-belowelement="div-comment-28797" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -749,7 +749,7 @@ Like HttpClient.PostAsJsonAsync(uri, value) &#8212; Is this Thread safe?</p>
 				<div class="comment-content" itemprop="text">
 					<p>I don&#8217;t get how `HttpRequestMessage.Headers` is supposed to be more more thread-safe than `HttpClient.DefaultRequestHeaders`. Both are the same collection type so where should that thread-safety be coming from?<br>
 And how is it that thread-safety is such a pervasive concern in any scenario? I can imagine a number of use cases for `HttpClient` where thread safety doesn&#8217;t matter a bit. Like single-threaded applications for example.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-add-request-headers-when-using-httpclient/?replytocom=48869#respond" data-commentid="48869" data-postid="7911" data-belowelement="div-comment-48869" data-respondelement="respond" data-replyto="Reply to Robert" aria-label="Reply to Robert">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -772,7 +772,7 @@ And how is it that thread-safety is such a pervasive concern in any scenario? I 
 					<p>If you&#8217;re using HttpClient in a single-threaded context, where you&#8217;re only ever sending one request, then thread-safety isn&#8217;t a concern. Go ahead and use HttpClient.DefaultRequestHeaders to set the headers and don&#8217;t worry about it.</p>
 <p>If you&#8217;re using HttpClient in a multi-threaded context, you&#8217;ll be using a single instance to send concurrent requests from multiple threads. It was designed for this (as opposed to using a new instance for every request). This is where you have to be careful with how you set headers that are different for each request (per-request headers). For headers that will be the same for all requests, you can set them in HttpClient.DefaultRequestHeaders without a problem. This sets the header for all requests. For per-request headers, you want to set them specifically for that request in HttpRequestMessage.Headers. If you set this per-request header in DefaultRequestHeaders, it changes it for ALL concurrent requests in all threads, which means you&#8217;ll end up sending the wrong values, hence why it&#8217;s thread-unsafe to use HttpClient.DefaultRequestHeaders for per-request headers in a multi-threaded context.</p>
 <p>In short, if you&#8217;re not sending concurrent requests, don&#8217;t worry about it.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-add-request-headers-when-using-httpclient/?replytocom=48874#respond" data-commentid="48874" data-postid="7911" data-belowelement="div-comment-48874" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -793,7 +793,7 @@ And how is it that thread-safety is such a pervasive concern in any scenario? I 
 
 				<div class="comment-content" itemprop="text">
 					<p>Oh I see now. Thanks for the clarification!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-add-request-headers-when-using-httpclient/?replytocom=49099#respond" data-commentid="49099" data-postid="7911" data-belowelement="div-comment-49099" data-respondelement="respond" data-replyto="Reply to Robert" aria-label="Reply to Robert">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -823,7 +823,7 @@ And how is it that thread-safety is such a pervasive concern in any scenario? I 
 
 				<div class="comment-content" itemprop="text">
 					<p>very clear, just what i needed!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-add-request-headers-when-using-httpclient/?replytocom=52866#respond" data-commentid="52866" data-postid="7911" data-belowelement="div-comment-52866" data-respondelement="respond" data-replyto="Reply to Bill Stanton" aria-label="Reply to Bill Stanton">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -844,7 +844,7 @@ And how is it that thread-safety is such a pervasive concern in any scenario? I 
 
 				<div class="comment-content" itemprop="text">
 					<p>I&#8217;m happy to hear this helped you!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-add-request-headers-when-using-httpclient/?replytocom=52867#respond" data-commentid="52867" data-postid="7911" data-belowelement="div-comment-52867" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -873,7 +873,7 @@ And how is it that thread-safety is such a pervasive concern in any scenario? I 
 now in the other process methods, I am setting httpclient once and using it for multiple requests.<br>
 My question is, I have one instance of httpclient in process class, and if auth token expires it gets token by gettoken class, which has its own httpclient instance. Will this cause issue?</p>
 <p>Note: the httpclient instance is still live in process class, when it is fetching token from gettoken</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-add-request-headers-when-using-httpclient/?replytocom=60532#respond" data-commentid="60532" data-postid="7911" data-belowelement="div-comment-60532" data-respondelement="respond" data-replyto="Reply to Tasneem" aria-label="Reply to Tasneem">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -900,7 +900,7 @@ ApiHelper.SendRequest() has its own HttpClient, and needs a token from TokenHelp
 <p>These are two different instances of HttpClient, so they won&#8217;t affect each other at all.</p>
 <p>Now, because you&#8217;re using an expiring token, I would definitely not put the token in DefaultRequestHeaders. I&#8217;d send that in the per-request Headers with every request.</p>
 <p>If you want to save the token, instead of fetching it every time, you can put it in something like MemoryCache and set the time-to-live to right before the token&#8217;s expiration time, so it automatically gets booted out. The other option is to save it to a shared variable and use locking yourself. I&#8217;d suggest MemoryCache, since it&#8217;s threadsafe already and you don&#8217;t have to worry about it.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-add-request-headers-when-using-httpclient/?replytocom=60742#respond" data-commentid="60742" data-postid="7911" data-belowelement="div-comment-60742" data-respondelement="respond" data-replyto="Reply to Mak" aria-label="Reply to Mak">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -911,18 +911,7 @@ ApiHelper.SendRequest() has its own HttpClient, and needs a token from TokenHelp
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/csharp-how-to-add-request-headers-when-using-httpclient/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="7911" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

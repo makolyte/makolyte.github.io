@@ -904,7 +904,7 @@ Execution Time with PLINQ():               126 ms<br>
 Execution Time with QuickSort():           20 ms<br>
 Execution Time with QuickSortAsync():  20 ms</p>
 <p>NOTE: my implementation of QuickSort uses the last element as the pivot (which is not the best option for performance)</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/multithreaded-quicksort-in-csharp/?replytocom=5351#respond" data-commentid="5351" data-postid="506" data-belowelement="div-comment-5351" data-respondelement="respond" data-replyto="Reply to Oddik" aria-label="Reply to Oddik">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -938,7 +938,7 @@ Execution Time with QuickSortAsync(): 8 ms</p>
 <p>The memory allocation is pretty much the same. Only PLINQ is worse.<br>
 In CPU utilization only PLINQ raises a transient peak of 100%.</p>
 <p>So, my conclusion is that PLINQ is the worst approach in this scenario. And, surprisingly, the Release version of a simple QuickSort algorithm provides similar performance to Array.Sort() built-in function.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/multithreaded-quicksort-in-csharp/?replytocom=5352#respond" data-commentid="5352" data-postid="506" data-belowelement="div-comment-5352" data-respondelement="respond" data-replyto="Reply to Oddik" aria-label="Reply to Oddik">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -965,7 +965,7 @@ PLINQ: 1894 ms<br>
 Topdown-ForkJoinSort: 917 ms</p>
 <p>Just like your results &#8211; threaded quicksort is the fastest. Array.Sort() seems to do better with ints than strings. If you re-run your tests using strings, you&#8217;ll probably observe the same thing. I would guess Array.Sort() has some great optimizations when dealing with integers (at least compared to strings).</p>
 <p>You also made a good observation about PLINQ using more resources than the other options. I didn&#8217;t think about looking at memory usage. That would definitely be a factor if you&#8217;re deciding whether to use PLINQ or your own threaded QS.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/multithreaded-quicksort-in-csharp/?replytocom=5357#respond" data-commentid="5357" data-postid="506" data-belowelement="div-comment-5357" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1002,7 +1002,7 @@ Topdown-ForkJoinSort: 917 ms</p>
 <p>Thus, basically the original array is mainly processed by two threads only: one operates the left part and the other the right part. As expected, processing the array in two parts in parallel should improve a single-thread version. But note that the creation of the Tasks only happens once, not at every recursive call.</p>
 <p>However, if I use the Async itself in the recursion, hundreds of Tasks appear (as expected) and I&#8217;ve seen more than 12 concurrent threads. In this case, the performance is very very slow for large arrays.</p>
 <p>I&#8217;ve just tried your own code and it happens the same. It is very slow. So I am curious why your recursive async quicksort performs well. I am missing something? Keep it up!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/multithreaded-quicksort-in-csharp/?replytocom=5778#respond" data-commentid="5778" data-postid="506" data-belowelement="div-comment-5778" data-respondelement="respond" data-replyto="Reply to Oddik" aria-label="Reply to Oddik">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1079,25 +1079,14 @@ Execution time: 601 ms<br>
 Av. execution time: 654.7 ms</p>
 <p>I have seen this behavior when I worked with Matlab too. There is a considerable overhead the first time. So, in conclusion, I would only see practical advantages of multithreaded-sorting if you need to do some repetitive and extreme calculations like in scientific tests where you might have many large arrays.</p>
 <p>Thank you for sharing your knowledge and code. I am learning C# and your code is quite interesting (uses generic types).</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/multithreaded-quicksort-in-csharp/?replytocom=5797#respond" data-commentid="5797" data-postid="506" data-belowelement="div-comment-5797" data-respondelement="respond" data-replyto="Reply to Oddik" aria-label="Reply to Oddik">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/multithreaded-quicksort-in-csharp/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="506" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

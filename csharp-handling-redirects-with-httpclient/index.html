@@ -646,7 +646,7 @@ Redirect location = https://api.isevenapi.xyz/api/iseven/7/</code></span><small 
 
 				<div class="comment-content" itemprop="text">
 					<p>Awesome article</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-handling-redirects-with-httpclient/?replytocom=33565#respond" data-commentid="33565" data-postid="11810" data-belowelement="div-comment-33565" data-respondelement="respond" data-replyto="Reply to Gaurav Puri" aria-label="Reply to Gaurav Puri">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -667,7 +667,7 @@ Redirect location = https://api.isevenapi.xyz/api/iseven/7/</code></span><small 
 
 				<div class="comment-content" itemprop="text">
 					<p>Thanks!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-handling-redirects-with-httpclient/?replytocom=33568#respond" data-commentid="33568" data-postid="11810" data-belowelement="div-comment-33568" data-respondelement="respond" data-replyto="Reply to Mak" aria-label="Reply to Mak">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -702,7 +702,7 @@ Redirect location = https://api.isevenapi.xyz/api/iseven/7/</code></span><small 
 if(response.StatusCode == HttpStatusCode.Redirect) {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(response.Headers.GetValues(&quot;Location&quot;).First());<br>
 }</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-handling-redirects-with-httpclient/?replytocom=52192#respond" data-commentid="52192" data-postid="11810" data-belowelement="div-comment-52192" data-respondelement="respond" data-replyto="Reply to Charles Owen" aria-label="Reply to Charles Owen">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -723,7 +723,7 @@ if(response.StatusCode == HttpStatusCode.Redirect) {<br>
 
 				<div class="comment-content" itemprop="text">
 					<p>Hi Charles. I&#8217;m glad this helped you. Thanks for sharing that helpful code snippet as well.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-handling-redirects-with-httpclient/?replytocom=52211#respond" data-commentid="52211" data-postid="11810" data-belowelement="div-comment-52211" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -752,7 +752,7 @@ if(response.StatusCode == HttpStatusCode.Redirect) {<br>
 I did a little digging and found the spec on http redirects:<br>
 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Redirections#permanent_redirections" rel="nofollow ugc">https://developer.mozilla.org/en-US/docs/Web/HTTP/Redirections#permanent_redirections</a><br>
 A status code of 301,302&#8230;and a few more will cause the behavior we&#8217;re seeing but if a 307, 308 is received then the redirect honors the original request &#8211; a POST redirects as a POST with the original body intact. I tested this using HttpClient and curl and getting a 308 does the correct redirect.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-handling-redirects-with-httpclient/?replytocom=54454#respond" data-commentid="54454" data-postid="11810" data-belowelement="div-comment-54454" data-respondelement="respond" data-replyto="Reply to Mike Missakian" aria-label="Reply to Mike Missakian">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -773,7 +773,7 @@ A status code of 301,302&#8230;and a few more will cause the behavior we&#8217;r
 
 				<div class="comment-content" itemprop="text">
 					<p>I&#8217;m glad this helped you point you in the right direction. &#8220;Forced GETs&#8221; can definitely be a little confusing!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-handling-redirects-with-httpclient/?replytocom=54468#respond" data-commentid="54468" data-postid="11810" data-belowelement="div-comment-54468" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -801,7 +801,7 @@ A status code of 301,302&#8230;and a few more will cause the behavior we&#8217;r
 					<p>In your bullet point</p>
 <p>&#8211; Response.StatusCode is 300, 301, 303, 303, 307, or 308.</p>
 <p>Was the first &#8220;303&#8221; intended to be 302?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-handling-redirects-with-httpclient/?replytocom=59273#respond" data-commentid="59273" data-postid="11810" data-belowelement="div-comment-59273" data-respondelement="respond" data-replyto="Reply to SteveL" aria-label="Reply to SteveL">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -822,7 +822,7 @@ A status code of 301,302&#8230;and a few more will cause the behavior we&#8217;r
 
 				<div class="comment-content" itemprop="text">
 					<p>Ah yes, thank you! I fixed it.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-handling-redirects-with-httpclient/?replytocom=59470#respond" data-commentid="59470" data-postid="11810" data-belowelement="div-comment-59470" data-respondelement="respond" data-replyto="Reply to Mak" aria-label="Reply to Mak">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -833,18 +833,7 @@ A status code of 301,302&#8230;and a few more will cause the behavior we&#8217;r
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/csharp-handling-redirects-with-httpclient/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="11810" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

@@ -956,7 +956,7 @@ Unhandled exception. Microsoft.EntityFrameworkCore.Storage.RetryLimitExceededExc
 
 				<div class="comment-content" itemprop="text">
 					<p>Excellent article.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/how-to-do-retries-in-ef-core/?replytocom=15992#respond" data-commentid="15992" data-postid="6757" data-belowelement="div-comment-15992" data-respondelement="respond" data-replyto="Reply to Dev" aria-label="Reply to Dev">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -977,7 +977,7 @@ Unhandled exception. Microsoft.EntityFrameworkCore.Storage.RetryLimitExceededExc
 
 				<div class="comment-content" itemprop="text">
 					<p>Thanks!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/how-to-do-retries-in-ef-core/?replytocom=15997#respond" data-commentid="15997" data-postid="6757" data-belowelement="div-comment-15997" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1010,7 +1010,7 @@ EF Core version and NET version. As correctly pointed a lot  can be changed.<br>
 Full working sample 🙂</p>
 <p>Ps. Is it possible to get retry information after context.SaveChanges(); ? Like saved on 3rd attempt.</p>
 <p>Best regards</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/how-to-do-retries-in-ef-core/?replytocom=50495#respond" data-commentid="50495" data-postid="6757" data-belowelement="div-comment-50495" data-respondelement="respond" data-replyto="Reply to Leszek" aria-label="Reply to Leszek">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1038,7 +1038,7 @@ Full working sample 🙂</p>
 3. Call base.Execute() in a try/catch. If it doesn&#8217;t throw an error, check the number of attempts and log it.</p>
 <p>I liked this idea, so I updated the article to show the code for how to do this. See this section: <a href="/how-to-do-retries-in-ef-core/#How_to_execute_your_own_logic_between_retries">Execute your own logic between retries</a></p>
 <p>Note: The reason you can&#8217;t really do that in optionsBuilder.LogTo() is because the &#8220;SavedChangesCompleted&#8221; event data does not keep track of the attempts or anything like that. The only thing that keeps track of the attempts is ExecutionStrategy.ExceptionsEncountered. This property gets cleared when base.Execute() is called, so you have to check it after you call base.Execute(). It&#8217;s not available anywhere else.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/how-to-do-retries-in-ef-core/?replytocom=50520#respond" data-commentid="50520" data-postid="6757" data-belowelement="div-comment-50520" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1073,7 +1073,7 @@ Full working sample 🙂</p>
                                                             errorNumbersToAdd: new List { 4060 });<br>
                         }),</p>
 <p>            ServiceLifetime.Transient);</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/how-to-do-retries-in-ef-core/?replytocom=50636#respond" data-commentid="50636" data-postid="6757" data-belowelement="div-comment-50636" data-respondelement="respond" data-replyto="Reply to Romil" aria-label="Reply to Romil">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1114,7 +1114,7 @@ Full working sample 🙂</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;    logger.LogInformation($&quot;Retry #{exceptions.Count} with delay {retryEventData.Delay} due to error: {exceptions.Last().Message}&quot;);</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;})), ServiceLifetime.Transient);</p>
 <p>Alternatively: DI the ILogger into your context class and configure everything in OnConfiguring.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/how-to-do-retries-in-ef-core/?replytocom=50656#respond" data-commentid="50656" data-postid="6757" data-belowelement="div-comment-50656" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1125,18 +1125,7 @@ Full working sample 🙂</p>
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/how-to-do-retries-in-ef-core/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="6757" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

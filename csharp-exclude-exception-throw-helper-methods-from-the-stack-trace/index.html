@@ -486,7 +486,7 @@ width: 91px;
 
 				<div class="comment-content" itemprop="text">
 					<p>For methods like ThrowIfNull(employee), is there a way to tell the static analyzers that in subsequent statements, employee will not be null?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-exclude-exception-throw-helper-methods-from-the-stack-trace/?replytocom=29268#respond" data-commentid="29268" data-postid="10961" data-belowelement="div-comment-29268" data-respondelement="respond" data-replyto="Reply to Albert" aria-label="Reply to Albert">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -511,7 +511,7 @@ width: 91px;
 public static void ThrowIfNull([NotNull]object? argument, &#8230;.). </p>
 <p>This makes it so the analyzer knows that the object was null-checked and therefore won&#8217;t be null after this method is called.</p>
 <p>This is actually what the built-in ArgumentNullException.ThrowIfNull() has, and I totally missed it because I didn&#8217;t have the Nullable feature turned on at the time. I&#8217;ll go ahead and update the code example in the article with this change too.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-exclude-exception-throw-helper-methods-from-the-stack-trace/?replytocom=29286#respond" data-commentid="29286" data-postid="10961" data-belowelement="div-comment-29286" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -535,7 +535,7 @@ public static void ThrowIfNull([NotNull]object? argument, &#8230;.). </p>
 					<p>nm. I found the [System.Diagnostics.CodeAnalysis.NotNull] attribute</p>
 <p>Oops. You beat me to it. Thank you!</p>
 <p>(note from Mak &#8211; combined these two comments)</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-exclude-exception-throw-helper-methods-from-the-stack-trace/?replytocom=29292#respond" data-commentid="29292" data-postid="10961" data-belowelement="div-comment-29292" data-respondelement="respond" data-replyto="Reply to Albert" aria-label="Reply to Albert">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -556,7 +556,7 @@ public static void ThrowIfNull([NotNull]object? argument, &#8230;.). </p>
 
 				<div class="comment-content" itemprop="text">
 					<p>🙂 You&#8217;re welcome!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-exclude-exception-throw-helper-methods-from-the-stack-trace/?replytocom=29297#respond" data-commentid="29297" data-postid="10961" data-belowelement="div-comment-29297" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -587,7 +587,7 @@ public static void ThrowIfNull([NotNull]object? argument, &#8230;.). </p>
 				<div class="comment-content" itemprop="text">
 					<p>Hey Mak, Is this available in .net framework?<br>
 I just add that attribute into my code(net472, VS2022), and it doesn&#8217;t work.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-exclude-exception-throw-helper-methods-from-the-stack-trace/?replytocom=42069#respond" data-commentid="42069" data-postid="10961" data-belowelement="div-comment-42069" data-respondelement="respond" data-replyto="Reply to Joe" aria-label="Reply to Joe">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -609,7 +609,7 @@ I just add that attribute into my code(net472, VS2022), and it doesn&#8217;t wor
 				<div class="comment-content" itemprop="text">
 					<p>Hey Joe,</p>
 <p>This attribute was added in .NET 6. So unfortunately, no, it&#8217;s not available in your .NET Framework version.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-exclude-exception-throw-helper-methods-from-the-stack-trace/?replytocom=42176#respond" data-commentid="42176" data-postid="10961" data-belowelement="div-comment-42176" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -636,7 +636,7 @@ I just add that attribute into my code(net472, VS2022), and it doesn&#8217;t wor
 				<div class="comment-content" itemprop="text">
 					<p>Trying to use this attribute in a project using c# 8. It is not part of System.Diagnostics and yields an error.<br>
 Please help.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-exclude-exception-throw-helper-methods-from-the-stack-trace/?replytocom=55291#respond" data-commentid="55291" data-postid="10961" data-belowelement="div-comment-55291" data-respondelement="respond" data-replyto="Reply to chris" aria-label="Reply to chris">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -658,7 +658,7 @@ Please help.</p>
 				<div class="comment-content" itemprop="text">
 					<p>Hi Chris,</p>
 <p>Unfortunately this attribute was added in .NET 6, so it&#8217;s not available in older versions. You could try to implement this behavior yourself. Let&#8217;s say you&#8217;re logging exceptions in a centralized method (like Logger.Error() or whatever). You could get the stack trace (ex.ToString()) and remove the 2nd and 3rd lines from the string. If that&#8217;s something you&#8217;d like to do and need further help, feel free to ask me by replying to this.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-exclude-exception-throw-helper-methods-from-the-stack-trace/?replytocom=55302#respond" data-commentid="55302" data-postid="10961" data-belowelement="div-comment-55302" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -669,18 +669,7 @@ Please help.</p>
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/csharp-exclude-exception-throw-helper-methods-from-the-stack-trace/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="10961" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

@@ -921,7 +921,7 @@ Waiting for log messages</code></span><small class="shcb-language" id="shcb-lang
 
 				<div class="comment-content" itemprop="text">
 					<p>Thanks! I come to this &#8220;problem&#8221; today (&#8216;When logging to SQL Server, don’t do so directly. &#8216;), and I was trying to do what you do!, very useful</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/aspdotnet-log-messages-to-the-database-in-the-background/?replytocom=42681#respond" data-commentid="42681" data-postid="6235" data-belowelement="div-comment-42681" data-respondelement="respond" data-replyto="Reply to Johnatan" aria-label="Reply to Johnatan">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -942,7 +942,7 @@ Waiting for log messages</code></span><small class="shcb-language" id="shcb-lang
 
 				<div class="comment-content" itemprop="text">
 					<p>You&#8217;re welcome, Johnatan. I&#8217;m glad this helped.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/aspdotnet-log-messages-to-the-database-in-the-background/?replytocom=42682#respond" data-commentid="42682" data-postid="6235" data-belowelement="div-comment-42682" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -972,7 +972,7 @@ Waiting for log messages</code></span><small class="shcb-language" id="shcb-lang
 <p>If somebody sends a cancel request, how do we ensure all the messages that are in queue sent to the database before the While loop on line 23 in DatabaseLoggerService exits? There could be another batch of messages in the queue and while loop could exit because of the cancellation request sent by main thread by calling dispose() or when it comes to the end of application.</p>
 <p>Also, with an in-memory queue, will the order of the log messages preserved?</p>
 <p>Thank you in advance so much!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/aspdotnet-log-messages-to-the-database-in-the-background/?replytocom=47904#respond" data-commentid="47904" data-postid="6235" data-belowelement="div-comment-47904" data-respondelement="respond" data-replyto="Reply to Raj" aria-label="Reply to Raj">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1028,7 +1028,7 @@ Waiting for log messages</code></span><small class="shcb-language" id="shcb-lang
 <p>No, but that&#8217;s what the log timestamp is for. You can order messages by the timestamp.</p>
 <p>Since there are multiple producers trying to write log messages concurrently, the order that messages actually get enqueued isn&#8217;t guarenteed. The messages are timestamped BEFORE getting enqueued though, and that happens in the producer thread when it calls LoggerService.Log(). That means the times will be correct. </p>
 <p>The consumer processes messages (inserts them into the database) in queue order, but you&#8217;re probably not referring to that.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/aspdotnet-log-messages-to-the-database-in-the-background/?replytocom=48062#respond" data-commentid="48062" data-postid="6235" data-belowelement="div-comment-48062" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1055,7 +1055,7 @@ Waiting for log messages</code></span><small class="shcb-language" id="shcb-lang
 				<div class="comment-content" itemprop="text">
 					<p>Thank you, Mak for your prompt and detailed response.</p>
 <p>I assume this background service can be put in a library and distribute as nuget pacakge so that multiple applications (ASP .NET, .Net 6) can use this library to log messages to a centralized location.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/aspdotnet-log-messages-to-the-database-in-the-background/?replytocom=48745#respond" data-commentid="48745" data-postid="6235" data-belowelement="div-comment-48745" data-respondelement="respond" data-replyto="Reply to Raj" aria-label="Reply to Raj">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1076,7 +1076,7 @@ Waiting for log messages</code></span><small class="shcb-language" id="shcb-lang
 
 				<div class="comment-content" itemprop="text">
 					<p>You&#8217;re welcome! Yes, this could be generalized and put into a reusable library.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/aspdotnet-log-messages-to-the-database-in-the-background/?replytocom=48764#respond" data-commentid="48764" data-postid="6235" data-belowelement="div-comment-48764" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1103,7 +1103,7 @@ I can also use a background thread(Task.Run(ProcessLogMessage)) to process the l
 {<br>
 ///retrieve data from queue and send it to destination<br>
 }</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/aspdotnet-log-messages-to-the-database-in-the-background/?replytocom=48769#respond" data-commentid="48769" data-postid="6235" data-belowelement="div-comment-48769" data-respondelement="respond" data-replyto="Reply to Raj" aria-label="Reply to Raj">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1126,7 +1126,7 @@ I can also use a background thread(Task.Run(ProcessLogMessage)) to process the l
 					<p>Yes, I believe the background service is the way to go. There&#8217;s one queue consumer and it waits for work in a non-blocking manner.</p>
 <p>Let&#8217;s discuss the other approach you mentioned. First, I&#8217;m assuming there&#8217;s an in-memory queue that everything has access to. My main question is when and where are you calling Task.Run(ProcessLogMessage)? Are you going to allow multiple queue consumers to run at once, and how many? Worst case, it&#8217;s uncontrolled, and you end up with N queue consumers all processing 1 messages at once. That eliminates the benefit of batching up the messages and doing bulk insertions. It&#8217;s practically the same as executing N number of insertions &#8211; which quickly degrades performance. On the other hand, let&#8217;s say you only want to allow one queue consumer at a time. Worst case, you have N number of fire-and-forget tasks all waiting at a lock. Those threads are being wasted. </p>
 <p>With the background service, no threads are being wasted. It&#8217;s doing a non-blocking wait for work. Furthermore, it maximizes the benefits of doing bulk insertions (stated differently, it minimizes the degrading effects of doing many individual inserts).</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/aspdotnet-log-messages-to-the-database-in-the-background/?replytocom=48795#respond" data-commentid="48795" data-postid="6235" data-belowelement="div-comment-48795" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1198,18 +1198,7 @@ I can also use a background thread(Task.Run(ProcessLogMessage)) to process the l
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/aspdotnet-log-messages-to-the-database-in-the-background/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="6235" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

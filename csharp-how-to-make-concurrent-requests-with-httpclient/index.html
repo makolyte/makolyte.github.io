@@ -865,7 +865,7 @@ Unavailable</code></span><small class="shcb-language" id="shcb-language-6"><span
 				<div class="comment-content" itemprop="text">
 					<p>Alas, this approach does not work in UWP apps. Upon the second request, the system throws an exception:<br>
 &#8220;A concurrent or interleaved operation changed the state of the object&#8221;,</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=6626#respond" data-commentid="6626" data-postid="2028" data-belowelement="div-comment-6626" data-respondelement="respond" data-replyto="Reply to Mike" aria-label="Reply to Mike">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -887,7 +887,7 @@ Unavailable</code></span><small class="shcb-language" id="shcb-language-6"><span
 				<div class="comment-content" itemprop="text">
 					<p>Hi Mike,</p>
 <p>Are you referring to using Windows.Web.Http.HttpClient in UWP? This article is referring to System.Net.Http.HttpClient. Please clarify.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=6628#respond" data-commentid="6628" data-postid="2028" data-belowelement="div-comment-6628" data-respondelement="respond" data-replyto="Reply to Mak" aria-label="Reply to Mak">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -913,7 +913,7 @@ Unavailable</code></span><small class="shcb-language" id="shcb-language-6"><span
 
 				<div class="comment-content" itemprop="text">
 					<p>Is the circuit breaker really necessary, or just an efficiency thing? I can see it being useful if the server we query goes down, then we can just report it being down for a given time span. Is it significant beyond that?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=7062#respond" data-commentid="7062" data-postid="2028" data-belowelement="div-comment-7062" data-respondelement="respond" data-replyto="Reply to Shawn" aria-label="Reply to Shawn">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -938,7 +938,7 @@ Unavailable</code></span><small class="shcb-language" id="shcb-language-6"><span
 <p>Let&#8217;s say your code doesn&#8217;t have circuit breaker logic and the endpoint goes down for awhile. Your code will keep sending requests. Each request will be sent on a new socket, using up a port, and the socket will linger around for a few minutes after the request has failed. Eventually so many ports will be used up that it leads to &#8220;port exhaustion,&#8221; which blocks ALL requests in the entire system (because they can&#8217;t allocate a port to send on).</p>
 <p>The circuit breaker prevents this low probability, high impact error scenario, so it makes sense to do it.</p>
 <p>Just to be clear, in this article, I showed a very basic circuit breaker approach (with the intention of getting people to think about how they want to do their own circuit breaker). You&#8217;re right though, a &#8220;time-based&#8221; circuit breaker approach is a good way to go.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=7079#respond" data-commentid="7079" data-postid="2028" data-belowelement="div-comment-7079" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -964,7 +964,7 @@ Unavailable</code></span><small class="shcb-language" id="shcb-language-6"><span
 
 				<div class="comment-content" itemprop="text">
 					<p>Can we use Polly circuit breaker instead of creating one on our own?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=10020#respond" data-commentid="10020" data-postid="2028" data-belowelement="div-comment-10020" data-respondelement="respond" data-replyto="Reply to Raja" aria-label="Reply to Raja">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -985,7 +985,7 @@ Unavailable</code></span><small class="shcb-language" id="shcb-language-6"><span
 
 				<div class="comment-content" itemprop="text">
 					<p>Yes, you can use Polly instead of writing your own circuit breaker logic.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=10024#respond" data-commentid="10024" data-postid="2028" data-belowelement="div-comment-10024" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1011,7 +1011,7 @@ Unavailable</code></span><small class="shcb-language" id="shcb-language-6"><span
 
 				<div class="comment-content" itemprop="text">
 					<p>Is the code example in a repo o somewhere else for consultation?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=11404#respond" data-commentid="11404" data-postid="2028" data-belowelement="div-comment-11404" data-respondelement="respond" data-replyto="Reply to Mike" aria-label="Reply to Mike">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1036,7 +1036,7 @@ Unavailable</code></span><small class="shcb-language" id="shcb-language-6"><span
 <p>This contains two projects:<br>
 1. /client/ &#8211; This is a console app that runs the example code shown in this article. It sends concurrent requests to GET /RandomNumber/<br>
 2. /server/ &#8211; This is an ASP.NET Web API service stub. This has the GET /RandomNumber/ endpoint.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=11406#respond" data-commentid="11406" data-postid="2028" data-belowelement="div-comment-11406" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1057,7 +1057,7 @@ Unavailable</code></span><small class="shcb-language" id="shcb-language-6"><span
 
 				<div class="comment-content" itemprop="text">
 					<p>Thanks so much 🙂</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=11409#respond" data-commentid="11409" data-postid="2028" data-belowelement="div-comment-11409" data-respondelement="respond" data-replyto="Reply to Mike" aria-label="Reply to Mike">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1087,7 +1087,7 @@ Unavailable</code></span><small class="shcb-language" id="shcb-language-6"><span
 
 				<div class="comment-content" itemprop="text">
 					<p>Great post, very helpful.  One nit&#8230; technically, an &#8220;Open&#8221; circuit is the same as a Tripped circuit&#8230; a &#8220;Closed&#8221; circuit is one through which electricity flows.  Could be a little confusing for C# developers that are also DIY weekend warriors.  🙂</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=11419#respond" data-commentid="11419" data-postid="2028" data-belowelement="div-comment-11419" data-respondelement="respond" data-replyto="Reply to Vince" aria-label="Reply to Vince">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1108,7 +1108,7 @@ Unavailable</code></span><small class="shcb-language" id="shcb-language-6"><span
 
 				<div class="comment-content" itemprop="text">
 					<p>Great catch. I updated the code and wording to use the correct circuit terminology (“closed” instead of “open” when it’s allowing requests through). Thanks for pointing that out Vince!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=11424#respond" data-commentid="11424" data-postid="2028" data-belowelement="div-comment-11424" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1134,7 +1134,7 @@ Unavailable</code></span><small class="shcb-language" id="shcb-language-6"><span
 
 				<div class="comment-content" itemprop="text">
 					<p>Hey Mak, I don&#8217;t know if I would be receiving a response for this, but when we have a single httpClient instance for handling multiple concurrent requests, the problem I see is with the headers. since the DefaultRequestHeaders is not thread-safe in nature and I need to for example pass a bearer-token or other such headers with dynamic values, how do we take care of achieving the same??</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=11865#respond" data-commentid="11865" data-postid="2028" data-belowelement="div-comment-11865" data-respondelement="respond" data-replyto="Reply to nayanava" aria-label="Reply to nayanava">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1156,7 +1156,7 @@ Unavailable</code></span><small class="shcb-language" id="shcb-language-6"><span
 				<div class="comment-content" itemprop="text">
 					<p>Very good question. I didn&#8217;t think about covering that in this article, but now I realize that I should.</p>
 <p>To answer your question, you&#8217;ll want to set the headers per request. To do that with HttpClient, you have to create an HttpRequestMessage, set the headers, and use HttpClient.SendAsync(). Unfortunately you can&#8217;t just use GetAsync() / PostAsync(), so it&#8217;s a little harder to use. I&#8217;ll update the article with a code example showing how to do that.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=11878#respond" data-commentid="11878" data-postid="2028" data-belowelement="div-comment-11878" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1189,7 +1189,7 @@ Unavailable</code></span><small class="shcb-language" id="shcb-language-6"><span
 <p>Do you have any advise for me here perhaps ?</p>
 <p>Many thanks</p>
 <p>Note: .NET Framework 4.7.2</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=13532#respond" data-commentid="13532" data-postid="2028" data-belowelement="div-comment-13532" data-respondelement="respond" data-replyto="Reply to Daniel" aria-label="Reply to Daniel">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1215,7 +1215,7 @@ ServicePointManager.FindServicePoint(url).ConnectionLeaseTimeout = 60000; //1 mi
 <p>In this example, it&#039;s set to 1 minute (in milliseconds). After 1 minute, sockets are released whether they are active (just used) or idling. It gets rid of the CLOSE_WAIT sockets quickly.</p>
 <p>Because this releases active sockets, it&#039;s a tradeoff between maximizing throughput and minimizing wasted sockets. In scenarios where you&#039;re sending tons of concurrent requests all the time, it would impact performance, but it probably wouldn&#039;t be noticeable. </p>
 <p>(summary of email conversation about this)</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=13685#respond" data-commentid="13685" data-postid="2028" data-belowelement="div-comment-13685" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1242,7 +1242,7 @@ ServicePointManager.FindServicePoint(url).ConnectionLeaseTimeout = 60000; //1 mi
 				<div class="comment-content" itemprop="text">
 					<p>Hi Mak,</p>
 <p>I&#8217;m really enjoying your content and learning a great deal. Question, is there a replacement using HttpClient for ServicePointManager.FindServicePoint. ServicePointManager.FindServicePoint is marked as being obsolete. Thanks in advance.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=49002#respond" data-commentid="49002" data-postid="2028" data-belowelement="div-comment-49002" data-respondelement="respond" data-replyto="Reply to Dan" aria-label="Reply to Dan">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1264,7 +1264,7 @@ ServicePointManager.FindServicePoint(url).ConnectionLeaseTimeout = 60000; //1 mi
 				<div class="comment-content" itemprop="text">
 					<p>Thanks Dan, I&#8217;m happy to hear that!</p>
 <p>To answer your question, you can use SocketsHttpHandler instead of ServicePointManager. See this updated section <a href="/csharp-how-to-make-concurrent-requests-with-httpclient/#Define_the_max_concurrent_requests_per_server">Define the max concurrent requests per server</a> (updated 2023-03-10 to better answer this comment and the one after it).</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=49055#respond" data-commentid="49055" data-postid="2028" data-belowelement="div-comment-49055" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1293,7 +1293,7 @@ ServicePointManager.FindServicePoint(url).ConnectionLeaseTimeout = 60000; //1 mi
 <p>I am trying to understand if a .NETCore3.1 console app is really sending off the desired amount of parallel reqs, in my scenario 16, and it seems that ServicePointManager has no effect to this, I tried changing the ConnectionLimit (from default 2 to eg. 16), but maybe I should opt to changing other options? </p>
 <p>Also, seems it is not in use for .NETCore per answers and comments: pointing to <a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclienthandler.maxconnectionsperserver?view=netcore-2.0#remarks" rel="nofollow ugc">https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclienthandler.maxconnectionsperserver?view=netcore-2.0#remarks</a> which has int&#8217;s max value set as default.</p>
 <p>Care to comment please?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=50351#respond" data-commentid="50351" data-postid="2028" data-belowelement="div-comment-50351" data-respondelement="respond" data-replyto="Reply to Vedran M." aria-label="Reply to Vedran M.">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1322,7 +1322,7 @@ ServicePointManager.FindServicePoint(url).ConnectionLeaseTimeout = 60000; //1 mi
 var httpClient = new HttpClient(socketsHttpHandler);</code></p>
 <p>In my testing, ServicePointManager always works fine, even all the way up to .NET 7. I originally wrote this article after dealing with a massive performance problem in a .NET Framework service. Since then, Microsoft has released several iterations of .NET Core and has changed the networking code quite a bit. One of the major changes is they made ServicePointManager obsolete (which is weird, because it definitely still works fine, at least in some cases). It&#8217;s now a good idea to use SocketsHttpHandler instead of ServicePointManager.</p>
 <p>Thank you for pointing this out. I will update the article accordingly.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=50364#respond" data-commentid="50364" data-postid="2028" data-belowelement="div-comment-50364" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1348,7 +1348,7 @@ var httpClient = new HttpClient(socketsHttpHandler);</code></p>
 
 				<div class="comment-content" itemprop="text">
 					<p>Will your code work for asp.net mvc web application?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=59696#respond" data-commentid="59696" data-postid="2028" data-belowelement="div-comment-59696" data-respondelement="respond" data-replyto="Reply to Tasneem" aria-label="Reply to Tasneem">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1369,7 +1369,7 @@ var httpClient = new HttpClient(socketsHttpHandler);</code></p>
 
 				<div class="comment-content" itemprop="text">
 					<p>Yup. You can use HttpClient as shown in any type of .NET app.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/?replytocom=59724#respond" data-commentid="59724" data-postid="2028" data-belowelement="div-comment-59724" data-respondelement="respond" data-replyto="Reply to Mak" aria-label="Reply to Mak">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1380,18 +1380,7 @@ var httpClient = new HttpClient(socketsHttpHandler);</code></p>
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/csharp-how-to-make-concurrent-requests-with-httpclient/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="2028" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

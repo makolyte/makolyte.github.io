@@ -727,7 +727,7 @@ Yes, the VersionAutoIncrementer.cs file is created, but it is stuck in its origi
 E.g. stuck in:</p>
 <p>using System.Reflection;<br>
 [assembly: AssemblyVersion(&#8220;8.0.220.927&#8221;)]</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=2806#respond" data-commentid="2806" data-postid="812" data-belowelement="div-comment-2806" data-respondelement="respond" data-replyto="Reply to Bjorn" aria-label="Reply to Bjorn">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -751,7 +751,7 @@ E.g. stuck in:</p>
 <p>Good catch. I updated the page to include instructions for how to update your .csproj file to make it run the text templating transform on every build.</p>
 <p>Please take a look at the step I added to the page &#8211; <strong>5 – Update .csproj to run the text template every time it builds. </strong></p>
 <p>Let me know if this helps.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=2825#respond" data-commentid="2825" data-postid="812" data-belowelement="div-comment-2825" data-respondelement="respond" data-replyto="Reply to Mak" aria-label="Reply to Mak">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -778,7 +778,7 @@ E.g. stuck in:</p>
 				<div class="comment-content" itemprop="text">
 					<p>I have created the template for shared assembly info.tt its updating version number only once for the first build or rebuild.<br>
 If I change some code and try to build the whole project it&#8217;s not reflecting the version number.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=6661#respond" data-commentid="6661" data-postid="812" data-belowelement="div-comment-6661" data-respondelement="respond" data-replyto="Reply to Nikhil Kumar" aria-label="Reply to Nikhil Kumar">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -800,7 +800,7 @@ If I change some code and try to build the whole project it&#8217;s not reflecti
 				<div class="comment-content" itemprop="text">
 					<p>Hi Nikhil,</p>
 <p>To confirm, did you do step 5 &#8211; Update .csproj to run the text template every time it builds?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=6662#respond" data-commentid="6662" data-postid="812" data-belowelement="div-comment-6662" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -831,7 +831,7 @@ Yes, I did. if I do changes related to that project then the revision number get
 [assembly: AssemblyCulture(&#8220;&#8221;)]<br>
 [assembly: AssemblyVersion(&#8220;&#8230;&#8221;)]</p>
 <p> And followed all the steps included the below line in .csproj</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=6663#respond" data-commentid="6663" data-postid="812" data-belowelement="div-comment-6663" data-respondelement="respond" data-replyto="Reply to Nikhil Kumar" aria-label="Reply to Nikhil Kumar">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -854,7 +854,7 @@ Yes, I did. if I do changes related to that project then the revision number get
 					<p>The text template only runs if the project is built. If there&#8217;s no changes in the project, then clicking &#8220;Build&#8221; in Visual Studio won&#8217;t build that project. Therefore it won&#8217;t run the text template. </p>
 <p>I&#8217;m not aware of a way to make &#8220;Build&#8221; build all projects, even if there are no changes.</p>
 <p>However, since it sounds like you want to run the text template every time, regardless of changes to the project, it really sounds like you want to use &#8220;Rebuild&#8221; instead of &#8220;Build&#8221; every time. That&#8217;s the simplest solution. There may be other ways to force VS to build your unchanged project, but &#8220;Rebuild&#8221; definitely makes it do that.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=6664#respond" data-commentid="6664" data-postid="812" data-belowelement="div-comment-6664" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -888,7 +888,7 @@ Yes, I did. if I do changes related to that project then the revision number get
 
 				<div class="comment-content" itemprop="text">
 					<p>when i try to add a text template all i see is the option for text file. what am i missing?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=8217#respond" data-commentid="8217" data-postid="812" data-belowelement="div-comment-8217" data-respondelement="respond" data-replyto="Reply to Chris Navarro" aria-label="Reply to Chris Navarro">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -912,7 +912,7 @@ Yes, I did. if I do changes related to that project then the revision number get
 <p>That&#8217;s unusual that the Text Template is missing. What version of Visual Studio are you using? Which .NET version? and which language (C# or VB)?</p>
 <p>Do you have the Text Template Transformation component installed? </p>
 <p>Update (2021-3-27): I just ran into this when using a specific project type. You can just add the Text File, change the extension to .tt, and paste in the text templating code (use the code shown in this article as a starting point). VS updates the .csproj the same way as if you had added a Text Template new item. I think this is a bug in VS, where it&#8217;s not showing the Text Template item as an option, even though it&#8217;s installed.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=8228#respond" data-commentid="8228" data-postid="812" data-belowelement="div-comment-8228" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -939,7 +939,7 @@ Yes, I did. if I do changes related to that project then the revision number get
 				<div class="comment-content" itemprop="text">
 					<p>Hi Mak, </p>
 <p>Do you have a sample for Blazor .net core. Auto increment?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=8881#respond" data-commentid="8881" data-postid="812" data-belowelement="div-comment-8881" data-respondelement="respond" data-replyto="Reply to Sid" aria-label="Reply to Sid">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -966,7 +966,7 @@ Yes, I did. if I do changes related to that project then the revision number get
 1. When I tried to add a new Text Template in the Client/Server projects, &#8220;Text Template&#8221; was missing from this list. I just picked a Text File and changed the extension to .tt and put the text templating code (from this article) and it was fine. It must be a bug in VS causing it to not show Text Template in this list of new items.</p>
 <p>2. The text template runs for each project separately. In this article, it shows how to put the TotalMinutes as part of the version. This means if you are building multiple projects, it&#8217;s possible for the final assembly versions to be different between different assemblies built together.</p>
 <p>Please try it out and let me know how it goes.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=8926#respond" data-commentid="8926" data-postid="812" data-belowelement="div-comment-8926" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -996,7 +996,7 @@ Yes, I did. if I do changes related to that project then the revision number get
 I have replaced the date with an increment counter at each build<br>
 So I manually manage major, minor, revision and build is automatically increase by 1</p>
 <p>Bye</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=9951#respond" data-commentid="9951" data-postid="812" data-belowelement="div-comment-9951" data-respondelement="respond" data-replyto="Reply to Fabien" aria-label="Reply to Fabien">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1017,7 +1017,7 @@ So I manually manage major, minor, revision and build is automatically increase 
 
 				<div class="comment-content" itemprop="text">
 					<p>I&#8217;m glad to hear this helped you. Incrementing by 1 each build sounds like a good approach.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=9953#respond" data-commentid="9953" data-postid="812" data-belowelement="div-comment-9953" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1043,7 +1043,7 @@ So I manually manage major, minor, revision and build is automatically increase 
 
 				<div class="comment-content" itemprop="text">
 					<p>Is there a way to reference the generated version number in an HTML page (i.e. layout page) to display the version number? Since I&#8217;ve never worked with templates or generated files, I can&#8217;t figure out the proper way to reference the generated cs file to access the assembly parameter.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=10407#respond" data-commentid="10407" data-postid="812" data-belowelement="div-comment-10407" data-respondelement="respond" data-replyto="Reply to Chris P" aria-label="Reply to Chris P">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1071,7 +1071,7 @@ So I manually manage major, minor, revision and build is automatically increase 
 2. In Views &gt; Home &gt; Index.cshtml, I put <code>&lt;p&gt;@ViewBag.Version&lt;/p&gt;</code><br>
 3. Launch the homepage. The version appears at the bottom.</p>
 <p>I hope this helps. If not, please let me know what type of project you are doing exactly.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=10410#respond" data-commentid="10410" data-postid="812" data-belowelement="div-comment-10410" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1097,7 +1097,7 @@ So I manually manage major, minor, revision and build is automatically increase 
 <p>is returning</p>
 <p>Version: 0.0.0.0</p>
 <p>But in the generated version file I see: [assembly: AssemblyVersion(&#8220;1.0.693.1116&#8221;)]</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=10482#respond" data-commentid="10482" data-postid="812" data-belowelement="div-comment-10482" data-respondelement="respond" data-replyto="Reply to Chris P" aria-label="Reply to Chris P">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1120,7 +1120,7 @@ So I manually manage major, minor, revision and build is automatically increase 
 					<p>Try using GetEntryAssembly() instead of GetExecutingAssembly(), like this:<br>
 <code>&lt;p&gt;@System.Reflection.Assembly.GetEntryAssembly().GetName().Version&lt;/p&gt;</code></p>
 <p>When you call <code>@System.Reflection.Assembly.GetExecutingAssembly().GetName().Version</code> directly in the view (instead of populating ViewBag.Version from the controller), the executing assembly is YourAssembly.Views.dll instead of YourAssembly.dll. This is why it&#8217;s showing version 0.0.0.0 (the version of YourAssembly.Views.dll) instead of 1.0.693.1116 (the version of YourAssembly.dll).</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=10509#respond" data-commentid="10509" data-postid="812" data-belowelement="div-comment-10509" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1207,7 +1207,7 @@ What is the VB version of this code.<br>
 typeof([application-namespace].MvcApplication).Assembly.GetName().Version</p>
 <p>I get the NullReferenceException as well for a web application in visual studio 2019 in visual basic.</p>
 <p>I appreciate all the work you guys done and thank you for your help.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=11433#respond" data-commentid="11433" data-postid="812" data-belowelement="div-comment-11433" data-respondelement="respond" data-replyto="Reply to HASAN ANDIZ" aria-label="Reply to HASAN ANDIZ">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1230,7 +1230,7 @@ typeof([application-namespace].MvcApplication).Assembly.GetName().Version</p>
 					<p>Hi Hasan,</p>
 <p>I got this working in an ASP.NET Web App using VB.NET with the following:</p>
 <p><code>@(GetType(YourProjectNamespace.MvcApplication).Assembly.GetName().Version)</code></p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=11434#respond" data-commentid="11434" data-postid="812" data-belowelement="div-comment-11434" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1257,7 +1257,7 @@ typeof([application-namespace].MvcApplication).Assembly.GetName().Version</p>
 				<div class="comment-content" itemprop="text">
 					<p>Hi Mak<br>
 Thank you for the great instructions, it worked exactly as you said. Do you know how I could reference and use the version created during the build in Wix toolset&#8217;s .wxs file?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=12278#respond" data-commentid="12278" data-postid="812" data-belowelement="div-comment-12278" data-respondelement="respond" data-replyto="Reply to Michele" aria-label="Reply to Michele">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1281,7 +1281,7 @@ Thank you for the great instructions, it worked exactly as you said. Do you know
 <p>&lt;File <strong>Id=&#8221;MyDLL&#8221;</strong> Name=&#8221;ASPNETVersion.dll&#8221; Source=&#8221;C:\Projects\ASPNETVersion.dll&#8221; /&gt;</p>
 <p>To set the installer version to this DLL&#8217;s file version, do this:</p>
 <p>&lt;Product Id=&#8221;*&#8221; Name=&#8221;Wix&#8221; Language=&#8221;1033&#8243; <strong>Version=&#8221;!(bind.fileVersion.MyDLL)&#8221;</strong> Manufacturer=&#8221;Test&#8221; UpgradeCode=&#8221;23efaa51-e3b8-46d6-85bb-888f84123ef6&#8243;&gt;</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=12303#respond" data-commentid="12303" data-postid="812" data-belowelement="div-comment-12303" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1309,7 +1309,7 @@ Thank you for the great instructions, it worked exactly as you said. Do you know
 					<p>Hi Mak<br>
 is it possible to include a prompt that asks &#8220;do you want to increment the build version?&#8221; and then based on the choice increments the assembly version or leaves it unchanged? I have a build configuration for which I sometimes need to autoincrement but at other times I want to leave the versions unchanged.</p>
 <p>Thanks!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=12935#respond" data-commentid="12935" data-postid="812" data-belowelement="div-comment-12935" data-respondelement="respond" data-replyto="Reply to Peter" aria-label="Reply to Peter">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1336,7 +1336,7 @@ is it possible to include a prompt that asks &#8220;do you want to increment the
 <p><em>Note: This makes all transformations conditional. So if you have more T4 templates than just the one for auto-incrementing, you may not want to do this.</em></p>
 <p>If there&#8217;s no conditions and it&#8217;s truly up to the user to decide each time, you may want to consider running the T4 template manually when needed instead of running it automatically with a prompt.</p>
 <p>(paraphrased from our email conversation about this)</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=13002#respond" data-commentid="13002" data-postid="812" data-belowelement="div-comment-13002" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1362,7 +1362,7 @@ is it possible to include a prompt that asks &#8220;do you want to increment the
 
 				<div class="comment-content" itemprop="text">
 					<p>Thinking about doing this for a Xamarin project. I have a couple of questions, 1&#8230;do you think it would work for that type of project. 2&#8230;My ideal would be for this to auto increment when I am making changes and building locally, then after committing my changes and kicking off an azure pipeline I would prefer it not increment there. The reason I would want that is so when a QA and a PROD version are each built by the pipeline, they would have the same version number. Any thoughts on how that could work?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=13894#respond" data-commentid="13894" data-postid="812" data-belowelement="div-comment-13894" data-respondelement="respond" data-replyto="Reply to Rob Byram" aria-label="Reply to Rob Byram">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1392,7 +1392,7 @@ txtVersion.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Ve
 &lt;TransformOnBuild&gt;true&lt;/TransformOnBuild&gt;<br>
 &lt;/PropertyGroup&gt;</code></p>
 <p>This makes ALL transformations conditional, so if you have any other T4 templates, be aware.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=14025#respond" data-commentid="14025" data-postid="812" data-belowelement="div-comment-14025" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1420,7 +1420,7 @@ txtVersion.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Ve
 					<p>I used your solution for a DotNetFramework project a while back, I recently upgraded this project to DotNet 6.0 using VS 2022.<br>
  I am running into an issue with importing the Microsoft.TextTemplating.targets.  </p>
 <p>Has anyone successfully used this with Dotnet 6.0 is VS 2022?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=14234#respond" data-commentid="14234" data-postid="812" data-belowelement="div-comment-14234" data-respondelement="respond" data-replyto="Reply to Brad Vick" aria-label="Reply to Brad Vick">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1444,7 +1444,7 @@ txtVersion.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Ve
 <p>I tested out the instructions in VS2022 and it works. I tried your scenario &#8211; upgrading a project to .NET 6 and VS2022. I was getting an error &#8211; &#8220;Microsoft.TextTemplating.targets was not imported&#8230; because the file doesn&#8217;t exist&#8221; &#8211; because I needed to update the path to v17.0 (for VS2022).</p>
 <p>1. Edit the .csproj file<br>
 2. Update &lt;Import Project=&#8221;$(MSBuildExtensionsPath)\Microsoft\VisualStudio\<strong>v17.0</strong>\TextTemplating\Microsoft.TextTemplating.targets&#8221; /&gt;</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=14281#respond" data-commentid="14281" data-postid="812" data-belowelement="div-comment-14281" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1467,7 +1467,7 @@ txtVersion.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Ve
 					<p>Hi,</p>
 <p>You can also use $(VisualStudioVersion)<br>
 That&#8217;s means : </p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=16245#respond" data-commentid="16245" data-postid="812" data-belowelement="div-comment-16245" data-respondelement="respond" data-replyto="Reply to Vivien" aria-label="Reply to Vivien">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1490,7 +1490,7 @@ That&#8217;s means : </p>
 					<p>Thanks Vivien. That&#8217;s a good suggestion.</p>
 <p>You can put that in the path (instead of hardcoding the version), which helps future-proof it a little bit:<br>
 $(MSBuildExtensionsPath)\Microsoft\VisualStudio\v<strong>$(VisualStudioVersion)</strong>\TextTemplating\Microsoft.TextTemplating.targets&#8221;</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=16250#respond" data-commentid="16250" data-postid="812" data-belowelement="div-comment-16250" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1513,7 +1513,7 @@ $(MSBuildExtensionsPath)\Microsoft\VisualStudio\v<strong>$(VisualStudioVersion)<
 				<div class="comment-content" itemprop="text">
 					<p>I&#8217;m such an idiot.  I scrolled down as far as the comment about conditional build options about 5 above this one and then proceeded to spend about an hour looking into how to do exactly what you had in your comment..  would have saved myself that time if I had just scrolled down a tiny bit more, lol.  </p>
 <p>Anyway, great comment, thanks for the info.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=37039#respond" data-commentid="37039" data-postid="812" data-belowelement="div-comment-37039" data-respondelement="respond" data-replyto="Reply to Josh" aria-label="Reply to Josh">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1573,7 +1573,7 @@ $(MSBuildExtensionsPath)\Microsoft\VisualStudio\v<strong>$(VisualStudioVersion)<
 				<div class="comment-content" itemprop="text">
 					<p>Thank you for that! I was looking for easy way to increment versions of my project, and after long time(!) of looking for good solution for that &#8211; I have finally find it here.<br>
 I really appreciate that. Thank you once again</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=14339#respond" data-commentid="14339" data-postid="812" data-belowelement="div-comment-14339" data-respondelement="respond" data-replyto="Reply to Dominik" aria-label="Reply to Dominik">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1594,7 +1594,7 @@ I really appreciate that. Thank you once again</p>
 
 				<div class="comment-content" itemprop="text">
 					<p>That&#8217;s great, I&#8217;m glad to hear this helped!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=14340#respond" data-commentid="14340" data-postid="812" data-belowelement="div-comment-14340" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1622,7 +1622,7 @@ I really appreciate that. Thank you once again</p>
 					<p>I want to just increment the revision by one each build, the other three I would manually control &#8211; how would I do this?</p>
 <p>FYI &#8211; using VS22</p>
 <p>thanks.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=14375#respond" data-commentid="14375" data-postid="812" data-belowelement="div-comment-14375" data-respondelement="respond" data-replyto="Reply to Damo" aria-label="Reply to Damo">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1674,7 +1674,7 @@ using System.Reflection;<br>
 <p>&lt;#+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;UInt16 Revision = 1;<br>
 #&gt;</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=14395#respond" data-commentid="14395" data-postid="812" data-belowelement="div-comment-14395" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1697,7 +1697,7 @@ using System.Reflection;<br>
 					<p>Hi Mak,</p>
 <p>This works great! Cool!<br>
 One question: If I publish the project as Release the transform is performed twice, once at the start of the build and once at the start of the publishing part, incrementing the Revision number in steps of 2. Is there a way to prevent that?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=19755#respond" data-commentid="19755" data-postid="812" data-belowelement="div-comment-19755" data-respondelement="respond" data-replyto="Reply to Kees" aria-label="Reply to Kees">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1726,7 +1726,7 @@ One question: If I publish the project as Release the transform is performed twi
 dotnet publish &#8211;no-build -c Release</p>
 <p>Note: When I tried this, I had to change the Import Project line in .csproj to the absolute path (instead of using the $(MSBuildExtensionsPath) variable, since this is different when using the dotnet tool). For example, here&#8217;s what the path is on my computer (VS2019 Community):<br>
 &lt;Import Project=&quot;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VisualStudio\v16.0\TextTemplating\Microsoft.TextTemplating.targets&quot; /&gt;</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=19810#respond" data-commentid="19810" data-postid="812" data-belowelement="div-comment-19810" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1760,7 +1760,7 @@ dotnet publish &#8211;no-build -c Release</p>
 
 				<div class="comment-content" itemprop="text">
 					<p>Thanks for that &#8211; works a treat</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=14450#respond" data-commentid="14450" data-postid="812" data-belowelement="div-comment-14450" data-respondelement="respond" data-replyto="Reply to Damo" aria-label="Reply to Damo">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1782,7 +1782,7 @@ dotnet publish &#8211;no-build -c Release</p>
 
 				<div class="comment-content" itemprop="text">
 					<p>I have got this working in a VS 2022 / .Net Core 6 project, which is great. Just wondering if it&#8217;s possible to detect if a specific Publish setting is running, as I would like to not update the revision for one of them.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=16172#respond" data-commentid="16172" data-postid="812" data-belowelement="div-comment-16172" data-respondelement="respond" data-replyto="Reply to Gordon" aria-label="Reply to Gordon">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1807,7 +1807,7 @@ dotnet publish &#8211;no-build -c Release</p>
 &lt;TransformOnBuild&gt;true&lt;/TransformOnBuild&gt;<br>
 &lt;/PropertyGroup&gt;</p>
 <p>(note: paraphrased from email exchange)</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=16180#respond" data-commentid="16180" data-postid="812" data-belowelement="div-comment-16180" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1836,7 +1836,7 @@ dotnet publish &#8211;no-build -c Release</p>
 <p>One problem I&#8217;ve encountered:<br>
 First time (no AssemblyInfo.cs on drive) It generates the AssemblyInfo.cs, but the file properties are filled with 0.0.0.0.<br>
 When running rebuild with an AssemblyInfo.cs present, the right info is present in the file properties.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=35887#respond" data-commentid="35887" data-postid="812" data-belowelement="div-comment-35887" data-respondelement="respond" data-replyto="Reply to krs" aria-label="Reply to krs">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1860,7 +1860,7 @@ When running rebuild with an AssemblyInfo.cs present, the right info is present 
 <p>Good catch. I was able to repro this behavior in a .NET Core project. It works fine in a .NET Framework project though. So this is probably a bug in the build system. It seems to be skipping the generated .cs file on the first build.</p>
 <p>To have it work on the first build, open the .tt file and hit Ctrl-S. This will run it, and it&#8217;ll generate the .cs file with the version number. Then when you Build, it&#8217;ll use the version number as expected.</p>
 <p>I&#8217;ll update the article with this info. Thanks again for pointing it out.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=35902#respond" data-commentid="35902" data-postid="812" data-belowelement="div-comment-35902" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1892,7 +1892,7 @@ with individual disablers:<br>
 	    false<br>
 	    false<br>
 	 &#8211;&gt;</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=37722#respond" data-commentid="37722" data-postid="812" data-belowelement="div-comment-37722" data-respondelement="respond" data-replyto="Reply to krs" aria-label="Reply to krs">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1914,7 +1914,7 @@ with individual disablers:<br>
 				<div class="comment-content" itemprop="text">
 					<p>Hi krs, </p>
 <p>It looks like the comment system removed some info from your comment, but I think you&#8217;re referring to using the individual attributes (like GenerateAssemblyFileVersionAttribute) to control which attributes get auto-generated. That&#8217;s interesting!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=37742#respond" data-commentid="37742" data-postid="812" data-belowelement="div-comment-37742" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1942,7 +1942,7 @@ with individual disablers:<br>
 					<p>Hi, Mak.</p>
 <p>Thanks, it works greatly. But the version changes each time building, even if there aren&#8217;t any code changes. Every time I start debugging, the text is transformed, and version increased.</p>
 <p>Is there any way to generate new version if there are actual code changes?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=53103#respond" data-commentid="53103" data-postid="812" data-belowelement="div-comment-53103" data-respondelement="respond" data-replyto="Reply to chao" aria-label="Reply to chao">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1966,7 +1966,7 @@ with individual disablers:<br>
 <p>Your best bet is to only run transformation only if it&#8217;s a Release build. Therefore, during development when you have Build=Debug, it won&#8217;t run it. Refer to this comment for how to do that:<br>
 <a href="/auto-increment-build-numbers-in-visual-studio/#comment-13002" rel="ugc">Conditionally run transformation</a></p>
 <p>What&#8217;s happening is the &#8220;Up-to-Date check&#8221; (determines if a rebuild is needed) looks at the text transformation output and thinks your code has changed. Of course, this is wrong since the code was generated during the build itself. For a brief time, they had a very simple setting that you could use to exclude files from being considered in the Up-to-Date check. But then they changed it for some reason and that approach no longer works. Hence, the best way to deal with this now is to turn off transformation for Debug builds.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=53114#respond" data-commentid="53114" data-postid="812" data-belowelement="div-comment-53114" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1995,7 +1995,7 @@ with individual disablers:<br>
 <p>2.23.237.787</p>
 <p>[assembly: AssemblyVersion(&#8220;&#8230;&#8221;)]</p>
 <p>Works great!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=54979#respond" data-commentid="54979" data-postid="812" data-belowelement="div-comment-54979" data-respondelement="respond" data-replyto="Reply to Mike K" aria-label="Reply to Mike K">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -2016,7 +2016,7 @@ with individual disablers:<br>
 
 				<div class="comment-content" itemprop="text">
 					<p>You&#8217;re welcome &#8211; and thanks for sharing that example!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=54984#respond" data-commentid="54984" data-postid="812" data-belowelement="div-comment-54984" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -2043,7 +2043,7 @@ Anyway, now I&#8217;ve run it a bit, and it&#8217;s weird but it ONLY updates th
 <p>(comment 2)</p>
 <p>Here&#8217;s something else:  My Build menu now has an item that reads &#8216;Transform all T4 templates&#8217;. So I can run this first, before I build, and it will work for me. </p>
 <p>Thanks for this really useful info.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=54999#respond" data-commentid="54999" data-postid="812" data-belowelement="div-comment-54999" data-respondelement="respond" data-replyto="Reply to Mike K" aria-label="Reply to Mike K">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -2066,7 +2066,7 @@ Anyway, now I&#8217;ve run it a bit, and it&#8217;s weird but it ONLY updates th
 					<p>Hi Mike, </p>
 <p>So it sounds like you got it working how you wanted now?</p>
 <p>Note: Yeah, the comment system strips stuff out! Also, I combined your two comments into one, so they would be under the same comment you were replying to.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=55024#respond" data-commentid="55024" data-postid="812" data-belowelement="div-comment-55024" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -2085,18 +2085,7 @@ Anyway, now I&#8217;ve run it a bit, and it&#8217;s weird but it ONLY updates th
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="812" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

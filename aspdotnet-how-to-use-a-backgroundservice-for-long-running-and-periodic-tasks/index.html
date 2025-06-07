@@ -599,7 +599,7 @@ info: PingerService&#91;0]
 
 				<div class="comment-content" itemprop="text">
 					<p>Background service lifetimes depend on the App Pool&#8217;s &#8220;idle time out&#8221; setting. If your app pool has an &#8220;idle timeout&#8221; of 5 mins your service will stop after 5 mins and won&#8217;t restart. Therefore a request to the api in this example must be made within every 5 mins.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/aspdotnet-how-to-use-a-backgroundservice-for-long-running-and-periodic-tasks/?replytocom=7067#respond" data-commentid="7067" data-postid="2278" data-belowelement="div-comment-7067" data-respondelement="respond" data-replyto="Reply to David Parkes" aria-label="Reply to David Parkes">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -622,7 +622,7 @@ info: PingerService&#91;0]
 					<p>Thanks David!</p>
 <p>When using IIS as the web server, it&#8217;s typically recommended to set your idle timeout to 0. This is especially true if you have a background service. In addition, be aware of app pool recycles. By default, IIS recycles your app pool every 29 hours. This attempts to do a graceful shutdown, which calls StopAsync() on all registered background services. </p>
 <p>So if you want your background service to try to do a graceful shutdown, you can override BackgroundService.StopAsync().</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/aspdotnet-how-to-use-a-backgroundservice-for-long-running-and-periodic-tasks/?replytocom=7080#respond" data-commentid="7080" data-postid="2278" data-belowelement="div-comment-7080" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -643,7 +643,7 @@ info: PingerService&#91;0]
 
 				<div class="comment-content" itemprop="text">
 					<p>Thanks David and Mak. Could not figure out why my background service kept stopping. Do not see any mention of this in the Hosted Service docs&#8230; But anyway, I set my idle time to 0 and my job is now running every 24hrs.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/aspdotnet-how-to-use-a-backgroundservice-for-long-running-and-periodic-tasks/?replytocom=10259#respond" data-commentid="10259" data-postid="2278" data-belowelement="div-comment-10259" data-respondelement="respond" data-replyto="Reply to Jean" aria-label="Reply to Jean">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -664,7 +664,7 @@ info: PingerService&#91;0]
 
 				<div class="comment-content" itemprop="text">
 					<p>How did you set up the idle time to 0? Where is this setting?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/aspdotnet-how-to-use-a-backgroundservice-for-long-running-and-periodic-tasks/?replytocom=14028#respond" data-commentid="14028" data-postid="2278" data-belowelement="div-comment-14028" data-respondelement="respond" data-replyto="Reply to Aakash" aria-label="Reply to Aakash">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -726,7 +726,7 @@ info: PingerService&#91;0]
 
 				<div class="comment-content" itemprop="text">
 					<p>Will BackgroundService be suitable for process that takes let&#8217;s say 30min?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/aspdotnet-how-to-use-a-backgroundservice-for-long-running-and-periodic-tasks/?replytocom=13327#respond" data-commentid="13327" data-postid="2278" data-belowelement="div-comment-13327" data-respondelement="respond" data-replyto="Reply to Marcin" aria-label="Reply to Marcin">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -748,7 +748,7 @@ info: PingerService&#91;0]
 				<div class="comment-content" itemprop="text">
 					<p>Yes, it&#8217;s suitable for long-running processes. It will stay running as long as the web app process is running.</p>
 <p>Note: Watch out for the web server recycling your web app. That will stop your background service.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/aspdotnet-how-to-use-a-backgroundservice-for-long-running-and-periodic-tasks/?replytocom=13330#respond" data-commentid="13330" data-postid="2278" data-belowelement="div-comment-13330" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -775,7 +775,7 @@ info: PingerService&#91;0]
 				<div class="comment-content" itemprop="text">
 					<p>A nice and simple but yet thorough enough explanation on how to use background services in ASP.NET. Have been reading quite some blog post the last few days in search for an answer on the lifetime of such background services and, while not in your blog post, I found it in de comments section. </p>
 <p>Thanks for your time and effort and for sharing this.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/aspdotnet-how-to-use-a-backgroundservice-for-long-running-and-periodic-tasks/?replytocom=13702#respond" data-commentid="13702" data-postid="2278" data-belowelement="div-comment-13702" data-respondelement="respond" data-replyto="Reply to Anonymous" aria-label="Reply to Anonymous">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -796,7 +796,7 @@ info: PingerService&#91;0]
 
 				<div class="comment-content" itemprop="text">
 					<p>You&#8217;re welcome! It&#8217;s great you were able to find the answer in the comments.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/aspdotnet-how-to-use-a-backgroundservice-for-long-running-and-periodic-tasks/?replytocom=13712#respond" data-commentid="13712" data-postid="2278" data-belowelement="div-comment-13712" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -807,18 +807,7 @@ info: PingerService&#91;0]
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/aspdotnet-how-to-use-a-backgroundservice-for-long-running-and-periodic-tasks/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="2278" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

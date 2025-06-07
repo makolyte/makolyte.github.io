@@ -922,7 +922,7 @@ width: 91px;
 
 				<div class="comment-content" itemprop="text">
 					<p>Excellent introduction! Much appreciated.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/dotnet-copy-files-to-a-specified-directory-after-the-build/?replytocom=10884#respond" data-commentid="10884" data-postid="5158" data-belowelement="div-comment-10884" data-respondelement="respond" data-replyto="Reply to Mark Olbert" aria-label="Reply to Mark Olbert">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -945,7 +945,7 @@ width: 91px;
 				<div class="comment-content" itemprop="text">
 					<p>A very thorough explanation! To make it &#8216;perfect&#8217;, could you also include examples of the several additional parameters (&#8216;metadata&#8217;) you can pass to <code>Copy</code>? For instance, I&#8217;m aware of <code>ContinueOnError="true"</code> (it does exactly what it says) which is important if you&#8217;re automating the whole build and don&#8217;t wish to get an error that the origin file is missing or something similar.</p>
 <p>But Microsoft lists some more! Here is <a href="https://docs.microsoft.com/en-us/visualstudio/msbuild/copy-task?view=vs-2022" rel="nofollow ugc">a link to the official documentation on the Copy task</a>. It would be nice to learn a bit more about those&#8230;</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/dotnet-copy-files-to-a-specified-directory-after-the-build/?replytocom=16759#respond" data-commentid="16759" data-postid="5158" data-belowelement="div-comment-16759" data-respondelement="respond" data-replyto="Reply to Gwyneth Llewelyn" aria-label="Reply to Gwyneth Llewelyn">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -966,7 +966,7 @@ width: 91px;
 
 				<div class="comment-content" itemprop="text">
 					<p>Thank you, that&#8217;s a good suggestion to consider.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/dotnet-copy-files-to-a-specified-directory-after-the-build/?replytocom=16760#respond" data-commentid="16760" data-postid="5158" data-belowelement="div-comment-16760" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -992,7 +992,7 @@ width: 91px;
 
 				<div class="comment-content" itemprop="text">
 					<p>Can we also compare files before adding it to the destination directory, and only copy if it is different? Would love to know how to achieve this?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/dotnet-copy-files-to-a-specified-directory-after-the-build/?replytocom=48865#respond" data-commentid="48865" data-postid="5158" data-belowelement="div-comment-48865" data-respondelement="respond" data-replyto="Reply to Damini" aria-label="Reply to Damini">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1016,7 +1016,7 @@ width: 91px;
 <p>You could use the <strong>SkipUnchangedFiles </strong>property in the Copy task, like this:</p>
 <p>&lt;Copy SkipUnchangedFiles=&quot;true&quot; SourceFiles=&quot;$(TargetDir)\$(ProjectName).dll;$(TargetDir)\$(ProjectName).pdb&quot; DestinationFolder=&quot;$(CopyToDir)&quot; /&gt;</p>
 <p>This makes the Copy task only copy changed files (based on modified date and size). It compares the files in the source directory with the destination directory (which means this only works if you&#8217;re always copying to the same destination directory).</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/dotnet-copy-files-to-a-specified-directory-after-the-build/?replytocom=48875#respond" data-commentid="48875" data-postid="5158" data-belowelement="div-comment-48875" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1027,18 +1027,7 @@ width: 91px;
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/dotnet-copy-files-to-a-specified-directory-after-the-build/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="5158" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

@@ -588,7 +588,7 @@ qa enabled? False</code></span><small class="shcb-language" id="shcb-language-7"
 
 				<div class="comment-content" itemprop="text">
 					<p>Amazing ! Like magic !!! Thanks!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-deserialize-json-to-dynamic-object/?replytocom=8422#respond" data-commentid="8422" data-postid="1731" data-belowelement="div-comment-8422" data-respondelement="respond" data-replyto="Reply to Mauro Anselmo de Oliveira" aria-label="Reply to Mauro Anselmo de Oliveira">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -614,7 +614,7 @@ How can we handle the situation where the properties are dynamic could be added 
 i.e. Name &amp; Enabled<br>
 In future if we get Name, Enabled and Owner<br>
 &#8230; is there a way to dynamically cater this?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-deserialize-json-to-dynamic-object/?replytocom=10122#respond" data-commentid="10122" data-postid="1731" data-belowelement="div-comment-10122" data-respondelement="respond" data-replyto="Reply to Swat" aria-label="Reply to Swat">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -638,7 +638,7 @@ In future if we get Name, Enabled and Owner<br>
 <p>Using the example code from this article, let&#8217;s say I want to check if one of the endpoint objects has a property called &#8220;owner&#8221;.</p>
 <p>I would check that by doing this:<br>
 if ((enabledEndpoint as IDictionary&lt;string, object&gt;).ContainsKey(&quot;owner&quot;))</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-deserialize-json-to-dynamic-object/?replytocom=10131#respond" data-commentid="10131" data-postid="1731" data-belowelement="div-comment-10131" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -670,7 +670,7 @@ if ((enabledEndpoint as IDictionary&lt;string, object&gt;).ContainsKey(&quot;own
 }</code></p>
 <p>I get following error.<br>
 InvalidCastException: Unable to cast object of type &#8216;System.Collections.Generic.List`1[System.Object]&#8217; to type &#8216;System.Dynamic.ExpandoObject&#8217;.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-deserialize-json-to-dynamic-object/?replytocom=12503#respond" data-commentid="12503" data-postid="1731" data-belowelement="div-comment-12503" data-respondelement="respond" data-replyto="Reply to Chandrahas" aria-label="Reply to Chandrahas">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -696,7 +696,7 @@ InvalidCastException: Unable to cast object of type &#8216;System.Collections.Ge
    var data = await response.Content.ReadAsStringAsync();<br>
    dynamic config = JsonConvert.DeserializeObject&lt;IEnumerable&lt;ExpandoObject&gt;&gt;(data, new ExpandoObjectConverter());<br>
 }</code></p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-deserialize-json-to-dynamic-object/?replytocom=12513#respond" data-commentid="12513" data-postid="1731" data-belowelement="div-comment-12513" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -723,7 +723,7 @@ InvalidCastException: Unable to cast object of type &#8216;System.Collections.Ge
 				<div class="comment-content" itemprop="text">
 					<p>&#8220;In older versions of Newtonsoft, when you tried to access a dynamic property on JObject, you’d get an exception like this [..]&#8221;<br>
 Could you tell me in which version they fixed it? 😉</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-deserialize-json-to-dynamic-object/?replytocom=13487#respond" data-commentid="13487" data-postid="1731" data-belowelement="div-comment-13487" data-respondelement="respond" data-replyto="Reply to TheSameButDifferent" aria-label="Reply to TheSameButDifferent">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -744,7 +744,7 @@ Could you tell me in which version they fixed it? 😉</p>
 
 				<div class="comment-content" itemprop="text">
 					<p><a href="https://github.com/JamesNK/Newtonsoft.Json/releases/tag/4.0.1" rel="nofollow ugc">Version 4.0.1</a></p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-deserialize-json-to-dynamic-object/?replytocom=13501#respond" data-commentid="13501" data-postid="1731" data-belowelement="div-comment-13501" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -772,7 +772,7 @@ Could you tell me in which version they fixed it? 😉</p>
 					<p>Example:-<br>
 dynamic config = JsonConvert.DeserializeObject(data, new ExpandoObjectConverter());</p>
 <p>Can we try to update some values here in dynamic config object and then convert it back to the json. Would that be possible?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-deserialize-json-to-dynamic-object/?replytocom=15578#respond" data-commentid="15578" data-postid="1731" data-belowelement="div-comment-15578" data-respondelement="respond" data-replyto="Reply to Ashwani" aria-label="Reply to Ashwani">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -801,7 +801,7 @@ config.Enabled = false;<br>
 var changedJson = JsonConvert.SerializeObject(config);</p>
 <p>Console.WriteLine(changedJson);</p>
 <p>This outputs the changed JSON: { &quot;Enabled&quot;: false }</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-deserialize-json-to-dynamic-object/?replytocom=15603#respond" data-commentid="15603" data-postid="1731" data-belowelement="div-comment-15603" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -812,18 +812,7 @@ var changedJson = JsonConvert.SerializeObject(config);</p>
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/csharp-deserialize-json-to-dynamic-object/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="1731" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

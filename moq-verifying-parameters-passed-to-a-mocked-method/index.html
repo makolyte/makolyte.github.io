@@ -755,7 +755,7 @@ width: 91px;
 I tried this:<br>
 _mockMyClass.Verify(x =&gt; x.MyMethod(It.Is&lt;List&lt;Something&gt;&gt;(list =&gt; list.Any(i =&gt; i.MyStringProperty == “some value”))));<br>
 but it failed.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/moq-verifying-parameters-passed-to-a-mocked-method/?replytocom=52286#respond" data-commentid="52286" data-postid="7688" data-belowelement="div-comment-52286" data-respondelement="respond" data-replyto="Reply to Adam" aria-label="Reply to Adam">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -781,7 +781,7 @@ but it failed.</p>
 var _mockMyClass = new Mock&lt;IMyClass&gt;();</p>
 <p>Are you getting an error, or is the verification simply failing?</p>
 <p>One thing you can do to troubleshoot this is put a breakpoint in the test, right-click and pick Debug Test. Check the Mock object&#8217;s &#8216;invocations&#8217; property. This shows the exact method calls/parameters. Double-check the invocations to see if it&#8217;s making the exact call you&#8217;re expecting with the exact same parameters.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/moq-verifying-parameters-passed-to-a-mocked-method/?replytocom=52288#respond" data-commentid="52288" data-postid="7688" data-belowelement="div-comment-52288" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -807,7 +807,7 @@ var _mockMyClass = new Mock&lt;IMyClass&gt;();</p>
 
 				<div class="comment-content" itemprop="text">
 					<p>Very helpful thanks 🙂</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/moq-verifying-parameters-passed-to-a-mocked-method/?replytocom=53265#respond" data-commentid="53265" data-postid="7688" data-belowelement="div-comment-53265" data-respondelement="respond" data-replyto="Reply to Felix" aria-label="Reply to Felix">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -828,7 +828,7 @@ var _mockMyClass = new Mock&lt;IMyClass&gt;();</p>
 
 				<div class="comment-content" itemprop="text">
 					<p>You&#8217;re welcome!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/moq-verifying-parameters-passed-to-a-mocked-method/?replytocom=53271#respond" data-commentid="53271" data-postid="7688" data-belowelement="div-comment-53271" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -839,18 +839,7 @@ var _mockMyClass = new Mock&lt;IMyClass&gt;();</p>
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/moq-verifying-parameters-passed-to-a-mocked-method/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="7688" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

@@ -532,7 +532,7 @@ width: 91px;
 				<div class="comment-content" itemprop="text">
 					<p>Nice article!</p>
 <p>In certain situacions, you have a class and you want to create specific exceptions for that class. However, custom exceptions are created as new classes. I would find it more clear if custom exceptions could be part of the class itself, like a field or method or subclass. Maybe subclass is the way. It is actually possible using a public subclass. What do you think?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-create-a-custom-exception/?replytocom=10506#respond" data-commentid="10506" data-postid="3536" data-belowelement="div-comment-10506" data-respondelement="respond" data-replyto="Reply to Oddik" aria-label="Reply to Oddik">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -566,7 +566,7 @@ width: 91px;
 <p>Then all other code has to refer to the custom exception class by using the parent class&#8217;s name, like this:</p>
 <p>catch(BinaryStringUtil.CustomException)</p>
 <p>NOTE: If the nested class is public, then any other code could throw that exception, but they would always have to use the parent class&#8217;s name. If you make it private, then other code can&#8217;t throw or refer to this class. If you need other code to refer to it, and have it be private, then you can add an interface. It really depends on scenario and how much you want to restrict other code from using that exception. In my opinion, I would keep it simple and just keep the nested custom exception as public.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-how-to-create-a-custom-exception/?replytocom=10508#respond" data-commentid="10508" data-postid="3536" data-belowelement="div-comment-10508" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -577,18 +577,7 @@ width: 91px;
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/csharp-how-to-create-a-custom-exception/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="3536" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

@@ -739,7 +739,7 @@ Unloaded plugins</code></span><small class="shcb-language" id="shcb-language-6">
 <p>Second, in your main program you have the following line:</p>
 <p>List messages = GetMessages();</p>
 <p>I have looked and looked and I cannot find where GetMessages() is ever defined. I played around I managed to get it to work by adding it, but you should add this to your tutorial.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-generic-plugin-loader/?replytocom=48873#respond" data-commentid="48873" data-postid="1816" data-belowelement="div-comment-48873" data-respondelement="respond" data-replyto="Reply to Mike" aria-label="Reply to Mike">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -763,7 +763,7 @@ Unloaded plugins</code></span><small class="shcb-language" id="shcb-language-6">
 <p>I&#8217;m glad this helped, and thank you for the good suggestions. I&#8217;ll work on cleaning this up a bit.</p>
 <p>Regarding GetMessages(), I often put placeholders in example code to not distract from the main topic. It&#8217;d probably be better to hardcode the list of messages here + add a comment to make it clear this is just a placeholder for &#8220;get your data somehow.&#8221;</p>
 <p>I appreciate the helpful feedback!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-generic-plugin-loader/?replytocom=48876#respond" data-commentid="48876" data-postid="1816" data-belowelement="div-comment-48876" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -789,7 +789,7 @@ Unloaded plugins</code></span><small class="shcb-language" id="shcb-language-6">
 
 				<div class="comment-content" itemprop="text">
 					<p>Is there a way to enforce a specific order for the plugins to run?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-generic-plugin-loader/?replytocom=55418#respond" data-commentid="55418" data-postid="1816" data-belowelement="div-comment-55418" data-respondelement="respond" data-replyto="Reply to Câmara G" aria-label="Reply to Câmara G">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -816,7 +816,7 @@ Unloaded plugins</code></span><small class="shcb-language" id="shcb-language-6">
 3. In the loop where it&#8217;s executing the plugin method (plugin.Process()), get the plugins based on the Order property. For example:</p>
 <p><code>foreach(var plugin in Plugins.OrderBy(p =&gt; p.Order)</code></p>
 <p>That&#8217;s the simplest way to enforce ordering.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-generic-plugin-loader/?replytocom=55419#respond" data-commentid="55419" data-postid="1816" data-belowelement="div-comment-55419" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -842,7 +842,7 @@ Unloaded plugins</code></span><small class="shcb-language" id="shcb-language-6">
 
 				<div class="comment-content" itemprop="text">
 					<p>Clear and simple, easy to follow. I have tried other examples that were obtuse, confusing and ultimately time wasting. Thank You</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-generic-plugin-loader/?replytocom=59780#respond" data-commentid="59780" data-postid="1816" data-belowelement="div-comment-59780" data-respondelement="respond" data-replyto="Reply to Ray Wynn" aria-label="Reply to Ray Wynn">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -863,7 +863,7 @@ Unloaded plugins</code></span><small class="shcb-language" id="shcb-language-6">
 
 				<div class="comment-content" itemprop="text">
 					<p>You&#8217;re welcome!</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/csharp-generic-plugin-loader/?replytocom=59802#respond" data-commentid="59802" data-postid="1816" data-belowelement="div-comment-59802" data-respondelement="respond" data-replyto="Reply to Mak" aria-label="Reply to Mak">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -874,18 +874,7 @@ Unloaded plugins</code></span><small class="shcb-language" id="shcb-language-6">
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/csharp-generic-plugin-loader/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="1816" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->

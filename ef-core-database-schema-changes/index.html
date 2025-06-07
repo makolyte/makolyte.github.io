@@ -1173,7 +1173,7 @@ Applying migration '20210316124316_Database_v4'.</code></span><small class="shcb
 
 				<div class="comment-content" itemprop="text">
 					<p>Hi. How do you migrate your database model from TPH (as in EF Core 3.1) to TPT (as in EF Core 6) where data from columns must be transferred to the child entity table columns?</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/ef-core-database-schema-changes/?replytocom=13231#respond" data-commentid="13231" data-postid="4463" data-belowelement="div-comment-13231" data-respondelement="respond" data-replyto="Reply to Pieterjan" aria-label="Reply to Pieterjan">Reply</a></span>				</div>
+				</div>
 			</article>
 			<ul class="children">
 
@@ -1261,7 +1261,7 @@ FK Id, Car<br>
 <p>This matches our desired outcome (mentioned at the top), so the migration is correct.</p>
 <p>This is a simplified example. If you run into problems while implementing the actual migration, feel free to let me know if you want help.</p>
 <p>NOTE: If you need to support undoing migrations, implement Down() as well. It will basically be TPT-to-TPH, which is undoing what migrate Up() is doing here. I&#8217;ll leave that as an exercise for the reader.</p>
-<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/ef-core-database-schema-changes/?replytocom=13243#respond" data-commentid="13243" data-postid="4463" data-belowelement="div-comment-13243" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+				</div>
 			</article>
 			</li>
 <!-- #comment-## -->
@@ -1272,18 +1272,7 @@ FK Id, Car<br>
 		</ol>
 <!-- .comment-list -->
 
-			<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/ef-core-database-schema-changes/#respond" style="display:none;">Cancel reply</a></small>
-</h3>
-<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
-<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
-<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="4463" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p>
-</form>	</div>
-<!-- #respond -->
+			
 	
 </div>
 <!-- #comments -->
