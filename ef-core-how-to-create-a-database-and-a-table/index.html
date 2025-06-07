@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>EF Core &#x2d; How to create a database and a table | makolyte</title>
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The SEO Framework by Sybre Waaijer -->
+<meta name="robots" content="max-snippet:-1,max-image-preview:standard,max-video-preview:-1">
+<link rel="canonical" href="/ef-core-how-to-create-a-database-and-a-table/">
+<meta name="description" content="In this article, I&rsquo;ll show how to use EF Core to create a database with one table in it. At the end, I&rsquo;ll show a standalone console app that inserts a record&#8230;">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="makolyte">
+<meta property="og:title" content="EF Core &#x2d; How to create a database and a table | makolyte">
+<meta property="og:description" content="In this article, I&rsquo;ll show how to use EF Core to create a database with one table in it. At the end, I&rsquo;ll show a standalone console app that inserts a record into this database. Note: I&rsquo;ll be using&#8230;">
+<meta property="og:url" content="/ef-core-how-to-create-a-database-and-a-table/">
+<meta property="og:image" content="/wp-content/uploads/2021/03/ef-core-how-to-create-a-database-and-table.png">
+<meta property="og:image:width" content="892">
+<meta property="og:image:height" content="456">
+<meta property="article:published_time" content="2021-03-14T15:19:46+00:00">
+<meta property="article:modified_time" content="2025-01-26T14:54:41+00:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@makolyte">
+<meta name="twitter:title" content="EF Core &#x2d; How to create a database and a table | makolyte">
+<meta name="twitter:description" content="In this article, I&rsquo;ll show how to use EF Core to create a database with one table in it. At the end, I&rsquo;ll show a standalone console app that inserts a record into this database. Note: I&rsquo;ll be using&#8230;">
+<meta name="twitter:image" content="/wp-content/uploads/2021/03/ef-core-how-to-create-a-database-and-table.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"/#/schema/WebSite","url":"/","name":"makolyte","description":"Solve real coding problems","inLanguage":"en-US","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"/search/{search_term_string}/"},"query-input":"required name=search_term_string"},"publisher":{"@type":"Organization","@id":"/#/schema/Organization","name":"makolyte","url":"/","sameAs":"https://twitter.com/makolyte","logo":{"@type":"ImageObject","url":"/wp-content/uploads/2019/12/cropped-makolyte-icon-512-e1575418903583-4.png","contentUrl":"/wp-content/uploads/2019/12/cropped-makolyte-icon-512-e1575418903583-4.png","width":332,"height":318}}},{"@type":"WebPage","@id":"/ef-core-how-to-create-a-database-and-a-table/","url":"/ef-core-how-to-create-a-database-and-a-table/","name":"EF Core - How to create a database and a table | makolyte","description":"In this article, I’ll show how to use EF Core to create a database with one table in it. At the end, I’ll show a standalone console app that inserts a record…","inLanguage":"en-US","isPartOf":{"@id":"/#/schema/WebSite"},"breadcrumb":{"@type":"BreadcrumbList","@id":"/#/schema/BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":"/","name":"makolyte"},{"@type":"ListItem","position":2,"item":"/category/csharp/","name":"C#"},{"@type":"ListItem","position":3,"name":"EF Core - How to create a database and a table"}]},"potentialAction":{"@type":"ReadAction","target":"/ef-core-how-to-create-a-database-and-a-table/"},"datePublished":"2021-03-14T15:19:46+00:00","dateModified":"2025-01-26T14:54:41+00:00","author":{"@type":"Person","@id":"/#/schema/Person/e99fbed30936ed203340e328108b95ee","name":"Mak"}}]}</script>
+<!-- / The SEO Framework by Sybre Waaijer | 43.27ms meta | 3.87ms boot -->
+
+<link rel="alternate" type="application/rss+xml" title="makolyte &raquo; Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="makolyte &raquo; Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="makolyte &raquo; EF Core &#8211; How to create a database and a table Comments Feed" href="/ef-core-how-to-create-a-database-and-a-table/feed/">
+<script>
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.7.2"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+</script>
+<style id="wp-emoji-styles-inline-css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=6.7.2" media="all">
+<link rel="stylesheet" id="syntax-highlighting-code-block-theme-css" href="/wp-content/plugins/syntax-highlighting-code-block/vendor/scrivo/highlight-php/styles/vs2015.css?ver=1.5.1" media="all">
+<style id="syntax-highlighting-code-block-inline-css">.wp-block-code {
+	border: 0;
+	padding: 0;
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+}
+
+.wp-block-code > span {
+	display: block;
+	overflow: auto;
+}
+
+.shcb-language {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	-webkit-clip-path: inset(50%);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	word-wrap: normal;
+	word-break: normal;
+}
+
+.hljs {
+	box-sizing: border-box;
+}
+
+.hljs.shcb-code-table {
+	display: table;
+	width: 100%;
+}
+
+.hljs.shcb-code-table > .shcb-loc {
+	color: inherit;
+	display: table-row;
+	width: 100%;
+}
+
+.hljs.shcb-code-table .shcb-loc > span {
+	display: table-cell;
+}
+
+.wp-block-code code.hljs:not(.shcb-wrap-lines) {
+	white-space: pre;
+}
+
+.wp-block-code code.hljs.shcb-wrap-lines {
+	white-space: pre-wrap;
+}
+
+.hljs.shcb-line-numbers {
+	border-spacing: 0;
+	counter-reset: line;
+}
+
+.hljs.shcb-line-numbers > .shcb-loc {
+	counter-increment: line;
+}
+
+.hljs.shcb-line-numbers .shcb-loc > span {
+	padding-left: 0.75em;
+}
+
+.hljs.shcb-line-numbers .shcb-loc::before {
+	border-right: 1px solid #ddd;
+	content: counter(line);
+	display: table-cell;
+	padding: 0 0.75em;
+	text-align: right;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	white-space: nowrap;
+	width: 1%;
+}
+
+.hljs > mark.shcb-loc { background-color: #3F3F3F; }</style>
+<style id="classic-theme-styles-inline-css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--contrast: var(--contrast);--wp--preset--color--contrast-2: var(--contrast-2);--wp--preset--color--contrast-3: var(--contrast-3);--wp--preset--color--base: var(--base);--wp--preset--color--base-2: var(--base-2);--wp--preset--color--base-3: var(--base-3);--wp--preset--color--accent: var(--accent);--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="ez-toc-css" href="/wp-content/plugins/etoc-makolyte-mod/assets/css/screen.min.css?ver=2.0.17.1" media="all">
+<style id="ez-toc-inline-css">div#ez-toc-container p.ez-toc-title {font-size: 120%;}div#ez-toc-container p.ez-toc-title {font-weight: 500;}div#ez-toc-container ul li {font-size: 95%;}</style>
+<link rel="stylesheet" id="related-frontend-css-css" href="/wp-content/plugins/related/css/frontend-style.css?ver=3.5.0" media="all">
+<link rel="stylesheet" id="generate-style-css" href="/wp-content/themes/generatepress/assets/css/all.min.css?ver=3.3.1" media="all">
+<style id="generate-style-inline-css">body{background-color:#ffffff;color:#000000;}a{color:#1e73be;}a:hover, a:focus, a:active{color:#000000;}body .grid-container{max-width:1400px;}.wp-block-group__inner-container{max-width:1400px;margin-left:auto;margin-right:auto;}.navigation-search{position:absolute;left:-99999px;pointer-events:none;visibility:hidden;z-index:20;width:100%;top:0;transition:opacity 100ms ease-in-out;opacity:0;}.navigation-search.nav-search-active{left:0;right:0;pointer-events:auto;visibility:visible;opacity:1;}.navigation-search input[type="search"]{outline:0;border:0;vertical-align:bottom;line-height:1;opacity:0.9;width:100%;z-index:20;border-radius:0;-webkit-appearance:none;height:60px;}.navigation-search input::-ms-clear{display:none;width:0;height:0;}.navigation-search input::-ms-reveal{display:none;width:0;height:0;}.navigation-search input::-webkit-search-decoration, .navigation-search input::-webkit-search-cancel-button, .navigation-search input::-webkit-search-results-button, .navigation-search input::-webkit-search-results-decoration{display:none;}.main-navigation li.search-item{z-index:21;}li.search-item.active{transition:opacity 100ms ease-in-out;}.nav-left-sidebar .main-navigation li.search-item.active,.nav-right-sidebar .main-navigation li.search-item.active{width:auto;display:inline-block;float:right;}.gen-sidebar-nav .navigation-search{top:auto;bottom:0;}:root{--contrast:#222222;--contrast-2:#575760;--contrast-3:#b2b2be;--base:#f0f0f0;--base-2:#f7f8f9;--base-3:#ffffff;--accent:#1e73be;}:root .has-contrast-color{color:var(--contrast);}:root .has-contrast-background-color{background-color:var(--contrast);}:root .has-contrast-2-color{color:var(--contrast-2);}:root .has-contrast-2-background-color{background-color:var(--contrast-2);}:root .has-contrast-3-color{color:var(--contrast-3);}:root .has-contrast-3-background-color{background-color:var(--contrast-3);}:root .has-base-color{color:var(--base);}:root .has-base-background-color{background-color:var(--base);}:root .has-base-2-color{color:var(--base-2);}:root .has-base-2-background-color{background-color:var(--base-2);}:root .has-base-3-color{color:var(--base-3);}:root .has-base-3-background-color{background-color:var(--base-3);}:root .has-accent-color{color:var(--accent);}:root .has-accent-background-color{background-color:var(--accent);}body, button, input, select, textarea{font-family:-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";}body{line-height:1.5;}.entry-content > [class*="wp-block-"]:not(:last-child):not(.wp-block-heading){margin-bottom:1.5em;}.main-navigation .main-nav ul ul li a{font-size:14px;}.sidebar .widget, .footer-widgets .widget{font-size:17px;}h1{font-weight:300;font-size:40px;}h2{font-weight:300;font-size:30px;}h3{font-size:20px;}h4{font-size:inherit;}h5{font-size:inherit;}@media (max-width:768px){.main-title{font-size:30px;}h1{font-size:30px;}h2{font-size:25px;}}.top-bar{background-color:#636363;color:#ffffff;}.top-bar a{color:#ffffff;}.top-bar a:hover{color:#303030;}.site-header{background-color:#ffffff;color:#3a3a3a;}.site-header a{color:#3a3a3a;}.main-title a,.main-title a:hover{color:#222222;}.site-description{color:#757575;}.main-navigation,.main-navigation ul ul{background-color:#222222;}.main-navigation .main-nav ul li a, .main-navigation .menu-toggle, .main-navigation .menu-bar-items{color:#ffffff;}.main-navigation .main-nav ul li:not([class*="current-menu-"]):hover > a, .main-navigation .main-nav ul li:not([class*="current-menu-"]):focus > a, .main-navigation .main-nav ul li.sfHover:not([class*="current-menu-"]) > a, .main-navigation .menu-bar-item:hover > a, .main-navigation .menu-bar-item.sfHover > a{color:#ffffff;background-color:#3f3f3f;}button.menu-toggle:hover,button.menu-toggle:focus,.main-navigation .mobile-bar-items a,.main-navigation .mobile-bar-items a:hover,.main-navigation .mobile-bar-items a:focus{color:#ffffff;}.main-navigation .main-nav ul li[class*="current-menu-"] > a{color:#ffffff;background-color:#3f3f3f;}.navigation-search input[type="search"],.navigation-search input[type="search"]:active, .navigation-search input[type="search"]:focus, .main-navigation .main-nav ul li.search-item.active > a, .main-navigation .menu-bar-items .search-item.active > a{color:#ffffff;background-color:#3f3f3f;}.main-navigation ul ul{background-color:#3f3f3f;}.main-navigation .main-nav ul ul li a{color:#ffffff;}.main-navigation .main-nav ul ul li:not([class*="current-menu-"]):hover > a,.main-navigation .main-nav ul ul li:not([class*="current-menu-"]):focus > a, .main-navigation .main-nav ul ul li.sfHover:not([class*="current-menu-"]) > a{color:#ffffff;background-color:#4f4f4f;}.main-navigation .main-nav ul ul li[class*="current-menu-"] > a{color:#ffffff;background-color:#4f4f4f;}.separate-containers .inside-article, .separate-containers .comments-area, .separate-containers .page-header, .one-container .container, .separate-containers .paging-navigation, .inside-page-header{background-color:#ffffff;}.entry-meta{color:#595959;}.entry-meta a{color:#595959;}.entry-meta a:hover{color:#1e73be;}.sidebar .widget{background-color:#ffffff;}.sidebar .widget .widget-title{color:#000000;}.footer-widgets{background-color:#ffffff;}.footer-widgets .widget-title{color:#000000;}.site-info{color:#ffffff;background-color:#222222;}.site-info a{color:#ffffff;}.site-info a:hover{color:#606060;}.footer-bar .widget_nav_menu .current-menu-item a{color:#606060;}input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="tel"],input[type="number"],textarea,select{color:#666666;background-color:#fafafa;border-color:#cccccc;}input[type="text"]:focus,input[type="email"]:focus,input[type="url"]:focus,input[type="password"]:focus,input[type="search"]:focus,input[type="tel"]:focus,input[type="number"]:focus,textarea:focus,select:focus{color:#666666;background-color:#ffffff;border-color:#bfbfbf;}button,html input[type="button"],input[type="reset"],input[type="submit"],a.button,a.wp-block-button__link:not(.has-background){color:#ffffff;background-color:#666666;}button:hover,html input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,a.button:hover,button:focus,html input[type="button"]:focus,input[type="reset"]:focus,input[type="submit"]:focus,a.button:focus,a.wp-block-button__link:not(.has-background):active,a.wp-block-button__link:not(.has-background):focus,a.wp-block-button__link:not(.has-background):hover{color:#ffffff;background-color:#3f3f3f;}a.generate-back-to-top{background-color:rgba( 0,0,0,0.4 );color:#ffffff;}a.generate-back-to-top:hover,a.generate-back-to-top:focus{background-color:rgba( 0,0,0,0.6 );color:#ffffff;}:root{--gp-search-modal-bg-color:var(--base-3);--gp-search-modal-text-color:var(--contrast);--gp-search-modal-overlay-bg-color:rgba(0,0,0,0.2);}@media (max-width:768px){.main-navigation .menu-bar-item:hover > a, .main-navigation .menu-bar-item.sfHover > a{background:none;color:#ffffff;}}.inside-top-bar{padding:10px;}.site-main .wp-block-group__inner-container{padding:40px;}.entry-content .alignwide, body:not(.no-sidebar) .entry-content .alignfull{margin-left:-40px;width:calc(100% + 80px);max-width:calc(100% + 80px);}.container.grid-container{max-width:1480px;}.rtl .menu-item-has-children .dropdown-menu-toggle{padding-left:20px;}.rtl .main-navigation .main-nav ul li.menu-item-has-children > a{padding-right:20px;}.site-info{padding:20px;}@media (max-width:768px){.separate-containers .inside-article, .separate-containers .comments-area, .separate-containers .page-header, .separate-containers .paging-navigation, .one-container .site-content, .inside-page-header{padding:30px;}.site-main .wp-block-group__inner-container{padding:30px;}.site-info{padding-right:10px;padding-left:10px;}.entry-content .alignwide, body:not(.no-sidebar) .entry-content .alignfull{margin-left:-30px;width:calc(100% + 60px);max-width:calc(100% + 60px);}}.one-container .sidebar .widget{padding:0px;}/* End cached CSS */@media (max-width:768px){.main-navigation .menu-toggle,.main-navigation .mobile-bar-items,.sidebar-nav-mobile:not(#sticky-placeholder){display:block;}.main-navigation ul,.gen-sidebar-nav{display:none;}[class*="nav-float-"] .site-header .inside-header > *{float:none;clear:both;}}</style>
+<link rel="https://api.w.org/" href="/wp-json/">
+<link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/4397">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="b31b5afd-a6bb-4cbc-ad87-f7d58d45fac2"></script>
+    <link rel="icon" href="/wp-content/uploads/2019/12/cropped-makolyte-icon-512-e1575418903583-1-120x120.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2019/12/cropped-makolyte-icon-512-e1575418903583-1-300x300.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2019/12/cropped-makolyte-icon-512-e1575418903583-1-300x300.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2019/12/cropped-makolyte-icon-512-e1575418903583-1-300x300.png">
+		<style id="wp-custom-css">.site-header .header-image {
+height: 128px;
+width: 91px;
+}
+
+.yarpp-related a{
+    font-weight:normal !important;
+}
+
+.home-column-title {
+       word-wrap: normal;
+       word-break: keep-all;
+	     padding-right: 4em !important;
+}
+
+.posted-on .updated {
+    display: inline-block;
+}
+
+.posted-on .updated + .entry-date {
+    display: none;
+}
+
+.posted-on .updated:before {
+    content: "Last updated on ";
+}
+.posted-on .published:before {
+    content: "Last updated on ";
+}
+
+.mako-grid 
+{
+	display:grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 34px;
+}
+@media screen and (max-width: 768px)
+{
+	.mako-grid{
+		display:grid;
+		grid-template-columns: 1fr;
+		gap: 34px;
+	}
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #1E1E1E;
+  color: #DCDCDC;
+}
+
+.hljs-keyword,
+.hljs-literal,
+.hljs-symbol,
+.hljs-name {
+  color: #569CD6;
+}
+.hljs-link {
+  color: #569CD6;
+  text-decoration: underline;
+}
+
+.hljs-built_in,
+.hljs-type {
+  color: #4EC9B0;
+}
+
+.hljs-number,
+.hljs-class {
+  color: #B8D7A3;
+}
+
+.hljs-string,
+.hljs-meta-string {
+  color: #D69D85;
+}
+
+.hljs-regexp,
+.hljs-template-tag {
+  color: #9A5334;
+}
+
+.hljs-subst,
+.hljs-function,
+.hljs-title,
+.hljs-params,
+.hljs-formula {
+  color: #DCDCDC;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #57A64A;
+  font-style: italic;
+}
+
+.hljs-doctag {
+  color: #608B4E;
+}
+
+.hljs-meta,
+.hljs-meta-keyword,
+.hljs-tag {
+  color: #9B9B9B;
+}
+
+.hljs-variable,
+.hljs-template-variable {
+  color: #BD63C5;
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-builtin-name {
+  color: #9CDCFE;
+}
+
+.hljs-section {
+  color: gold;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-bullet,
+.hljs-selector-tag,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #D7BA7D;
+}
+
+.hljs-addition {
+  background-color: #144212;
+  display: inline-block;
+  width: 100%;
+}
+
+.hljs-deletion {
+  background-color: #600;
+  display: inline-block;
+  width: 100%;
+}</style>
+		</head>
+
+<body class="post-template-default single single-post postid-4397 single-format-standard wp-custom-logo wp-embed-responsive right-sidebar nav-float-right one-container fluid-header active-footer-widgets-3 nav-search-enabled header-aligned-left dropdown-hover" itemtype="https://schema.org/Blog" itemscope>
+	<a class="screen-reader-text skip-link" href="#content" title="Skip to content">Skip to content</a>		<header class="site-header" id="masthead" aria-label="Site" itemtype="https://schema.org/WPHeader" itemscope>
+			<div class="inside-header grid-container grid-parent">
+				<div class="site-branding-container">
+<div class="site-logo">
+					<a href="/" rel="home">
+						<img class="header-image is-logo-image" alt="makolyte" src="/wp-content/uploads/2019/12/makolyte-icon-128-e1575419011285.png">
+					</a>
+				</div>
+<div class="site-branding">
+						<p class="main-title" itemprop="headline">
+					<a href="/" rel="home">
+						makolyte
+					</a>
+				</p>
+						<p class="site-description" itemprop="description">
+					Solve real coding problems
+				</p>
+					</div>
+</div>		<nav class="main-navigation grid-container grid-parent sub-menu-right" id="site-navigation" aria-label="Primary" itemtype="https://schema.org/SiteNavigationElement" itemscope>
+			<div class="inside-navigation grid-container grid-parent">
+				<form method="get" class="search-form navigation-search" action="/">
+					<input type="search" class="search-field" value="" name="s" title="Search">
+				</form>		<div class="mobile-bar-items">
+						<span class="search-item">
+				<a aria-label="Open Search Bar" href="#">
+					<span class="gp-icon icon-search"><svg viewbox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path fill-rule="evenodd" clip-rule="evenodd" d="M208 48c-88.366 0-160 71.634-160 160s71.634 160 160 160 160-71.634 160-160S296.366 48 208 48zM0 208C0 93.125 93.125 0 208 0s208 93.125 208 208c0 48.741-16.765 93.566-44.843 129.024l133.826 134.018c9.366 9.379 9.355 24.575-.025 33.941-9.379 9.366-24.575 9.355-33.941-.025L337.238 370.987C301.747 399.167 256.839 416 208 416 93.125 416 0 322.875 0 208z"></path></svg><svg viewbox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M71.029 71.029c9.373-9.372 24.569-9.372 33.942 0L256 222.059l151.029-151.03c9.373-9.372 24.569-9.372 33.942 0 9.372 9.373 9.372 24.569 0 33.942L289.941 256l151.03 151.029c9.372 9.373 9.372 24.569 0 33.942-9.373 9.372-24.569 9.372-33.942 0L256 289.941l-151.029 151.03c-9.373 9.372-24.569 9.372-33.942 0-9.372-9.373-9.372-24.569 0-33.942L222.059 256 71.029 104.971c-9.372-9.373-9.372-24.569 0-33.942z"></path></svg></span>				</a>
+			</span>
+		</div>
+						<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+					<span class="gp-icon icon-menu-bars"><svg viewbox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M0 96c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24z"></path></svg><svg viewbox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M71.029 71.029c9.373-9.372 24.569-9.372 33.942 0L256 222.059l151.029-151.03c9.373-9.372 24.569-9.372 33.942 0 9.372 9.373 9.372 24.569 0 33.942L289.941 256l151.03 151.029c9.372 9.373 9.372 24.569 0 33.942-9.373 9.372-24.569 9.372-33.942 0L256 289.941l-151.029 151.03c-9.373 9.372-24.569 9.372-33.942 0-9.372-9.373-9.372-24.569 0-33.942L222.059 256 71.029 104.971c-9.372-9.373-9.372-24.569 0-33.942z"></path></svg></span><span class="mobile-menu">Menu</span>				</button>
+				<div id="primary-menu" class="main-nav"><ul id="menu-primary-menu" class=" menu sf-menu">
+<li id="menu-item-15" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15"><a href="/about/">About</a></li>
+<li id="menu-item-305" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-305"><a href="/category/csharp/">C#</a></li>
+<li id="menu-item-185" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-185"><a href="/category/sql/">SQL</a></li>
+<li class="search-item menu-item-align-right"><a aria-label="Open Search Bar" href="#"><span class="gp-icon icon-search"><svg viewbox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path fill-rule="evenodd" clip-rule="evenodd" d="M208 48c-88.366 0-160 71.634-160 160s71.634 160 160 160 160-71.634 160-160S296.366 48 208 48zM0 208C0 93.125 93.125 0 208 0s208 93.125 208 208c0 48.741-16.765 93.566-44.843 129.024l133.826 134.018c9.366 9.379 9.355 24.575-.025 33.941-9.379 9.366-24.575 9.355-33.941-.025L337.238 370.987C301.747 399.167 256.839 416 208 416 93.125 416 0 322.875 0 208z"></path></svg><svg viewbox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M71.029 71.029c9.373-9.372 24.569-9.372 33.942 0L256 222.059l151.029-151.03c9.373-9.372 24.569-9.372 33.942 0 9.372 9.373 9.372 24.569 0 33.942L289.941 256l151.03 151.029c9.372 9.373 9.372 24.569 0 33.942-9.373 9.372-24.569 9.372-33.942 0L256 289.941l-151.029 151.03c-9.373 9.372-24.569 9.372-33.942 0-9.372-9.373-9.372-24.569 0-33.942L222.059 256 71.029 104.971c-9.372-9.373-9.372-24.569 0-33.942z"></path></svg></span></a></li>
+</ul></div>			</div>
+		</nav>
+					</div>
+		</header>
+		
+	<div class="site grid-container container hfeed grid-parent" id="page">
+				<div class="site-content" id="content">
+			
+	<div class="content-area grid-parent mobile-grid-100 grid-75 tablet-grid-75" id="primary">
+		<main class="site-main" id="main">
+			
+<article id="post-4397" class="post-4397 post type-post status-publish format-standard hentry category-csharp tag-appsettings-json tag-configurationbuilder tag-connectionstring tag-copytooutputdirectory tag-dbcontext tag-efcore tag-efcore-add tag-efcore-createtable tag-secrets-json-2" itemtype="https://schema.org/CreativeWork" itemscope>
+	<div class="inside-article">
+					<header class="entry-header" aria-label="Content">
+				<h1 class="entry-title" itemprop="headline">EF Core &#8211; How to create a database and a table</h1>		<div class="entry-meta">
+			<span class="posted-on"><time class="updated" datetime="2025-01-26T09:54:41-05:00" itemprop="dateModified">01/26/2025</time><time class="entry-date published" datetime="2021-03-14T11:19:46-04:00" itemprop="datePublished">03/14/2021</time></span> <span class="byline">by <span class="author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope><a class="url fn n" href="/about/" title="Get to know more about Mak" rel="author" itemprop="url"><span class="author-name" itemprop="name">Mak</span></a></span></span> 		</div>
+					</header>
+			
+		<div class="entry-content" itemprop="text">
+			
+<p>In this article, I&#8217;ll show how to use EF Core to create a database with one table in it. At the end, I&#8217;ll show a standalone console app that inserts a record into this database.</p>
+
+
+
+<p><em>Note: I&#8217;ll be using SQL Server. I haven&#8217;t tried this with other database providers. Please leave a comment if you&#8217;re using a different database provider and let me know how it went. </em></p>
+
+
+
+<div id="ez-toc-container" class="ez-toc-v2_0_17_1 counter-hierarchy counter-decimal ez-toc-grey">
+<div class="ez-toc-title-container">
+<p class="ez-toc-title">Table of Contents</p>
+<span class="ez-toc-title-toggle"></span>
+</div>
+<nav><ul class="ez-toc-list ez-toc-list-level-1">
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-1" href="#Add_the_EF_Core_nuget_packages_and_tools" title="Add the EF Core nuget packages and tools">Add the EF Core nuget packages and tools</a><ul class="ez-toc-list-level-3">
+<li class="ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-2" href="#Install_the_EF_Core_nuget_packages" title="Install the EF Core nuget packages">Install the EF Core nuget packages</a></li>
+<li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-3" href="#Install_the_dotnet_ef_tool" title="Install the dotnet ef tool">Install the dotnet ef tool</a></li>
+</ul>
+</li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-4" href="#Add_a_model" title="Add a model">Add a model</a><ul class="ez-toc-list-level-3"><li class="ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-5" href="#Data_annotations" title="Data annotations">Data annotations</a></li></ul>
+</li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-6" href="#Add_your_own_DbContext_class" title="Add your own DbContext class">Add your own DbContext class</a></li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-7" href="#Optional_-_Add_your_ConnectionString_to_a_config_file" title="Optional &#8211; Add your ConnectionString to a config file">Optional &#8211; Add your ConnectionString to a config file</a><ul class="ez-toc-list-level-3">
+<li class="ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-8" href="#Add_appsettingsjson" title="Add appsettings.json">Add appsettings.json</a></li>
+<li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-9" href="#Add_the_User_Secrets_and_override_the_connection_string" title="Add the User Secrets and override the connection string">Add the User Secrets and override the connection string</a></li>
+<li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-10" href="#Fetch_the_connection_string_with_ConfigurationBuilder" title="Fetch the connection string with ConfigurationBuilder">Fetch the connection string with ConfigurationBuilder</a></li>
+</ul>
+</li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2">
+<a class="ez-toc-link ez-toc-heading-11" href="#Create_the_database" title="Create the database">Create the database</a><ul class="ez-toc-list-level-3">
+<li class="ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-12" href="#Add_a_design-time_context_factory" title="Add a design-time context factory">Add a design-time context factory</a></li>
+<li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-13" href="#Create_database_migration" title="Create database migration">Create database migration</a></li>
+<li class="ez-toc-page-1 ez-toc-heading-level-3">
+<a class="ez-toc-link ez-toc-heading-14" href="#Apply_the_database_migration_to_create_the_database" title="Apply the database migration to create the database">Apply the database migration to create the database</a><ul class="ez-toc-list-level-4">
+<li class="ez-toc-heading-level-4"><a class="ez-toc-link ez-toc-heading-15" href="#Option_1_-_Apply_migration_using_dotnet_ef" title="Option 1 &#8211; Apply migration using dotnet ef">Option 1 &#8211; Apply migration using dotnet ef</a></li>
+<li class="ez-toc-page-1 ez-toc-heading-level-4"><a class="ez-toc-link ez-toc-heading-16" href="#Option_2_-_Apply_migration_from_the_code" title="Option 2 &#8211; Apply migration from the code">Option 2 &#8211; Apply migration from the code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-17" href="#Use_the_database" title="Use the database">Use the database</a></li>
+<li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-18" href="#Source_code_in_GitHub" title="Source code in GitHub">Source code in GitHub</a></li>
+</ul></nav>
+</div>
+<h2 class="wp-block-heading">
+<span class="ez-toc-section" id="Add_the_EF_Core_nuget_packages_and_tools"></span>Add the EF Core nuget packages and tools<span class="ez-toc-section-end"></span>
+</h2>
+
+
+
+<h3 class="wp-block-heading">
+<span class="ez-toc-section" id="Install_the_EF_Core_nuget_packages"></span>Install the EF Core nuget packages<span class="ez-toc-section-end"></span>
+</h3>
+
+
+
+<p>The first step is to install the EF Core packages &#8211; <a href="https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/" data-type="link" data-id="https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/" target="_blank" rel="noreferrer noopener">Microsoft.EntityFrameworkCore.SqlServer</a> and <a href="https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Design/" data-type="link" data-id="https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Design/" target="_blank" rel="noreferrer noopener">Microsoft.EntityFrameworkCore.Design</a> (<em>this is installing with Package Manager Console)</em>:</p>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-1" data-shcb-language-name="PowerShell" data-shcb-language-slug="powershell"><span><code class="hljs language-powershell shcb-code-table shcb-line-numbers"><span class="shcb-loc"><span><span class="hljs-built_in">Install-Package</span> Microsoft.EntityFrameworkCore.SqlServer
+</span></span><span class="shcb-loc"><span><span class="hljs-built_in">Install-Package</span> Microsoft.EntityFrameworkCore.Design
+</span></span></code></span><small class="shcb-language" id="shcb-language-1"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">PowerShell</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">powershell</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<p>If you&#8217;re not using SQL Server, you&#8217;ll need to get the appropriate <a href="https://learn.microsoft.com/en-us/ef/core/providers/?tabs=dotnet-core-cli" data-type="URL" data-id="https://learn.microsoft.com/en-us/ef/core/providers/?tabs=dotnet-core-cli" target="_blank" rel="noreferrer noopener">package for your database provider</a>.</p>
+
+
+
+<p>This will add the package references to your csproj file, like this:</p>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-2" data-shcb-language-name="HTML, XML" data-shcb-language-slug="xml"><span><code class="hljs language-xml shcb-code-table shcb-line-numbers"><span class="shcb-loc"><span><span class="hljs-tag">&lt;<span class="hljs-name">Project</span> <span class="hljs-attr">Sdk</span>=<span class="hljs-string">"Microsoft.NET.Sdk"</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">PropertyGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">OutputType</span>&gt;</span>Exe<span class="hljs-tag">&lt;/<span class="hljs-name">OutputType</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">TargetFramework</span>&gt;</span>netcoreapp3.1<span class="hljs-tag">&lt;/<span class="hljs-name">TargetFramework</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">RootNamespace</span>&gt;</span>ef_core_cli<span class="hljs-tag">&lt;/<span class="hljs-name">RootNamespace</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">PropertyGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>
+</span></span><mark class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></mark><mark class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">PackageReference</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"Microsoft.EntityFrameworkCore.Design"</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">"5.0.4"</span>&gt;</span>
+</span></mark><mark class="shcb-loc"><span>      <span class="hljs-tag">&lt;<span class="hljs-name">PrivateAssets</span>&gt;</span>all<span class="hljs-tag">&lt;/<span class="hljs-name">PrivateAssets</span>&gt;</span>
+</span></mark><mark class="shcb-loc"><span>      <span class="hljs-tag">&lt;<span class="hljs-name">IncludeAssets</span>&gt;</span>runtime; build; native; contentfiles; analyzers; buildtransitive<span class="hljs-tag">&lt;/<span class="hljs-name">IncludeAssets</span>&gt;</span>
+</span></mark><mark class="shcb-loc"><span>    <span class="hljs-tag">&lt;/<span class="hljs-name">PackageReference</span>&gt;</span>
+</span></mark><mark class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">PackageReference</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"Microsoft.EntityFrameworkCore.SqlServer"</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">"5.0.4"</span> /&gt;</span>
+</span></mark><mark class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></mark><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span><span class="hljs-tag">&lt;/<span class="hljs-name">Project</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>
+</span></span></code></span><small class="shcb-language" id="shcb-language-2"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">HTML, XML</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">xml</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<h3 class="wp-block-heading">
+<span class="ez-toc-section" id="Install_the_dotnet_ef_tool"></span>Install the dotnet ef tool<span class="ez-toc-section-end"></span>
+</h3>
+
+
+
+<p>The dotnet ef tool is used to install and update the database. </p>
+
+
+
+<p>Install the tool by executing the following on the command line:</p>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-3" data-shcb-language-name="PowerShell" data-shcb-language-slug="powershell"><span><code class="hljs language-powershell shcb-code-table shcb-line-numbers"><span class="shcb-loc"><span>dotnet tool install -<span class="hljs-literal">-global</span> dotnet<span class="hljs-literal">-ef</span>
+</span></span></code></span><small class="shcb-language" id="shcb-language-3"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">PowerShell</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">powershell</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<h2 class="wp-block-heading">
+<span class="ez-toc-section" id="Add_a_model"></span>Add a model<span class="ez-toc-section-end"></span>
+</h2>
+
+
+
+<p>A model is a class that represents a table in the database. Each property is a column in the table. You can use data annotation attributes to define how each column should be created.</p>
+
+
+
+<p>When you use EF Core to create the database, it will use the model classes to create the tables. </p>
+
+
+
+<p>Here&#8217;s the <em>Movie</em> model class. This will be used to create the <em>Movies</em> table.</p>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-4" data-shcb-language-name="C#" data-shcb-language-slug="cs"><span><code class="hljs language-cs shcb-code-table shcb-line-numbers"><span class="shcb-loc"><span><span class="hljs-keyword">using</span> System.ComponentModel.DataAnnotations;
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Movie</span>
+</span></span><span class="shcb-loc"><span>{
+</span></span><span class="shcb-loc"><span>	&#91;<span class="hljs-meta">Key</span>]
+</span></span><span class="shcb-loc"><span>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> Id { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>	&#91;<span class="hljs-meta">Required</span>]
+</span></span><span class="shcb-loc"><span>	&#91;<span class="hljs-meta">MaxLength(500)</span>]
+</span></span><span class="shcb-loc"><span>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> Name { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>	&#91;<span class="hljs-meta">Required</span>]
+</span></span><span class="shcb-loc"><span>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> ReleaseYear { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>	&#91;<span class="hljs-meta">Required</span>]
+</span></span><span class="shcb-loc"><span>	&#91;<span class="hljs-meta">MaxLength(500)</span>]
+</span></span><span class="shcb-loc"><span>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> Description { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>	&#91;<span class="hljs-meta">Required</span>]
+</span></span><span class="shcb-loc"><span>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> RuntimeMinutes { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+</span></span><span class="shcb-loc"><span>}
+</span></span></code></span><small class="shcb-language" id="shcb-language-4"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">C#</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">cs</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<h3 class="wp-block-heading">
+<span class="ez-toc-section" id="Data_annotations"></span>Data annotations<span class="ez-toc-section-end"></span>
+</h3>
+
+
+
+<p>The <em>Movie</em> model is using data annotation attributes to specify how the table should be created. There are more data annotations available, but I&#8217;ll just explain that three that are being used on the <em>Movie</em> model: </p>
+
+
+
+<figure class="wp-block-table"><table><tbody>
+<tr>
+<td><strong>Annotation</strong></td>
+<td><strong>What&#8217;s it mean</strong></td>
+<td><strong>Example</strong></td>
+</tr>
+<tr>
+<td>Key</td>
+<td>The column is the primary key.</td>
+<td>[Key]<br>public int Id { get; set; }<br><br>Generates column: <br>Id (PK, int, not null)</td>
+</tr>
+<tr>
+<td>Required</td>
+<td>The column is not nullable.</td>
+<td>[Required]<br>public int ReleaseYear { get; set; }<br><br>Generates column: <br>ReleaseYear (int, not null)</td>
+</tr>
+<tr>
+<td>MaxLength</td>
+<td>The column field size. <br><br>If you don&#8217;t specify this, string fields will have field size MAX.</td>
+<td>[Required]<br>[MaxLength(500)]<br>public string Name { get; set; }<br><br>Generates column: <br>Name (nvarchar(500), not null)</td>
+</tr>
+</tbody></table></figure>
+
+
+
+<p><em>It should be noted that some data annotations double as <a href="/aspnetcore-api-model-validation-attributes/" data-type="post" data-id="12794">model validation attributes</a> (such as [Required]) in web APIs and frontend web. </em></p>
+
+
+
+<h2 class="wp-block-heading">
+<span class="ez-toc-section" id="Add_your_own_DbContext_class"></span>Add your own DbContext class<span class="ez-toc-section-end"></span>
+</h2>
+
+
+
+<p>When creating the database, EF Core will use the information in your DbContext class to determine how to create the database. </p>
+
+
+
+<p>So subclass DbContext and:</p>
+
+
+
+<ul class="wp-block-list">
+<li>Override OnConfiguring and pass in a connection string.</li>
+
+
+
+<li>Add a DbSet&lt;T&gt; property for each model.</li>
+</ul>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-5" data-shcb-language-name="C#" data-shcb-language-slug="cs"><span><code class="hljs language-cs shcb-code-table shcb-line-numbers"><span class="shcb-loc"><span><span class="hljs-keyword">using</span> Microsoft.EntityFrameworkCore;
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">StreamingServiceContext</span> : <span class="hljs-title">DbContext</span>
+</span></span><span class="shcb-loc"><span>{
+</span></span><span class="shcb-loc"><span>	<span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-keyword">string</span> ConnectionString;
+</span></span><span class="shcb-loc"><span>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">StreamingServiceContext</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> connectionString</span>)</span>
+</span></span><span class="shcb-loc"><span>	{
+</span></span><span class="shcb-loc"><span>		ConnectionString = connectionString;
+</span></span><span class="shcb-loc"><span>	}
+</span></span><span class="shcb-loc"><span>	<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnConfiguring</span>(<span class="hljs-params">DbContextOptionsBuilder optionsBuilder</span>)</span>
+</span></span><span class="shcb-loc"><span>	{
+</span></span><mark class="shcb-loc"><span>		optionsBuilder.UseSqlServer(ConnectionString);
+</span></mark><span class="shcb-loc"><span>	}
+</span></span><span class="shcb-loc"><span>
+</span></span><mark class="shcb-loc"><span>	<span class="hljs-keyword">public</span> DbSet&lt;Movie&gt; Movies { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+</span></mark><span class="shcb-loc"><span>}
+</span></span></code></span><small class="shcb-language" id="shcb-language-5"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">C#</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">cs</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<h2 class="wp-block-heading">
+<span class="ez-toc-section" id="Optional_-_Add_your_ConnectionString_to_a_config_file"></span>Optional &#8211; Add your ConnectionString to a config file<span class="ez-toc-section-end"></span>
+</h2>
+
+
+
+<p>You need to have your connection string <em>somewhere</em>. I&#8217;m going to show how to add it to appsettings.json and then <a href="/how-to-add-user-secrets-in-a-dotnetcore-console-app/" data-type="post" data-id="3228">override it using user secrets</a>. This step is optional, because you may choose to deal with the connection string differently.</p>
+
+
+
+<h3 class="wp-block-heading">
+<span class="ez-toc-section" id="Add_appsettingsjson"></span>Add appsettings.json<span class="ez-toc-section-end"></span>
+</h3>
+
+
+
+<ul class="wp-block-list">
+<li>Add a new file called appsettings.json.</li>
+
+
+
+<li>Set it to <strong>Copy if newer</strong>.</li>
+
+
+
+<li>Put the ConnectionStrings section in there. I&#8217;m leaving it blank on purpose. The actual connection string will be specified in the user secrets file.</li>
+</ul>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-6" data-shcb-language-name="JSON / JSON with Comments" data-shcb-language-slug="json"><span><code class="hljs language-json shcb-code-table shcb-line-numbers"><span class="shcb-loc"><span>{
+</span></span><span class="shcb-loc"><span>  <span class="hljs-attr">"ConnectionStrings"</span>: {
+</span></span><span class="shcb-loc"><span>    <span class="hljs-attr">"Default"</span>: <span class="hljs-string">"&lt;left blank&gt;"</span>
+</span></span><span class="shcb-loc"><span>  }
+</span></span><span class="shcb-loc"><span>}
+</span></span></code></span><small class="shcb-language" id="shcb-language-6"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">JSON / JSON with Comments</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">json</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<p>Your csproj should now look like this:</p>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-7" data-shcb-language-name="HTML, XML" data-shcb-language-slug="xml"><span><code class="hljs language-xml shcb-code-table shcb-line-numbers"><span class="shcb-loc"><span><span class="hljs-tag">&lt;<span class="hljs-name">Project</span> <span class="hljs-attr">Sdk</span>=<span class="hljs-string">"Microsoft.NET.Sdk"</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">PropertyGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">OutputType</span>&gt;</span>Exe<span class="hljs-tag">&lt;/<span class="hljs-name">OutputType</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">TargetFramework</span>&gt;</span>netcoreapp3.1<span class="hljs-tag">&lt;/<span class="hljs-name">TargetFramework</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">RootNamespace</span>&gt;</span>ef_core_cli<span class="hljs-tag">&lt;/<span class="hljs-name">RootNamespace</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">PropertyGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">PackageReference</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"Microsoft.EntityFrameworkCore.Design"</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">"5.0.4"</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>      <span class="hljs-tag">&lt;<span class="hljs-name">PrivateAssets</span>&gt;</span>all<span class="hljs-tag">&lt;/<span class="hljs-name">PrivateAssets</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>      <span class="hljs-tag">&lt;<span class="hljs-name">IncludeAssets</span>&gt;</span>runtime; build; native; contentfiles; analyzers; buildtransitive<span class="hljs-tag">&lt;/<span class="hljs-name">IncludeAssets</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;/<span class="hljs-name">PackageReference</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">PackageReference</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"Microsoft.EntityFrameworkCore.SqlServer"</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">"5.0.4"</span> /&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>
+</span></span><mark class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></mark><mark class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">None</span> <span class="hljs-attr">Update</span>=<span class="hljs-string">"appsettings.json"</span>&gt;</span>
+</span></mark><mark class="shcb-loc"><span>      <span class="hljs-tag">&lt;<span class="hljs-name">CopyToOutputDirectory</span>&gt;</span>PreserveNewest<span class="hljs-tag">&lt;/<span class="hljs-name">CopyToOutputDirectory</span>&gt;</span>
+</span></mark><mark class="shcb-loc"><span>    <span class="hljs-tag">&lt;/<span class="hljs-name">None</span>&gt;</span>
+</span></mark><mark class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></mark><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span><span class="hljs-tag">&lt;/<span class="hljs-name">Project</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>
+</span></span></code></span><small class="shcb-language" id="shcb-language-7"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">HTML, XML</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">xml</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<h3 class="wp-block-heading">
+<span class="ez-toc-section" id="Add_the_User_Secrets_and_override_the_connection_string"></span>Add the User Secrets and override the connection string<span class="ez-toc-section-end"></span>
+</h3>
+
+
+
+<p>Now install the <a href="https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets" data-type="link" data-id="https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets" target="_blank" rel="noreferrer noopener">Microsoft.Extensions.Configuration.UserSecrets</a> package (<em>this is using Package Manager Console)</em>:</p>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-8" data-shcb-language-name="PowerShell" data-shcb-language-slug="powershell"><span><code class="hljs language-powershell shcb-code-table shcb-line-numbers"><span class="shcb-loc"><span><span class="hljs-built_in">Install-Package</span> Microsoft.Extensions.Configuration.UserSecrets
+</span></span></code></span><small class="shcb-language" id="shcb-language-8"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">PowerShell</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">powershell</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<p><em>Note: The UserSecrets package contains Microsoft.Extensions.Configuration.Json already, so you don&#8217;t need to add it separately.</em></p>
+
+
+
+<ul class="wp-block-list">
+<li>Right-click on the project &gt; click <strong>Manage User Secrets</strong>.</li>
+
+
+
+<li>This creates the secrets.json file and opens it.</li>
+
+
+
+<li>Now can you override the connection string from appsettings by putting it in secrets.json:</li>
+</ul>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-9" data-shcb-language-name="JSON / JSON with Comments" data-shcb-language-slug="json"><span><code class="hljs language-json shcb-code-table shcb-line-numbers"><span class="shcb-loc"><span>{
+</span></span><span class="shcb-loc"><span>  <span class="hljs-attr">"ConnectionStrings"</span>: {
+</span></span><span class="shcb-loc"><span>    <span class="hljs-attr">"Default"</span>: <span class="hljs-string">"Server=SQL_SERVER_INSTANCE_NAME;Database=StreamingService;Integrated Security=true"</span>
+</span></span><span class="shcb-loc"><span>  }
+</span></span><span class="shcb-loc"><span>}
+</span></span></code></span><small class="shcb-language" id="shcb-language-9"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">JSON / JSON with Comments</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">json</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<p>Your csproj file should now have the user secrets info in it:</p>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-10" data-shcb-language-name="HTML, XML" data-shcb-language-slug="xml"><span><code class="hljs language-xml shcb-code-table shcb-line-numbers"><span class="shcb-loc"><span><span class="hljs-tag">&lt;<span class="hljs-name">Project</span> <span class="hljs-attr">Sdk</span>=<span class="hljs-string">"Microsoft.NET.Sdk"</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">PropertyGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">OutputType</span>&gt;</span>Exe<span class="hljs-tag">&lt;/<span class="hljs-name">OutputType</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">TargetFramework</span>&gt;</span>netcoreapp3.1<span class="hljs-tag">&lt;/<span class="hljs-name">TargetFramework</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">RootNamespace</span>&gt;</span>ef_core_cli<span class="hljs-tag">&lt;/<span class="hljs-name">RootNamespace</span>&gt;</span>
+</span></span><mark class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">UserSecretsId</span>&gt;</span>9bc52419-f971-411a-91e7-47ecdfb428da<span class="hljs-tag">&lt;/<span class="hljs-name">UserSecretsId</span>&gt;</span>
+</span></mark><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">PropertyGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">PackageReference</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"Microsoft.EntityFrameworkCore.Design"</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">"5.0.4"</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>      <span class="hljs-tag">&lt;<span class="hljs-name">PrivateAssets</span>&gt;</span>all<span class="hljs-tag">&lt;/<span class="hljs-name">PrivateAssets</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>      <span class="hljs-tag">&lt;<span class="hljs-name">IncludeAssets</span>&gt;</span>runtime; build; native; contentfiles; analyzers; buildtransitive<span class="hljs-tag">&lt;/<span class="hljs-name">IncludeAssets</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;/<span class="hljs-name">PackageReference</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">PackageReference</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"Microsoft.EntityFrameworkCore.SqlServer"</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">"5.0.4"</span> /&gt;</span>
+</span></span><mark class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">PackageReference</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"Microsoft.Extensions.Configuration.UserSecrets"</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">"5.0.0"</span> /&gt;</span>
+</span></mark><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">None</span> <span class="hljs-attr">Update</span>=<span class="hljs-string">"appsettings.json"</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>      <span class="hljs-tag">&lt;<span class="hljs-name">CopyToOutputDirectory</span>&gt;</span>PreserveNewest<span class="hljs-tag">&lt;/<span class="hljs-name">CopyToOutputDirectory</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;/<span class="hljs-name">None</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span><span class="hljs-tag">&lt;/<span class="hljs-name">Project</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>
+</span></span></code></span><small class="shcb-language" id="shcb-language-10"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">HTML, XML</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">xml</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<h3 class="wp-block-heading">
+<span class="ez-toc-section" id="Fetch_the_connection_string_with_ConfigurationBuilder"></span>Fetch the connection string with ConfigurationBuilder<span class="ez-toc-section-end"></span>
+</h3>
+
+
+
+<p>Now <a href="/csharp-how-to-read-custom-configuration-from-appsettings-json/" data-type="post" data-id="3066">use ConfigurationBuilder to fetch the connection string</a>:</p>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-11" data-shcb-language-name="C#" data-shcb-language-slug="cs"><span><code class="hljs language-cs shcb-code-table shcb-line-numbers"><span class="shcb-loc"><span><span class="hljs-keyword">using</span> Microsoft.Extensions.Configuration;
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span><span class="hljs-keyword">var</span> config = <span class="hljs-keyword">new</span> ConfigurationBuilder()
+</span></span><span class="shcb-loc"><span>	.SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+</span></span><span class="shcb-loc"><span>	.AddJsonFile(<span class="hljs-string">"appsettings.json"</span>)
+</span></span><span class="shcb-loc"><span>	.AddUserSecrets&lt;Program&gt;()
+</span></span><span class="shcb-loc"><span>	.Build();
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span><span class="hljs-keyword">var</span> connectionString = config.GetConnectionString(<span class="hljs-string">"Default"</span>);
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>Console.WriteLine(connectionString);
+</span></span></code></span><small class="shcb-language" id="shcb-language-11"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">C#</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">cs</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<p>Run the code. It should output the connection string from the user secrets file:</p>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-12" data-shcb-language-name="plaintext" data-shcb-language-slug="plaintext"><span><code class="hljs language-plaintext">Server=SQL_SERVER_INSTANCE_NAME;Database=StreamingService;Integrated Security=true</code></span><small class="shcb-language" id="shcb-language-12"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">plaintext</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">plaintext</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<p><em>Note: If the connection string is not overridden in secrets.json, it&#8217;ll pull the connection string from appsettings.json instead.</em></p>
+
+
+
+<h2 class="wp-block-heading">
+<span class="ez-toc-section" id="Create_the_database"></span>Create the database<span class="ez-toc-section-end"></span>
+</h2>
+
+
+
+<p>Now that you have the DbContext, a model, and a way to get the connection string, you can use dotnet ef to actually create the database. </p>
+
+
+
+<p>This is a two-step process. First you create a database <em>migration</em> for the initial version of the database, and then you apply it. As you make <a href="/ef-core-database-schema-changes/" data-type="post" data-id="4463">changes to the database schema</a>, you create more migrations and apply them on top of existing migrations. This will make more sense when you do the steps below. </p>
+
+
+
+<h3 class="wp-block-heading">
+<span class="ez-toc-section" id="Add_a_design-time_context_factory"></span>Add a design-time context factory<span class="ez-toc-section-end"></span>
+</h3>
+
+
+
+<p>When you use dotnet ef to create the migration, it will look for a parameterless DbContext class. If that doesn&#8217;t exist, it will look for an implementation of IDesignTimeDbContextFactory. After that, it starts to get more and more complicated.</p>
+
+
+
+<p>The simplest solution is to implement IDesignTimeDbContextFactory. This gives you full control over what context object dotnet ef uses when it creates migrations.</p>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-13" data-shcb-language-name="C#" data-shcb-language-slug="cs"><span><code class="hljs language-cs shcb-code-table shcb-line-numbers"><span class="shcb-loc"><span><span class="hljs-keyword">using</span> Microsoft.EntityFrameworkCore.Design;
+</span></span><span class="shcb-loc"><span><span class="hljs-keyword">using</span> Microsoft.Extensions.Configuration;
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">DesignTimeContextFactory</span> : <span class="hljs-title">IDesignTimeDbContextFactory</span>&lt;<span class="hljs-title">StreamingServiceContext</span>&gt;
+</span></span><span class="shcb-loc"><span>{
+</span></span><span class="shcb-loc"><span>	<span class="hljs-function"><span class="hljs-keyword">public</span> StreamingServiceContext <span class="hljs-title">CreateDbContext</span>(<span class="hljs-params"><span class="hljs-keyword">string</span>&#91;] args</span>)</span>
+</span></span><span class="shcb-loc"><span>	{
+</span></span><span class="shcb-loc"><span>		<span class="hljs-keyword">var</span> config = <span class="hljs-keyword">new</span> ConfigurationBuilder()
+</span></span><span class="shcb-loc"><span>			.SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+</span></span><span class="shcb-loc"><span>			.AddJsonFile(<span class="hljs-string">"appsettings.json"</span>)
+</span></span><span class="shcb-loc"><span>			.AddUserSecrets&lt;Program&gt;()
+</span></span><span class="shcb-loc"><span>			.Build();
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>		<span class="hljs-keyword">var</span> connectionString = config.GetConnectionString(<span class="hljs-string">"Default"</span>);
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>		<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> StreamingServiceContext(connectionString);
+</span></span><span class="shcb-loc"><span>	}
+</span></span><span class="shcb-loc"><span>}
+</span></span></code></span><small class="shcb-language" id="shcb-language-13"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">C#</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">cs</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<h3 class="wp-block-heading">
+<span class="ez-toc-section" id="Create_database_migration"></span>Create database migration<span class="ez-toc-section-end"></span>
+</h3>
+
+
+
+<p>To create a database migration, execute the following command (from the project directory):</p>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-14" data-shcb-language-name="PowerShell" data-shcb-language-slug="powershell"><span><code class="hljs language-powershell shcb-code-table shcb-line-numbers"><span class="shcb-loc"><span>dotnet ef migrations add Database_v0
+</span></span></code></span><small class="shcb-language" id="shcb-language-14"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">PowerShell</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">powershell</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<p>This will add a /Migrations/ folder to your project and create three migration source files:</p>
+
+
+
+<ul class="wp-block-list">
+<li>20210314124406_Database_v0.cs</li>
+
+
+
+<li>20210314124406_Database_v0.Designer.cs</li>
+
+
+
+<li>StreamingServiceContextModelSnapshot.cs</li>
+</ul>
+
+
+
+<p><em>Note: dotnet ef creates the migration files with a timestamp in the name.</em></p>
+
+
+
+<p>These migration files contain the logic for creating the database.  Take a look at 20210314124406_Database_v0.cs:</p>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-15" data-shcb-language-name="C#" data-shcb-language-slug="cs"><span><code class="hljs language-cs shcb-code-table shcb-line-numbers"><span class="shcb-loc"><span><span class="hljs-keyword">public</span> <span class="hljs-keyword">partial</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Database_v0</span> : <span class="hljs-title">Migration</span>
+</span></span><span class="shcb-loc"><span>{
+</span></span><span class="shcb-loc"><span>	<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Up</span>(<span class="hljs-params">MigrationBuilder migrationBuilder</span>)</span>
+</span></span><span class="shcb-loc"><span>	{
+</span></span><span class="shcb-loc"><span>		migrationBuilder.CreateTable(
+</span></span><span class="shcb-loc"><span>			name: <span class="hljs-string">"Movies"</span>,
+</span></span><span class="shcb-loc"><span>			columns: table =&gt; <span class="hljs-keyword">new</span>
+</span></span><span class="shcb-loc"><span>			{
+</span></span><span class="shcb-loc"><span>				Id = table.Column&lt;<span class="hljs-keyword">int</span>&gt;(type: <span class="hljs-string">"int"</span>, nullable: <span class="hljs-literal">false</span>)
+</span></span><span class="shcb-loc"><span>					.Annotation(<span class="hljs-string">"SqlServer:Identity"</span>, <span class="hljs-string">"1, 1"</span>),
+</span></span><span class="shcb-loc"><span>				Name = table.Column&lt;<span class="hljs-keyword">string</span>&gt;(type: <span class="hljs-string">"nvarchar(500)"</span>, maxLength: <span class="hljs-number">500</span>, nullable: <span class="hljs-literal">false</span>),
+</span></span><span class="shcb-loc"><span>				ReleaseYear = table.Column&lt;<span class="hljs-keyword">int</span>&gt;(type: <span class="hljs-string">"int"</span>, nullable: <span class="hljs-literal">false</span>),
+</span></span><span class="shcb-loc"><span>				Description = table.Column&lt;<span class="hljs-keyword">string</span>&gt;(type: <span class="hljs-string">"nvarchar(500)"</span>, maxLength: <span class="hljs-number">500</span>, nullable: <span class="hljs-literal">false</span>),
+</span></span><span class="shcb-loc"><span>				RuntimeMinutes = table.Column&lt;<span class="hljs-keyword">int</span>&gt;(type: <span class="hljs-string">"int"</span>, nullable: <span class="hljs-literal">false</span>)
+</span></span><span class="shcb-loc"><span>			},
+</span></span><span class="shcb-loc"><span>			constraints: table =&gt;
+</span></span><span class="shcb-loc"><span>			{
+</span></span><span class="shcb-loc"><span>				table.PrimaryKey(<span class="hljs-string">"PK_Movies"</span>, x =&gt; x.Id);
+</span></span><span class="shcb-loc"><span>			});
+</span></span><span class="shcb-loc"><span>	}
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>	<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Down</span>(<span class="hljs-params">MigrationBuilder migrationBuilder</span>)</span>
+</span></span><span class="shcb-loc"><span>	{
+</span></span><span class="shcb-loc"><span>		migrationBuilder.DropTable(
+</span></span><span class="shcb-loc"><span>			name: <span class="hljs-string">"Movies"</span>);
+</span></span><span class="shcb-loc"><span>	}
+</span></span><span class="shcb-loc"><span>}
+</span></span></code></span><small class="shcb-language" id="shcb-language-15"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">C#</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">cs</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<h3 class="wp-block-heading">
+<span class="ez-toc-section" id="Apply_the_database_migration_to_create_the_database"></span>Apply the database migration to create the database<span class="ez-toc-section-end"></span>
+</h3>
+
+
+
+<p>Now you can <a href="/ef-core-apply-migrations-programmatically/" data-type="post" data-id="4476">apply the migration programmatically</a> or by using the dotnet ef tool.</p>
+
+
+
+<p><em>Note: Discussing production deployment strategies is out of scope for this article.  </em></p>
+
+
+
+<h4 class="wp-block-heading">
+<span class="ez-toc-section" id="Option_1_-_Apply_migration_using_dotnet_ef"></span><strong>Option 1 &#8211; Apply migration using dotnet ef</strong><span class="ez-toc-section-end"></span>
+</h4>
+
+
+
+<p>To apply the latest migration, execute the following (from the project directory):</p>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-16" data-shcb-language-name="PowerShell" data-shcb-language-slug="powershell"><span><code class="hljs language-powershell shcb-code-table shcb-line-numbers"><span class="shcb-loc"><span>dotnet ef database update
+</span></span></code></span><small class="shcb-language" id="shcb-language-16"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">PowerShell</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">powershell</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<p>If your database doesn&#8217;t exist, it&#8217;ll create it, then apply the latest migration. You can also specify which migration to use. </p>
+
+
+
+<p>This option works if you&#8217;re in a dev environment and have the project directory available.</p>
+
+
+
+<h4 class="wp-block-heading">
+<span class="ez-toc-section" id="Option_2_-_Apply_migration_from_the_code"></span><strong>Option 2 &#8211; Apply migration from the code</strong><span class="ez-toc-section-end"></span>
+</h4>
+
+
+
+<p>You can call context.Database.Migrate() and it&#8217;ll apply the latest migration. If your database doesn&#8217;t exist, it&#8217;ll create it. </p>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-17" data-shcb-language-name="C#" data-shcb-language-slug="cs"><span><code class="hljs language-cs shcb-code-table shcb-line-numbers"><span class="shcb-loc"><span><span class="hljs-keyword">using</span> Microsoft.EntityFrameworkCore;
+</span></span><span class="shcb-loc"><span><span class="hljs-keyword">using</span> Microsoft.Extensions.Configuration;
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span><span class="hljs-keyword">var</span> config = <span class="hljs-keyword">new</span> ConfigurationBuilder()
+</span></span><span class="shcb-loc"><span>	.SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+</span></span><span class="shcb-loc"><span>	.AddJsonFile(<span class="hljs-string">"appsettings.json"</span>)
+</span></span><span class="shcb-loc"><span>	.AddUserSecrets&lt;Program&gt;()
+</span></span><span class="shcb-loc"><span>	.Build();
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span><span class="hljs-keyword">using</span> (<span class="hljs-keyword">var</span> context = <span class="hljs-keyword">new</span> StreamingServiceContext(config.GetConnectionString(<span class="hljs-string">"Default"</span>)))
+</span></span><span class="shcb-loc"><span>{
+</span></span><span class="shcb-loc"><span>	context.Database.Migrate();
+</span></span><span class="shcb-loc"><span>}
+</span></span></code></span><small class="shcb-language" id="shcb-language-17"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">C#</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">cs</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<h2 class="wp-block-heading">
+<span class="ez-toc-section" id="Use_the_database"></span>Use the database<span class="ez-toc-section-end"></span>
+</h2>
+
+
+
+<p>Now that you have the database created, you can start to use it. </p>
+
+
+
+<p>If you&#8217;re not familiar with <a href="/ef-core-basic-select-queries/" data-type="post" data-id="4684">using EF Core to execute queries</a>, I suggest experimenting with it in a standalone console app. Here is an example of inserting a record into the database:</p>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-18" data-shcb-language-name="C#" data-shcb-language-slug="cs"><span><code class="hljs language-cs shcb-code-table shcb-line-numbers"><span class="shcb-loc"><span><span class="hljs-keyword">using</span> Microsoft.EntityFrameworkCore;
+</span></span><span class="shcb-loc"><span><span class="hljs-keyword">using</span> Microsoft.Extensions.Configuration;
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span><span class="hljs-keyword">var</span> config = <span class="hljs-keyword">new</span> ConfigurationBuilder()
+</span></span><span class="shcb-loc"><span>	.SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+</span></span><span class="shcb-loc"><span>	.AddJsonFile(<span class="hljs-string">"appsettings.json"</span>)
+</span></span><span class="shcb-loc"><span>	.AddUserSecrets&lt;Program&gt;()
+</span></span><span class="shcb-loc"><span>	.Build();
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span><span class="hljs-keyword">using</span> (<span class="hljs-keyword">var</span> context = <span class="hljs-keyword">new</span> StreamingServiceContext(config.GetConnectionString(<span class="hljs-string">"Default"</span>)))
+</span></span><span class="shcb-loc"><span>{
+</span></span><span class="shcb-loc"><span>	context.Database.Migrate();
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>	context.Add(<span class="hljs-keyword">new</span> Movie 
+</span></span><span class="shcb-loc"><span>	{ 
+</span></span><span class="shcb-loc"><span>	   Name = <span class="hljs-string">"John Wick"</span>,
+</span></span><span class="shcb-loc"><span>	   Description = <span class="hljs-string">"A revenge-seeking assassin goes after EVERYONE"</span>,
+</span></span><span class="shcb-loc"><span>	   ReleaseYear = <span class="hljs-number">2014</span>,
+</span></span><span class="shcb-loc"><span>	   RuntimeMinutes = <span class="hljs-number">101</span>
+</span></span><span class="shcb-loc"><span>	});
+</span></span><span class="shcb-loc"><span>	context.SaveChanges();
+</span></span><span class="shcb-loc"><span>}
+</span></span></code></span><small class="shcb-language" id="shcb-language-18"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">C#</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">cs</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<p>If you look in the database, you can see this record got inserted in the Movies table.</p>
+
+
+
+<h2 class="wp-block-heading">
+<span class="ez-toc-section" id="Source_code_in_GitHub"></span>Source code in GitHub<span class="ez-toc-section-end"></span>
+</h2>
+
+
+
+<p>The source code shown in this article is <a rel="noreferrer noopener" href="https://github.com/makolyte/ef-core-dotnet" data-type="URL" data-id="https://github.com/makolyte/ef-core-dotnet" target="_blank">available on GitHub</a>. If you use the code from this repository, make sure you install dotnet ef so you can add / apply migrations.</p>
+<div class="related_content" style="clear:both;">
+<h3 class="widget-title">Related Articles</h3>
+									<ul class="related-posts">
+										<li class="related-post">
+											<a href="/ef-core-database-schema-changes/">EF Core &#8211; Database schema changes</a>
+										</li>
+										<li class="related-post">
+											<a href="/ef-core-apply-migrations-programmatically/">EF Core &#8211; Apply migrations programmatically</a>
+										</li>
+										<li class="related-post">
+											<a href="/ef-core-how-to-create-a-composite-primary-key/">EF Core &#8211; How to create a composite primary key</a>
+										</li>
+										<li class="related-post">
+											<a href="/ef-core-how-to-add-indexes/">EF Core &#8211; How to add indexes</a>
+										</li>
+										<li class="related-post">
+											<a href="/ef-core-add-a-foreign-key/">EF Core &#8211; Add a foreign key</a>
+										</li>
+									</ul>
+									<div style="clear:both;"></div>
+</div>
+							</div>
+
+				<footer class="entry-meta" aria-label="Entry meta">
+			<span class="cat-links"><span class="gp-icon icon-categories"><svg viewbox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M0 112c0-26.51 21.49-48 48-48h110.014a48 48 0 0143.592 27.907l12.349 26.791A16 16 0 00228.486 128H464c26.51 0 48 21.49 48 48v224c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V112z"></path></svg></span><span class="screen-reader-text">Categories </span><a href="/category/csharp/" rel="category tag">C#</a></span> <span class="tags-links"><span class="gp-icon icon-tags"><svg viewbox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M20 39.5c-8.836 0-16 7.163-16 16v176c0 4.243 1.686 8.313 4.687 11.314l224 224c6.248 6.248 16.378 6.248 22.626 0l176-176c6.244-6.244 6.25-16.364.013-22.615l-223.5-224A15.999 15.999 0 00196.5 39.5H20zm56 96c0-13.255 10.745-24 24-24s24 10.745 24 24-10.745 24-24 24-24-10.745-24-24z"></path><path d="M259.515 43.015c4.686-4.687 12.284-4.687 16.97 0l228 228c4.686 4.686 4.686 12.284 0 16.97l-180 180c-4.686 4.687-12.284 4.687-16.97 0-4.686-4.686-4.686-12.284 0-16.97L479.029 279.5 259.515 59.985c-4.686-4.686-4.686-12.284 0-16.97z"></path></svg></span><span class="screen-reader-text">Tags </span><a href="/tag/appsettings-json/" rel="tag">appsettings.json</a>, <a href="/tag/configurationbuilder/" rel="tag">configurationbuilder</a>, <a href="/tag/connectionstring/" rel="tag">connectionstring</a>, <a href="/tag/copytooutputdirectory/" rel="tag">copytooutputdirectory</a>, <a href="/tag/dbcontext/" rel="tag">dbcontext</a>, <a href="/tag/efcore/" rel="tag">efcore</a>, <a href="/tag/efcore-add/" rel="tag">efcore-add</a>, <a href="/tag/efcore-createtable/" rel="tag">efcore-createtable</a>, <a href="/tag/secrets-json-2/" rel="tag">secrets.json</a></span> 		<nav id="nav-below" class="post-navigation" aria-label="Posts">
+			<div class="nav-previous">
+<span class="gp-icon icon-arrow-left"><svg viewbox="0 0 192 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M178.425 138.212c0 2.265-1.133 4.813-2.832 6.512L64.276 256.001l111.317 111.277c1.7 1.7 2.832 4.247 2.832 6.513 0 2.265-1.133 4.813-2.832 6.512L161.43 394.46c-1.7 1.7-4.249 2.832-6.514 2.832-2.266 0-4.816-1.133-6.515-2.832L16.407 262.514c-1.699-1.7-2.832-4.248-2.832-6.513 0-2.265 1.133-4.813 2.832-6.512l131.994-131.947c1.7-1.699 4.249-2.831 6.515-2.831 2.265 0 4.815 1.132 6.514 2.831l14.163 14.157c1.7 1.7 2.832 3.965 2.832 6.513z" fill-rule="nonzero"></path></svg></span><span class="prev"><a href="/winforms-how-to-remove-checked-items-from-checkedlistbox/" rel="prev">WinForms &#8211; How to remove checked items from CheckedListBox</a></span>
+</div>
+<div class="nav-next">
+<span class="gp-icon icon-arrow-right"><svg viewbox="0 0 192 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M178.425 256.001c0 2.266-1.133 4.815-2.832 6.515L43.599 394.509c-1.7 1.7-4.248 2.833-6.514 2.833s-4.816-1.133-6.515-2.833l-14.163-14.162c-1.699-1.7-2.832-3.966-2.832-6.515 0-2.266 1.133-4.815 2.832-6.515l111.317-111.316L16.407 144.685c-1.699-1.7-2.832-4.249-2.832-6.515s1.133-4.815 2.832-6.515l14.163-14.162c1.7-1.7 4.249-2.833 6.515-2.833s4.815 1.133 6.514 2.833l131.994 131.993c1.7 1.7 2.832 4.249 2.832 6.515z" fill-rule="nonzero"></path></svg></span><span class="next"><a href="/ef-core-database-schema-changes/" rel="next">EF Core &#8211; Database schema changes</a></span>
+</div>		</nav>
+				</footer>
+			</div>
+</article>
+
+			<div class="comments-area">
+				<div id="comments">
+
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/ef-core-how-to-create-a-database-and-a-table/#respond" style="display:none;">Cancel reply</a></small>
+</h3>
+<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
+<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
+<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="4397" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p>
+</form>	</div>
+<!-- #respond -->
+	
+</div>
+<!-- #comments -->
+			</div>
+
+					</main>
+	</div>
+
+	<div class="widget-area sidebar is-right-sidebar grid-25 tablet-grid-25 grid-parent" id="right-sidebar">
+	<div class="inside-right-sidebar">
+		<aside id="block-19" class="widget inner-padding widget_block"><div></div></aside>	</div>
+</div>
+
+	</div>
+</div>
+
+
+<div class="site-footer footer-bar-active footer-bar-align-right">
+			<footer class="site-info" aria-label="Site" itemtype="https://schema.org/WPFooter" itemscope>
+			<div class="inside-site-info grid-container grid-parent">
+						<div class="footer-bar">
+			<aside id="block-11" class="widget inner-padding widget_block"></aside><aside id="block-7" class="widget inner-padding widget_block"><a href="/about/">About</a> • <a href="/privacy-policy/">Privacy Policy</a></aside>		</div>
+						<div class="copyright-bar">
+					<span class="copyright">&copy; 2025 makolyte</span> &bull; Built with <a href="https://generatepress.com/" itemprop="url">GeneratePress</a>				</div>
+			</div>
+		</footer>
+		</div>
+
+<script id="generate-a11y">!function(){"use strict";if("querySelector"in document&&"addEventListener"in window){var e=document.body;e.addEventListener("mousedown",function(){e.classList.add("using-mouse")}),e.addEventListener("keydown",function(){e.classList.remove("using-mouse")})}}();</script><!--[if lte IE 11]>
+<script src="/wp-content/themes/generatepress/assets/js/classList.min.js?ver=3.3.1" id="generate-classlist-js"></script>
+<![endif]-->
+<script id="generate-menu-js-extra">var generatepressMenu = {"toggleOpenedSubMenus":"1","openSubMenuLabel":"Open Sub-Menu","closeSubMenuLabel":"Close Sub-Menu"};</script>
+<script src="/wp-content/themes/generatepress/assets/js/menu.min.js?ver=3.3.1" id="generate-menu-js"></script>
+<script id="generate-navigation-search-js-extra">var generatepressNavSearch = {"open":"Open Search Bar","close":"Close Search Bar"};</script>
+<script src="/wp-content/themes/generatepress/assets/js/navigation-search.min.js?ver=3.3.1" id="generate-navigation-search-js"></script>
+<script src="/wp-includes/js/comment-reply.min.js?ver=6.7.2" id="comment-reply-js" async data-wp-strategy="async"></script>
+
+</body>
+
+
+<!-- plugin=object-cache-pro client=phpredis metric#hits=1357 metric#misses=33 metric#hit-ratio=97.6 metric#bytes=799965 metric#prefetches=0 metric#store-reads=103 metric#store-writes=6 metric#store-hits=95 metric#store-misses=29 metric#sql-queries=16 metric#ms-total=1658.27 metric#ms-cache=219.42 metric#ms-cache-avg=2.0317 metric#ms-cache-ratio=13.2 -->
+</html>

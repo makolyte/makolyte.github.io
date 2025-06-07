@@ -1,0 +1,2141 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Auto&#x2d;increment build numbers in Visual Studio | makolyte</title>
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The SEO Framework by Sybre Waaijer -->
+<meta name="robots" content="max-snippet:-1,max-image-preview:standard,max-video-preview:-1">
+<link rel="canonical" href="/auto-increment-build-numbers-in-visual-studio/">
+<meta name="description" content="You need to auto&#x2d;increment your build numbers in order to easily tell which code you&rsquo;re working with. In this article I&rsquo;ll explain how to auto&#x2d;increment your&#8230;">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="makolyte">
+<meta property="og:title" content="Auto&#x2d;increment build numbers in Visual Studio | makolyte">
+<meta property="og:description" content="You need to auto&#x2d;increment your build numbers in order to easily tell which code you&rsquo;re working with. In this article I&rsquo;ll explain how to auto&#x2d;increment your build numbers in Visual Studio.">
+<meta property="og:url" content="/auto-increment-build-numbers-in-visual-studio/">
+<meta property="og:image" content="/wp-content/uploads/2020/03/image-12.png">
+<meta property="og:image:width" content="642">
+<meta property="og:image:height" content="187">
+<meta property="article:published_time" content="2020-03-15T17:07:14+00:00">
+<meta property="article:modified_time" content="2025-01-26T03:55:40+00:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@makolyte">
+<meta name="twitter:title" content="Auto&#x2d;increment build numbers in Visual Studio | makolyte">
+<meta name="twitter:description" content="You need to auto&#x2d;increment your build numbers in order to easily tell which code you&rsquo;re working with. In this article I&rsquo;ll explain how to auto&#x2d;increment your build numbers in Visual Studio.">
+<meta name="twitter:image" content="/wp-content/uploads/2020/03/image-12.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"/#/schema/WebSite","url":"/","name":"makolyte","description":"Solve real coding problems","inLanguage":"en-US","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"/search/{search_term_string}/"},"query-input":"required name=search_term_string"},"publisher":{"@type":"Organization","@id":"/#/schema/Organization","name":"makolyte","url":"/","sameAs":"https://twitter.com/makolyte","logo":{"@type":"ImageObject","url":"/wp-content/uploads/2019/12/cropped-makolyte-icon-512-e1575418903583-4.png","contentUrl":"/wp-content/uploads/2019/12/cropped-makolyte-icon-512-e1575418903583-4.png","width":332,"height":318}}},{"@type":"WebPage","@id":"/auto-increment-build-numbers-in-visual-studio/","url":"/auto-increment-build-numbers-in-visual-studio/","name":"Auto-increment build numbers in Visual Studio | makolyte","description":"You need to auto-increment your build numbers in order to easily tell which code you’re working with. In this article I’ll explain how to auto-increment your…","inLanguage":"en-US","isPartOf":{"@id":"/#/schema/WebSite"},"breadcrumb":{"@type":"BreadcrumbList","@id":"/#/schema/BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":"/","name":"makolyte"},{"@type":"ListItem","position":2,"item":"/category/csharp/","name":"C#"},{"@type":"ListItem","position":3,"name":"Auto-increment build numbers in Visual Studio"}]},"potentialAction":{"@type":"ReadAction","target":"/auto-increment-build-numbers-in-visual-studio/"},"datePublished":"2020-03-15T17:07:14+00:00","dateModified":"2025-01-26T03:55:40+00:00","author":{"@type":"Person","@id":"/#/schema/Person/e99fbed30936ed203340e328108b95ee","name":"Mak"}}]}</script>
+<!-- / The SEO Framework by Sybre Waaijer | 24.83ms meta | 1.10ms boot -->
+
+<link rel="alternate" type="application/rss+xml" title="makolyte &raquo; Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="makolyte &raquo; Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="makolyte &raquo; Auto-increment build numbers in Visual Studio Comments Feed" href="/auto-increment-build-numbers-in-visual-studio/feed/">
+<script>
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.7.2"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+</script>
+<style id="wp-emoji-styles-inline-css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=6.7.2" media="all">
+<link rel="stylesheet" id="syntax-highlighting-code-block-theme-css" href="/wp-content/plugins/syntax-highlighting-code-block/vendor/scrivo/highlight-php/styles/vs2015.css?ver=1.5.1" media="all">
+<style id="syntax-highlighting-code-block-inline-css">.wp-block-code {
+	border: 0;
+	padding: 0;
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+}
+
+.wp-block-code > span {
+	display: block;
+	overflow: auto;
+}
+
+.shcb-language {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	-webkit-clip-path: inset(50%);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	word-wrap: normal;
+	word-break: normal;
+}
+
+.hljs {
+	box-sizing: border-box;
+}
+
+.hljs.shcb-code-table {
+	display: table;
+	width: 100%;
+}
+
+.hljs.shcb-code-table > .shcb-loc {
+	color: inherit;
+	display: table-row;
+	width: 100%;
+}
+
+.hljs.shcb-code-table .shcb-loc > span {
+	display: table-cell;
+}
+
+.wp-block-code code.hljs:not(.shcb-wrap-lines) {
+	white-space: pre;
+}
+
+.wp-block-code code.hljs.shcb-wrap-lines {
+	white-space: pre-wrap;
+}
+
+.hljs.shcb-line-numbers {
+	border-spacing: 0;
+	counter-reset: line;
+}
+
+.hljs.shcb-line-numbers > .shcb-loc {
+	counter-increment: line;
+}
+
+.hljs.shcb-line-numbers .shcb-loc > span {
+	padding-left: 0.75em;
+}
+
+.hljs.shcb-line-numbers .shcb-loc::before {
+	border-right: 1px solid #ddd;
+	content: counter(line);
+	display: table-cell;
+	padding: 0 0.75em;
+	text-align: right;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	white-space: nowrap;
+	width: 1%;
+}
+
+.hljs > mark.shcb-loc { background-color: #3F3F3F; }</style>
+<style id="classic-theme-styles-inline-css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--contrast: var(--contrast);--wp--preset--color--contrast-2: var(--contrast-2);--wp--preset--color--contrast-3: var(--contrast-3);--wp--preset--color--base: var(--base);--wp--preset--color--base-2: var(--base-2);--wp--preset--color--base-3: var(--base-3);--wp--preset--color--accent: var(--accent);--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="ez-toc-css" href="/wp-content/plugins/etoc-makolyte-mod/assets/css/screen.min.css?ver=2.0.17.1" media="all">
+<style id="ez-toc-inline-css">div#ez-toc-container p.ez-toc-title {font-size: 120%;}div#ez-toc-container p.ez-toc-title {font-weight: 500;}div#ez-toc-container ul li {font-size: 95%;}</style>
+<link rel="stylesheet" id="related-frontend-css-css" href="/wp-content/plugins/related/css/frontend-style.css?ver=3.5.0" media="all">
+<link rel="stylesheet" id="generate-style-css" href="/wp-content/themes/generatepress/assets/css/all.min.css?ver=3.3.1" media="all">
+<style id="generate-style-inline-css">body{background-color:#ffffff;color:#000000;}a{color:#1e73be;}a:hover, a:focus, a:active{color:#000000;}body .grid-container{max-width:1400px;}.wp-block-group__inner-container{max-width:1400px;margin-left:auto;margin-right:auto;}.navigation-search{position:absolute;left:-99999px;pointer-events:none;visibility:hidden;z-index:20;width:100%;top:0;transition:opacity 100ms ease-in-out;opacity:0;}.navigation-search.nav-search-active{left:0;right:0;pointer-events:auto;visibility:visible;opacity:1;}.navigation-search input[type="search"]{outline:0;border:0;vertical-align:bottom;line-height:1;opacity:0.9;width:100%;z-index:20;border-radius:0;-webkit-appearance:none;height:60px;}.navigation-search input::-ms-clear{display:none;width:0;height:0;}.navigation-search input::-ms-reveal{display:none;width:0;height:0;}.navigation-search input::-webkit-search-decoration, .navigation-search input::-webkit-search-cancel-button, .navigation-search input::-webkit-search-results-button, .navigation-search input::-webkit-search-results-decoration{display:none;}.main-navigation li.search-item{z-index:21;}li.search-item.active{transition:opacity 100ms ease-in-out;}.nav-left-sidebar .main-navigation li.search-item.active,.nav-right-sidebar .main-navigation li.search-item.active{width:auto;display:inline-block;float:right;}.gen-sidebar-nav .navigation-search{top:auto;bottom:0;}:root{--contrast:#222222;--contrast-2:#575760;--contrast-3:#b2b2be;--base:#f0f0f0;--base-2:#f7f8f9;--base-3:#ffffff;--accent:#1e73be;}:root .has-contrast-color{color:var(--contrast);}:root .has-contrast-background-color{background-color:var(--contrast);}:root .has-contrast-2-color{color:var(--contrast-2);}:root .has-contrast-2-background-color{background-color:var(--contrast-2);}:root .has-contrast-3-color{color:var(--contrast-3);}:root .has-contrast-3-background-color{background-color:var(--contrast-3);}:root .has-base-color{color:var(--base);}:root .has-base-background-color{background-color:var(--base);}:root .has-base-2-color{color:var(--base-2);}:root .has-base-2-background-color{background-color:var(--base-2);}:root .has-base-3-color{color:var(--base-3);}:root .has-base-3-background-color{background-color:var(--base-3);}:root .has-accent-color{color:var(--accent);}:root .has-accent-background-color{background-color:var(--accent);}body, button, input, select, textarea{font-family:-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";}body{line-height:1.5;}.entry-content > [class*="wp-block-"]:not(:last-child):not(.wp-block-heading){margin-bottom:1.5em;}.main-navigation .main-nav ul ul li a{font-size:14px;}.sidebar .widget, .footer-widgets .widget{font-size:17px;}h1{font-weight:300;font-size:40px;}h2{font-weight:300;font-size:30px;}h3{font-size:20px;}h4{font-size:inherit;}h5{font-size:inherit;}@media (max-width:768px){.main-title{font-size:30px;}h1{font-size:30px;}h2{font-size:25px;}}.top-bar{background-color:#636363;color:#ffffff;}.top-bar a{color:#ffffff;}.top-bar a:hover{color:#303030;}.site-header{background-color:#ffffff;color:#3a3a3a;}.site-header a{color:#3a3a3a;}.main-title a,.main-title a:hover{color:#222222;}.site-description{color:#757575;}.main-navigation,.main-navigation ul ul{background-color:#222222;}.main-navigation .main-nav ul li a, .main-navigation .menu-toggle, .main-navigation .menu-bar-items{color:#ffffff;}.main-navigation .main-nav ul li:not([class*="current-menu-"]):hover > a, .main-navigation .main-nav ul li:not([class*="current-menu-"]):focus > a, .main-navigation .main-nav ul li.sfHover:not([class*="current-menu-"]) > a, .main-navigation .menu-bar-item:hover > a, .main-navigation .menu-bar-item.sfHover > a{color:#ffffff;background-color:#3f3f3f;}button.menu-toggle:hover,button.menu-toggle:focus,.main-navigation .mobile-bar-items a,.main-navigation .mobile-bar-items a:hover,.main-navigation .mobile-bar-items a:focus{color:#ffffff;}.main-navigation .main-nav ul li[class*="current-menu-"] > a{color:#ffffff;background-color:#3f3f3f;}.navigation-search input[type="search"],.navigation-search input[type="search"]:active, .navigation-search input[type="search"]:focus, .main-navigation .main-nav ul li.search-item.active > a, .main-navigation .menu-bar-items .search-item.active > a{color:#ffffff;background-color:#3f3f3f;}.main-navigation ul ul{background-color:#3f3f3f;}.main-navigation .main-nav ul ul li a{color:#ffffff;}.main-navigation .main-nav ul ul li:not([class*="current-menu-"]):hover > a,.main-navigation .main-nav ul ul li:not([class*="current-menu-"]):focus > a, .main-navigation .main-nav ul ul li.sfHover:not([class*="current-menu-"]) > a{color:#ffffff;background-color:#4f4f4f;}.main-navigation .main-nav ul ul li[class*="current-menu-"] > a{color:#ffffff;background-color:#4f4f4f;}.separate-containers .inside-article, .separate-containers .comments-area, .separate-containers .page-header, .one-container .container, .separate-containers .paging-navigation, .inside-page-header{background-color:#ffffff;}.entry-meta{color:#595959;}.entry-meta a{color:#595959;}.entry-meta a:hover{color:#1e73be;}.sidebar .widget{background-color:#ffffff;}.sidebar .widget .widget-title{color:#000000;}.footer-widgets{background-color:#ffffff;}.footer-widgets .widget-title{color:#000000;}.site-info{color:#ffffff;background-color:#222222;}.site-info a{color:#ffffff;}.site-info a:hover{color:#606060;}.footer-bar .widget_nav_menu .current-menu-item a{color:#606060;}input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="tel"],input[type="number"],textarea,select{color:#666666;background-color:#fafafa;border-color:#cccccc;}input[type="text"]:focus,input[type="email"]:focus,input[type="url"]:focus,input[type="password"]:focus,input[type="search"]:focus,input[type="tel"]:focus,input[type="number"]:focus,textarea:focus,select:focus{color:#666666;background-color:#ffffff;border-color:#bfbfbf;}button,html input[type="button"],input[type="reset"],input[type="submit"],a.button,a.wp-block-button__link:not(.has-background){color:#ffffff;background-color:#666666;}button:hover,html input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,a.button:hover,button:focus,html input[type="button"]:focus,input[type="reset"]:focus,input[type="submit"]:focus,a.button:focus,a.wp-block-button__link:not(.has-background):active,a.wp-block-button__link:not(.has-background):focus,a.wp-block-button__link:not(.has-background):hover{color:#ffffff;background-color:#3f3f3f;}a.generate-back-to-top{background-color:rgba( 0,0,0,0.4 );color:#ffffff;}a.generate-back-to-top:hover,a.generate-back-to-top:focus{background-color:rgba( 0,0,0,0.6 );color:#ffffff;}:root{--gp-search-modal-bg-color:var(--base-3);--gp-search-modal-text-color:var(--contrast);--gp-search-modal-overlay-bg-color:rgba(0,0,0,0.2);}@media (max-width:768px){.main-navigation .menu-bar-item:hover > a, .main-navigation .menu-bar-item.sfHover > a{background:none;color:#ffffff;}}.inside-top-bar{padding:10px;}.site-main .wp-block-group__inner-container{padding:40px;}.entry-content .alignwide, body:not(.no-sidebar) .entry-content .alignfull{margin-left:-40px;width:calc(100% + 80px);max-width:calc(100% + 80px);}.container.grid-container{max-width:1480px;}.rtl .menu-item-has-children .dropdown-menu-toggle{padding-left:20px;}.rtl .main-navigation .main-nav ul li.menu-item-has-children > a{padding-right:20px;}.site-info{padding:20px;}@media (max-width:768px){.separate-containers .inside-article, .separate-containers .comments-area, .separate-containers .page-header, .separate-containers .paging-navigation, .one-container .site-content, .inside-page-header{padding:30px;}.site-main .wp-block-group__inner-container{padding:30px;}.site-info{padding-right:10px;padding-left:10px;}.entry-content .alignwide, body:not(.no-sidebar) .entry-content .alignfull{margin-left:-30px;width:calc(100% + 60px);max-width:calc(100% + 60px);}}.one-container .sidebar .widget{padding:0px;}/* End cached CSS */@media (max-width:768px){.main-navigation .menu-toggle,.main-navigation .mobile-bar-items,.sidebar-nav-mobile:not(#sticky-placeholder){display:block;}.main-navigation ul,.gen-sidebar-nav{display:none;}[class*="nav-float-"] .site-header .inside-header > *{float:none;clear:both;}}</style>
+<link rel="https://api.w.org/" href="/wp-json/">
+<link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/812">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="b31b5afd-a6bb-4cbc-ad87-f7d58d45fac2"></script>
+    <link rel="icon" href="/wp-content/uploads/2019/12/cropped-makolyte-icon-512-e1575418903583-1-120x120.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2019/12/cropped-makolyte-icon-512-e1575418903583-1-300x300.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2019/12/cropped-makolyte-icon-512-e1575418903583-1-300x300.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2019/12/cropped-makolyte-icon-512-e1575418903583-1-300x300.png">
+		<style id="wp-custom-css">.site-header .header-image {
+height: 128px;
+width: 91px;
+}
+
+.yarpp-related a{
+    font-weight:normal !important;
+}
+
+.home-column-title {
+       word-wrap: normal;
+       word-break: keep-all;
+	     padding-right: 4em !important;
+}
+
+.posted-on .updated {
+    display: inline-block;
+}
+
+.posted-on .updated + .entry-date {
+    display: none;
+}
+
+.posted-on .updated:before {
+    content: "Last updated on ";
+}
+.posted-on .published:before {
+    content: "Last updated on ";
+}
+
+.mako-grid 
+{
+	display:grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 34px;
+}
+@media screen and (max-width: 768px)
+{
+	.mako-grid{
+		display:grid;
+		grid-template-columns: 1fr;
+		gap: 34px;
+	}
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #1E1E1E;
+  color: #DCDCDC;
+}
+
+.hljs-keyword,
+.hljs-literal,
+.hljs-symbol,
+.hljs-name {
+  color: #569CD6;
+}
+.hljs-link {
+  color: #569CD6;
+  text-decoration: underline;
+}
+
+.hljs-built_in,
+.hljs-type {
+  color: #4EC9B0;
+}
+
+.hljs-number,
+.hljs-class {
+  color: #B8D7A3;
+}
+
+.hljs-string,
+.hljs-meta-string {
+  color: #D69D85;
+}
+
+.hljs-regexp,
+.hljs-template-tag {
+  color: #9A5334;
+}
+
+.hljs-subst,
+.hljs-function,
+.hljs-title,
+.hljs-params,
+.hljs-formula {
+  color: #DCDCDC;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #57A64A;
+  font-style: italic;
+}
+
+.hljs-doctag {
+  color: #608B4E;
+}
+
+.hljs-meta,
+.hljs-meta-keyword,
+.hljs-tag {
+  color: #9B9B9B;
+}
+
+.hljs-variable,
+.hljs-template-variable {
+  color: #BD63C5;
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-builtin-name {
+  color: #9CDCFE;
+}
+
+.hljs-section {
+  color: gold;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-bullet,
+.hljs-selector-tag,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #D7BA7D;
+}
+
+.hljs-addition {
+  background-color: #144212;
+  display: inline-block;
+  width: 100%;
+}
+
+.hljs-deletion {
+  background-color: #600;
+  display: inline-block;
+  width: 100%;
+}</style>
+		</head>
+
+<body class="post-template-default single single-post postid-812 single-format-standard wp-custom-logo wp-embed-responsive right-sidebar nav-float-right one-container fluid-header active-footer-widgets-3 nav-search-enabled header-aligned-left dropdown-hover" itemtype="https://schema.org/Blog" itemscope>
+	<a class="screen-reader-text skip-link" href="#content" title="Skip to content">Skip to content</a>		<header class="site-header" id="masthead" aria-label="Site" itemtype="https://schema.org/WPHeader" itemscope>
+			<div class="inside-header grid-container grid-parent">
+				<div class="site-branding-container">
+<div class="site-logo">
+					<a href="/" rel="home">
+						<img class="header-image is-logo-image" alt="makolyte" src="/wp-content/uploads/2019/12/makolyte-icon-128-e1575419011285.png">
+					</a>
+				</div>
+<div class="site-branding">
+						<p class="main-title" itemprop="headline">
+					<a href="/" rel="home">
+						makolyte
+					</a>
+				</p>
+						<p class="site-description" itemprop="description">
+					Solve real coding problems
+				</p>
+					</div>
+</div>		<nav class="main-navigation grid-container grid-parent sub-menu-right" id="site-navigation" aria-label="Primary" itemtype="https://schema.org/SiteNavigationElement" itemscope>
+			<div class="inside-navigation grid-container grid-parent">
+				<form method="get" class="search-form navigation-search" action="/">
+					<input type="search" class="search-field" value="" name="s" title="Search">
+				</form>		<div class="mobile-bar-items">
+						<span class="search-item">
+				<a aria-label="Open Search Bar" href="#">
+					<span class="gp-icon icon-search"><svg viewbox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path fill-rule="evenodd" clip-rule="evenodd" d="M208 48c-88.366 0-160 71.634-160 160s71.634 160 160 160 160-71.634 160-160S296.366 48 208 48zM0 208C0 93.125 93.125 0 208 0s208 93.125 208 208c0 48.741-16.765 93.566-44.843 129.024l133.826 134.018c9.366 9.379 9.355 24.575-.025 33.941-9.379 9.366-24.575 9.355-33.941-.025L337.238 370.987C301.747 399.167 256.839 416 208 416 93.125 416 0 322.875 0 208z"></path></svg><svg viewbox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M71.029 71.029c9.373-9.372 24.569-9.372 33.942 0L256 222.059l151.029-151.03c9.373-9.372 24.569-9.372 33.942 0 9.372 9.373 9.372 24.569 0 33.942L289.941 256l151.03 151.029c9.372 9.373 9.372 24.569 0 33.942-9.373 9.372-24.569 9.372-33.942 0L256 289.941l-151.029 151.03c-9.373 9.372-24.569 9.372-33.942 0-9.372-9.373-9.372-24.569 0-33.942L222.059 256 71.029 104.971c-9.372-9.373-9.372-24.569 0-33.942z"></path></svg></span>				</a>
+			</span>
+		</div>
+						<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+					<span class="gp-icon icon-menu-bars"><svg viewbox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M0 96c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24z"></path></svg><svg viewbox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M71.029 71.029c9.373-9.372 24.569-9.372 33.942 0L256 222.059l151.029-151.03c9.373-9.372 24.569-9.372 33.942 0 9.372 9.373 9.372 24.569 0 33.942L289.941 256l151.03 151.029c9.372 9.373 9.372 24.569 0 33.942-9.373 9.372-24.569 9.372-33.942 0L256 289.941l-151.029 151.03c-9.373 9.372-24.569 9.372-33.942 0-9.372-9.373-9.372-24.569 0-33.942L222.059 256 71.029 104.971c-9.372-9.373-9.372-24.569 0-33.942z"></path></svg></span><span class="mobile-menu">Menu</span>				</button>
+				<div id="primary-menu" class="main-nav"><ul id="menu-primary-menu" class=" menu sf-menu">
+<li id="menu-item-15" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15"><a href="/about/">About</a></li>
+<li id="menu-item-305" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-305"><a href="/category/csharp/">C#</a></li>
+<li id="menu-item-185" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-185"><a href="/category/sql/">SQL</a></li>
+<li class="search-item menu-item-align-right"><a aria-label="Open Search Bar" href="#"><span class="gp-icon icon-search"><svg viewbox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path fill-rule="evenodd" clip-rule="evenodd" d="M208 48c-88.366 0-160 71.634-160 160s71.634 160 160 160 160-71.634 160-160S296.366 48 208 48zM0 208C0 93.125 93.125 0 208 0s208 93.125 208 208c0 48.741-16.765 93.566-44.843 129.024l133.826 134.018c9.366 9.379 9.355 24.575-.025 33.941-9.379 9.366-24.575 9.355-33.941-.025L337.238 370.987C301.747 399.167 256.839 416 208 416 93.125 416 0 322.875 0 208z"></path></svg><svg viewbox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M71.029 71.029c9.373-9.372 24.569-9.372 33.942 0L256 222.059l151.029-151.03c9.373-9.372 24.569-9.372 33.942 0 9.372 9.373 9.372 24.569 0 33.942L289.941 256l151.03 151.029c9.372 9.373 9.372 24.569 0 33.942-9.373 9.372-24.569 9.372-33.942 0L256 289.941l-151.029 151.03c-9.373 9.372-24.569 9.372-33.942 0-9.372-9.373-9.372-24.569 0-33.942L222.059 256 71.029 104.971c-9.372-9.373-9.372-24.569 0-33.942z"></path></svg></span></a></li>
+</ul></div>			</div>
+		</nav>
+					</div>
+		</header>
+		
+	<div class="site grid-container container hfeed grid-parent" id="page">
+				<div class="site-content" id="content">
+			
+	<div class="content-area grid-parent mobile-grid-100 grid-75 tablet-grid-75" id="primary">
+		<main class="site-main" id="main">
+			
+<article id="post-812" class="post-812 post type-post status-publish format-standard hentry category-csharp tag-assemblyversion tag-csproj tag-datetime tag-datetime-utcnow tag-texttemplating tag-visual-studio" itemtype="https://schema.org/CreativeWork" itemscope>
+	<div class="inside-article">
+					<header class="entry-header" aria-label="Content">
+				<h1 class="entry-title" itemprop="headline">Auto-increment build numbers in Visual Studio</h1>		<div class="entry-meta">
+			<span class="posted-on"><time class="updated" datetime="2025-01-25T22:55:40-05:00" itemprop="dateModified">01/25/2025</time><time class="entry-date published" datetime="2020-03-15T13:07:14-04:00" itemprop="datePublished">03/15/2020</time></span> <span class="byline">by <span class="author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope><a class="url fn n" href="/about/" title="Get to know more about Mak" rel="author" itemprop="url"><span class="author-name" itemprop="name">Mak</span></a></span></span> 		</div>
+					</header>
+			
+		<div class="entry-content" itemprop="text">
+			
+<p>You need to auto-increment your build numbers in order to easily tell which code you&#8217;re working with. </p>
+
+
+
+<p>In this article I&#8217;ll explain how to auto-increment your build numbers in Visual Studio. I&#8217;ll be using text templating to generate the Assembly Version.</p>
+
+
+
+<h2 class="wp-block-heading">1 &#8211; Choose a versioning scheme</h2>
+
+
+
+<p>I&#8217;m going to be using the version scheme: &lt;Major Version&gt;.&lt;Minor Version&gt;.&lt;Days Since Project Started&gt;.&lt;Minutes Since Midnight&gt;. You should use whatever makes sense for you. </p>
+
+
+
+<p>The one rule you must adhere to is the numbers must be &lt;= 65534 (because they are 16-bit). If you generate a number greater than 65534, you&#8217;ll get a build error:</p>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-1" data-shcb-language-name="plaintext" data-shcb-language-slug="plaintext"><span><code class="hljs language-plaintext shcb-wrap-lines">CS7034  The specified version string does not conform to the required format - major&#91;.minor&#91;.build&#91;.revision]]] </code></span><small class="shcb-language" id="shcb-language-1"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">plaintext</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">plaintext</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<p>There are 86400 seconds per day and 1440 minutes per day. This is why I chose <em>Minutes Since Midnight</em> instead of <em>Seconds Since Midnight</em>. Since 86400 &gt; the limit of 65534, using seconds would sometimes result in the build error shown above. By using minutes, this cannot happen.</p>
+
+
+
+<h2 class="wp-block-heading">2 &#8211; Comment out the assembly version properties</h2>
+
+
+
+<p>Open AssemblyInfo.cs and comment out AssemblyVersion and AssemblyFileVersion.</p>
+
+
+
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="899" height="325" src="/wp-content/uploads/2020/03/image-9.png" alt="Visual Studio - Selecting the AssemblyInfo.cs file in the project" class="wp-image-830" srcset="/wp-content/uploads/2020/03/image-9.png 899w, /wp-content/uploads/2020/03/image-9-300x108.png 300w, /wp-content/uploads/2020/03/image-9-768x278.png 768w" sizes="(max-width: 899px) 100vw, 899px"></figure>
+
+
+
+<p><em>Note: This step doesn&#8217;t apply to .NET Core projects, unless you added an AssemblyInfo.cs file manually. </em></p>
+
+
+
+<h2 class="wp-block-heading">3 &#8211; Add a Text Template file</h2>
+
+
+
+<p>A Text Template is used to generate code. We&#8217;ll be using this to generate the assembly version.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="948" height="652" src="/wp-content/uploads/2020/03/image-7.png" alt="Visual Studio - Adding a TextTemplate item called VersionAutoIncrementer.tt" class="wp-image-817" srcset="/wp-content/uploads/2020/03/image-7.png 948w, /wp-content/uploads/2020/03/image-7-300x206.png 300w, /wp-content/uploads/2020/03/image-7-768x528.png 768w" sizes="(max-width: 948px) 100vw, 948px"></figure>
+
+
+
+<p>After you add this file, run it to generate the initial VersionAutoIncrement.cs file:</p>
+
+
+
+<ul class="wp-block-list">
+<li>In .NET Framework projects, it runs automatically when you add it.</li>
+
+
+
+<li>In .NET Core projects, hit Ctrl-S to run it.</li>
+</ul>
+
+
+
+<p>When this runs, you&#8217;ll get a warning prompt. Since you&#8217;re the one adding this file, you can check the box and click OK.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="534" height="195" src="/wp-content/uploads/2020/03/image-8.png" alt="Visual Studio prompt warning you about running a text template file" class="wp-image-818" srcset="/wp-content/uploads/2020/03/image-8.png 534w, /wp-content/uploads/2020/03/image-8-300x110.png 300w" sizes="(max-width: 534px) 100vw, 534px"></figure>
+
+
+
+<p><em>Note: If you don&#8217;t run it initially in a .NET Core project, the first Build seems to ignore the generated .cs file and it will put the assembly version as 0.0.0.0. Thanks to commenter krs for pointing this out. </em></p>
+
+
+
+<h2 class="wp-block-heading">4 &#8211; Update the Text Template to generate the AssemblyVersion property</h2>
+
+
+
+<p>There&#8217;s two parts to the text template:</p>
+
+
+
+<ol class="wp-block-list">
+<li>Specifying the template using placeholder variables.</li>
+
+
+
+<li>Populating the placeholder variables.</li>
+</ol>
+
+
+
+<p>In this example, it&#8217;s <a href="/csharp-get-the-current-date-and-time/" data-type="post" data-id="14117">getting the current date/time</a>, making calculations with it, and then sticking the calculations in the version string.</p>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-2" data-shcb-language-name="C#" data-shcb-language-slug="cs"><span><code class="hljs language-cs shcb-code-table shcb-line-numbers shcb-wrap-lines"><span class="shcb-loc"><span>&lt;<span class="hljs-meta">#@ template debug="false" hostspecific="false" language="C#" #&gt;</span>
+</span></span><span class="shcb-loc"><span>&lt;<span class="hljs-meta">#@ output extension=".cs" #&gt;</span>
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span><span class="hljs-keyword">using</span> System.Reflection;
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>&#91;<span class="hljs-meta">assembly: AssemblyVersion(<span class="hljs-meta-string">"&lt;#= this.Major #&gt;.&lt;#= this.Minor #&gt;.&lt;#= this.DaysSinceProjectStarted #&gt;.&lt;#= this.MinutesSinceMidnight  #&gt;"</span>)</span>]
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>&lt;<span class="hljs-meta">#+</span>
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span> <span class="hljs-keyword">int</span> Major = <span class="hljs-number">1</span>;
+</span></span><span class="shcb-loc"><span> <span class="hljs-keyword">int</span> Minor = <span class="hljs-number">0</span>;
+</span></span><span class="shcb-loc"><span> 
+</span></span><span class="shcb-loc"><span> <span class="hljs-keyword">static</span> DateTime ProjectStartedDate = <span class="hljs-keyword">new</span> DateTime(year: <span class="hljs-number">2020</span>, month: <span class="hljs-number">3</span>, day: <span class="hljs-number">12</span>);
+</span></span><span class="shcb-loc"><span> <span class="hljs-keyword">int</span> DaysSinceProjectStarted = (<span class="hljs-keyword">int</span>)((DateTime.UtcNow - ProjectStartedDate).TotalDays);
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span> <span class="hljs-keyword">int</span> MinutesSinceMidnight = (<span class="hljs-keyword">int</span>)DateTime.UtcNow.TimeOfDay.TotalMinutes;
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span><span class="hljs-meta">#&gt;</span>
+</span></span></code></span><small class="shcb-language" id="shcb-language-2"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">C#</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">cs</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<h2 class="wp-block-heading">5 &#8211; Update .csproj to run the text template every time it builds</h2>
+
+
+
+<p>You have to add a few a few properties to the .csproj file (or to a <a href="/how-to-use-the-same-settings-in-multiple-projects-in-visual-studio/" data-type="post" data-id="14957">props file</a>) to make it run the transform every time it builds. Check the appropriate section below based on if you&#8217;re using .NET Framework or .NET Core.</p>
+
+
+
+<h3 class="wp-block-heading">Updating the .csproj in a .NET Framework project</h3>
+
+
+
+<ol class="wp-block-list">
+<li>Edit your .csproj in Notepad.</li>
+
+
+
+<li>Make two changes:
+<ul class="wp-block-list">
+<li>Import Microsoft.TextTempatings.targets.</li>
+
+
+
+<li>Add the TransformOnBuild, OverwriteReadOnlyOutputFiles, and TransformOutOfDateOnly properties to each build configuration.</li>
+</ul>
+</li>
+</ol>
+
+
+
+<p>The .csproj below shows these highlighted changes:</p>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-3" data-shcb-language-name="HTML, XML" data-shcb-language-slug="xml"><span><code class="hljs language-xml shcb-code-table shcb-line-numbers shcb-wrap-lines"><span class="shcb-loc"><span><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+</span></span><span class="shcb-loc"><span><span class="hljs-tag">&lt;<span class="hljs-name">Project</span> <span class="hljs-attr">ToolsVersion</span>=<span class="hljs-string">"15.0"</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://schemas.microsoft.com/developer/msbuild/2003"</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">Import</span> <span class="hljs-attr">Project</span>=<span class="hljs-string">"$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"</span> <span class="hljs-attr">Condition</span>=<span class="hljs-string">"Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"</span> /&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">PropertyGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">Configuration</span> <span class="hljs-attr">Condition</span>=<span class="hljs-string">" '$(Configuration)' == '' "</span>&gt;</span>Debug<span class="hljs-tag">&lt;/<span class="hljs-name">Configuration</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">Platform</span> <span class="hljs-attr">Condition</span>=<span class="hljs-string">" '$(Platform)' == '' "</span>&gt;</span>AnyCPU<span class="hljs-tag">&lt;/<span class="hljs-name">Platform</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">ProjectGuid</span>&gt;</span>{221097A0-A3F4-45CC-A6C0-B13455C6EAFE}<span class="hljs-tag">&lt;/<span class="hljs-name">ProjectGuid</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">OutputType</span>&gt;</span>Library<span class="hljs-tag">&lt;/<span class="hljs-name">OutputType</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">AppDesignerFolder</span>&gt;</span>Properties<span class="hljs-tag">&lt;/<span class="hljs-name">AppDesignerFolder</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">RootNamespace</span>&gt;</span>AutoIncrementingBuild<span class="hljs-tag">&lt;/<span class="hljs-name">RootNamespace</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">AssemblyName</span>&gt;</span>AutoIncrementingBuild<span class="hljs-tag">&lt;/<span class="hljs-name">AssemblyName</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">TargetFrameworkVersion</span>&gt;</span>v4.7.2<span class="hljs-tag">&lt;/<span class="hljs-name">TargetFrameworkVersion</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">FileAlignment</span>&gt;</span>512<span class="hljs-tag">&lt;/<span class="hljs-name">FileAlignment</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">Deterministic</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">Deterministic</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">PropertyGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">PropertyGroup</span> <span class="hljs-attr">Condition</span>=<span class="hljs-string">" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' "</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">DebugSymbols</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">DebugSymbols</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">DebugType</span>&gt;</span>full<span class="hljs-tag">&lt;/<span class="hljs-name">DebugType</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">Optimize</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">Optimize</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">OutputPath</span>&gt;</span>bin\Debug\<span class="hljs-tag">&lt;/<span class="hljs-name">OutputPath</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">DefineConstants</span>&gt;</span>DEBUG;TRACE<span class="hljs-tag">&lt;/<span class="hljs-name">DefineConstants</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">ErrorReport</span>&gt;</span>prompt<span class="hljs-tag">&lt;/<span class="hljs-name">ErrorReport</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">WarningLevel</span>&gt;</span>4<span class="hljs-tag">&lt;/<span class="hljs-name">WarningLevel</span>&gt;</span>
+</span></span><mark class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">TransformOnBuild</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">TransformOnBuild</span>&gt;</span>
+</span></mark><mark class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">OverwriteReadOnlyOutputFiles</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">OverwriteReadOnlyOutputFiles</span>&gt;</span>
+</span></mark><mark class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">TransformOutOfDateOnly</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">TransformOutOfDateOnly</span>&gt;</span>
+</span></mark><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">PropertyGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">PropertyGroup</span> <span class="hljs-attr">Condition</span>=<span class="hljs-string">" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' "</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">DebugType</span>&gt;</span>pdbonly<span class="hljs-tag">&lt;/<span class="hljs-name">DebugType</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">Optimize</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">Optimize</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">OutputPath</span>&gt;</span>bin\Release\<span class="hljs-tag">&lt;/<span class="hljs-name">OutputPath</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">DefineConstants</span>&gt;</span>TRACE<span class="hljs-tag">&lt;/<span class="hljs-name">DefineConstants</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">ErrorReport</span>&gt;</span>prompt<span class="hljs-tag">&lt;/<span class="hljs-name">ErrorReport</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">WarningLevel</span>&gt;</span>4<span class="hljs-tag">&lt;/<span class="hljs-name">WarningLevel</span>&gt;</span>
+</span></span><mark class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">TransformOnBuild</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">TransformOnBuild</span>&gt;</span>
+</span></mark><mark class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">OverwriteReadOnlyOutputFiles</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">OverwriteReadOnlyOutputFiles</span>&gt;</span>
+</span></mark><mark class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">TransformOutOfDateOnly</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">TransformOutOfDateOnly</span>&gt;</span>
+</span></mark><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">PropertyGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">Reference</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"System"</span> /&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">Reference</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"System.Core"</span> /&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">Reference</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"System.Xml.Linq"</span> /&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">Reference</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"System.Data.DataSetExtensions"</span> /&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">Reference</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"Microsoft.CSharp"</span> /&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">Reference</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"System.Data"</span> /&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">Reference</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"System.Net.Http"</span> /&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">Reference</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"System.Xml"</span> /&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">Compile</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"Properties\AssemblyInfo.cs"</span> /&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">Compile</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"VersionAutoIncrement.cs"</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>      <span class="hljs-tag">&lt;<span class="hljs-name">AutoGen</span>&gt;</span>True<span class="hljs-tag">&lt;/<span class="hljs-name">AutoGen</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>      <span class="hljs-tag">&lt;<span class="hljs-name">DesignTime</span>&gt;</span>True<span class="hljs-tag">&lt;/<span class="hljs-name">DesignTime</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>      <span class="hljs-tag">&lt;<span class="hljs-name">DependentUpon</span>&gt;</span>VersionAutoIncrement.tt<span class="hljs-tag">&lt;/<span class="hljs-name">DependentUpon</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;/<span class="hljs-name">Compile</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">Content</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"VersionAutoIncrement.tt"</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>      <span class="hljs-tag">&lt;<span class="hljs-name">Generator</span>&gt;</span>TextTemplatingFileGenerator<span class="hljs-tag">&lt;/<span class="hljs-name">Generator</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>      <span class="hljs-tag">&lt;<span class="hljs-name">LastGenOutput</span>&gt;</span>VersionAutoIncrement.cs<span class="hljs-tag">&lt;/<span class="hljs-name">LastGenOutput</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;/<span class="hljs-name">Content</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">Service</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"{508349B6-6B84-4DF5-91F0-309BEEBAD82D}"</span> /&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">Import</span> <span class="hljs-attr">Project</span>=<span class="hljs-string">"$(MSBuildToolsPath)\Microsoft.CSharp.targets"</span> /&gt;</span>
+</span></span><mark class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">Import</span> <span class="hljs-attr">Project</span>=<span class="hljs-string">"$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v16.0\TextTemplating\Microsoft.TextTemplating.targets"</span> /&gt;</span>
+</span></mark><span class="shcb-loc"><span><span class="hljs-tag">&lt;/<span class="hljs-name">Project</span>&gt;</span>
+</span></span></code></span><small class="shcb-language" id="shcb-language-3"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">HTML, XML</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">xml</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<p><em>Note: This is specifically adding the VS2019 path (v16.0). As a commenter pointed out, you can use the variable $(VisualStudioVersion) in the path if you want.</em></p>
+
+
+
+<h3 class="wp-block-heading">Updating the .csproj in a .NET Core project</h3>
+
+
+
+<ol class="wp-block-list">
+<li>Click on the project so it opens the .csproj file for editing.</li>
+
+
+
+<li>Add the following properties
+<ol class="wp-block-list">
+<li>Import Microsoft.TextTempatings.targets.</li>
+
+
+
+<li>Disable GenerateAssemblyInfo.</li>
+
+
+
+<li>Add the TransformOnBuild, OverwriteReadOnlyOutputFiles, and TransformOutOfDateOnly.</li>
+</ol>
+</li>
+</ol>
+
+
+<pre class="wp-block-code" aria-describedby="shcb-language-4" data-shcb-language-name="HTML, XML" data-shcb-language-slug="xml"><span><code class="hljs language-xml shcb-code-table shcb-line-numbers shcb-wrap-lines"><span class="shcb-loc"><span><span class="hljs-tag">&lt;<span class="hljs-name">Project</span> <span class="hljs-attr">Sdk</span>=<span class="hljs-string">"Microsoft.NET.Sdk"</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">PropertyGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">TargetFramework</span>&gt;</span>netcoreapp3.1<span class="hljs-tag">&lt;/<span class="hljs-name">TargetFramework</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">PropertyGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  
+</span></span><mark class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">Import</span> <span class="hljs-attr">Project</span>=<span class="hljs-string">"$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v16.0\TextTemplating\Microsoft.TextTemplating.targets"</span> /&gt;</span>
+</span></mark><mark class="shcb-loc"><span>
+</span></mark><mark class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">PropertyGroup</span>&gt;</span>
+</span></mark><mark class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">GenerateAssemblyInfo</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">GenerateAssemblyInfo</span>&gt;</span>
+</span></mark><mark class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">TransformOnBuild</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">TransformOnBuild</span>&gt;</span>
+</span></mark><mark class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">OverwriteReadOnlyOutputFiles</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">OverwriteReadOnlyOutputFiles</span>&gt;</span>
+</span></mark><mark class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">TransformOutOfDateOnly</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">TransformOutOfDateOnly</span>&gt;</span>
+</span></mark><mark class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">PropertyGroup</span>&gt;</span>
+</span></mark><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">None</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"VersionAutoIncrement.cs"</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>      <span class="hljs-tag">&lt;<span class="hljs-name">DesignTime</span>&gt;</span>True<span class="hljs-tag">&lt;/<span class="hljs-name">DesignTime</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>      <span class="hljs-tag">&lt;<span class="hljs-name">AutoGen</span>&gt;</span>True<span class="hljs-tag">&lt;/<span class="hljs-name">AutoGen</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>      <span class="hljs-tag">&lt;<span class="hljs-name">DependentUpon</span>&gt;</span>VersionAutoIncrement.tt<span class="hljs-tag">&lt;/<span class="hljs-name">DependentUpon</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;/<span class="hljs-name">None</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">None</span> <span class="hljs-attr">Update</span>=<span class="hljs-string">"VersionAutoIncrement.tt"</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>      <span class="hljs-tag">&lt;<span class="hljs-name">Generator</span>&gt;</span>TextTemplatingFileGenerator<span class="hljs-tag">&lt;/<span class="hljs-name">Generator</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>      <span class="hljs-tag">&lt;<span class="hljs-name">LastGenOutput</span>&gt;</span>VersionAutoIncrement.cs<span class="hljs-tag">&lt;/<span class="hljs-name">LastGenOutput</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;/<span class="hljs-name">None</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>    <span class="hljs-tag">&lt;<span class="hljs-name">Service</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"{508349b6-6b84-4df5-91f0-309beebad82d}"</span> /&gt;</span>
+</span></span><span class="shcb-loc"><span>  <span class="hljs-tag">&lt;/<span class="hljs-name">ItemGroup</span>&gt;</span>
+</span></span><span class="shcb-loc"><span><span class="hljs-tag">&lt;/<span class="hljs-name">Project</span>&gt;</span>
+</span></span><span class="shcb-loc"><span>
+</span></span></code></span><small class="shcb-language" id="shcb-language-4"><span class="shcb-language__label">Code language:</span> <span class="shcb-language__name">HTML, XML</span> <span class="shcb-language__paren">(</span><span class="shcb-language__slug">xml</span><span class="shcb-language__paren">)</span></small></pre>
+
+
+<p>If you don&#8217;t disable GenerateAssemblyInfo, then you&#8217;ll get a <a href="/csharp-duplicate-assemblyversion-attribute/" data-type="post" data-id="3054">compile time error saying there&#8217;s a duplicate AssemblyVersion</a>.</p>
+
+
+
+<p><em>Note: This is specifically adding the VS2019 path (v16.0). As a commenter pointed out, you can use the variable $(VisualStudioVersion) in the path if you want.</em></p>
+
+
+
+<h2 class="wp-block-heading">6 &#8211; Build the project</h2>
+
+
+
+<p>When you build the project it&#8217;ll execute the text template. This generates a source file with the AssemblyVersion property.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="642" height="187" src="/wp-content/uploads/2020/03/image-12.png" alt="Visual Studio - Assembly version source file generated by the text template" class="wp-image-833" srcset="/wp-content/uploads/2020/03/image-12.png 642w, /wp-content/uploads/2020/03/image-12-300x87.png 300w" sizes="auto, (max-width: 642px) 100vw, 642px"></figure>
+<div class="related_content" style="clear:both;">
+<h3 class="widget-title">Related Articles</h3>
+									<ul class="related-posts">
+										<li class="related-post">
+											<a href="/dotnet-copy-files-to-a-specified-directory-after-the-build/">.NET &#8211; Copy files to a specified directory after the build</a>
+										</li>
+										<li class="related-post">
+											<a href="/how-to-change-the-default-directory-for-new-projects-in-visual-studio/">How to change the default project location in Visual Studio</a>
+										</li>
+										<li class="related-post">
+											<a href="/visual-studio-share-a-file-between-multiple-projects/">Visual Studio &#8211; Share a file between multiple projects</a>
+										</li>
+										<li class="related-post">
+											<a href="/how-to-set-multiple-startup-projects-in-visual-studio/">How to set multiple startup projects in Visual Studio</a>
+										</li>
+										<li class="related-post">
+											<a href="/visual-studio-how-to-use-conditional-breakpoints/">Visual Studio &#8211; How to use conditional breakpoints</a>
+										</li>
+									</ul>
+									<div style="clear:both;"></div>
+</div>
+							</div>
+
+				<footer class="entry-meta" aria-label="Entry meta">
+			<span class="cat-links"><span class="gp-icon icon-categories"><svg viewbox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M0 112c0-26.51 21.49-48 48-48h110.014a48 48 0 0143.592 27.907l12.349 26.791A16 16 0 00228.486 128H464c26.51 0 48 21.49 48 48v224c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V112z"></path></svg></span><span class="screen-reader-text">Categories </span><a href="/category/csharp/" rel="category tag">C#</a></span> <span class="tags-links"><span class="gp-icon icon-tags"><svg viewbox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M20 39.5c-8.836 0-16 7.163-16 16v176c0 4.243 1.686 8.313 4.687 11.314l224 224c6.248 6.248 16.378 6.248 22.626 0l176-176c6.244-6.244 6.25-16.364.013-22.615l-223.5-224A15.999 15.999 0 00196.5 39.5H20zm56 96c0-13.255 10.745-24 24-24s24 10.745 24 24-10.745 24-24 24-24-10.745-24-24z"></path><path d="M259.515 43.015c4.686-4.687 12.284-4.687 16.97 0l228 228c4.686 4.686 4.686 12.284 0 16.97l-180 180c-4.686 4.687-12.284 4.687-16.97 0-4.686-4.686-4.686-12.284 0-16.97L479.029 279.5 259.515 59.985c-4.686-4.686-4.686-12.284 0-16.97z"></path></svg></span><span class="screen-reader-text">Tags </span><a href="/tag/assemblyversion/" rel="tag">assemblyversion</a>, <a href="/tag/csproj/" rel="tag">csproj</a>, <a href="/tag/datetime/" rel="tag">datetime</a>, <a href="/tag/datetime-utcnow/" rel="tag">datetime-utcnow</a>, <a href="/tag/texttemplating/" rel="tag">texttemplating</a>, <a href="/tag/visual-studio/" rel="tag">visual studio</a></span> 		<nav id="nav-below" class="post-navigation" aria-label="Posts">
+			<div class="nav-previous">
+<span class="gp-icon icon-arrow-left"><svg viewbox="0 0 192 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M178.425 138.212c0 2.265-1.133 4.813-2.832 6.512L64.276 256.001l111.317 111.277c1.7 1.7 2.832 4.247 2.832 6.513 0 2.265-1.133 4.813-2.832 6.512L161.43 394.46c-1.7 1.7-4.249 2.832-6.514 2.832-2.266 0-4.816-1.133-6.515-2.832L16.407 262.514c-1.699-1.7-2.832-4.248-2.832-6.513 0-2.265 1.133-4.813 2.832-6.512l131.994-131.947c1.7-1.699 4.249-2.831 6.515-2.831 2.265 0 4.815 1.132 6.514 2.831l14.163 14.157c1.7 1.7 2.832 3.965 2.832 6.513z" fill-rule="nonzero"></path></svg></span><span class="prev"><a href="/starting-the-visual-studio-debugger-when-attach-to-process-doesnt-work/" rel="prev">Starting the Visual Studio debugger when Attach to Process doesn&#8217;t work</a></span>
+</div>
+<div class="nav-next">
+<span class="gp-icon icon-arrow-right"><svg viewbox="0 0 192 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M178.425 256.001c0 2.266-1.133 4.815-2.832 6.515L43.599 394.509c-1.7 1.7-4.248 2.833-6.514 2.833s-4.816-1.133-6.515-2.833l-14.163-14.162c-1.699-1.7-2.832-3.966-2.832-6.515 0-2.266 1.133-4.815 2.832-6.515l111.317-111.316L16.407 144.685c-1.699-1.7-2.832-4.249-2.832-6.515s1.133-4.815 2.832-6.515l14.163-14.162c1.7-1.7 4.249-2.833 6.515-2.833s4.815 1.133 6.514 2.833l131.994 131.993c1.7 1.7 2.832 4.249 2.832 6.515z" fill-rule="nonzero"></path></svg></span><span class="next"><a href="/hackerrank-sock-merchant-solution/" rel="next">HackerRank &#8211; Sock Merchant solution</a></span>
+</div>		</nav>
+				</footer>
+			</div>
+</article>
+
+			<div class="comments-area">
+				<div id="comments">
+
+	<h3 class="comments-title">51 thoughts on &ldquo;Auto-increment build numbers in Visual Studio&rdquo;</h3>
+		<ol class="comment-list">
+			
+		<li id="comment-2806" class="comment even thread-even depth-1 parent">
+			<article class="comment-body" id="div-comment-2806" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Bjorn</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-2806">									<time datetime="2020-08-08T11:44:56-04:00" itemprop="datePublished">
+										08/08/2020 at 11:44 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>To me, this is totally not working!<br>
+Yes, the VersionAutoIncrementer.cs file is created, but it is stuck in its original version number.<br>
+E.g. stuck in:</p>
+<p>using System.Reflection;<br>
+[assembly: AssemblyVersion(&#8220;8.0.220.927&#8221;)]</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=2806#respond" data-commentid="2806" data-postid="812" data-belowelement="div-comment-2806" data-respondelement="respond" data-replyto="Reply to Bjorn" aria-label="Reply to Bjorn">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-2825" class="comment byuser comment-author-admin odd alt depth-2">
+			<article class="comment-body" id="div-comment-2825" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Mak</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-2825">									<time datetime="2020-08-08T15:52:00-04:00" itemprop="datePublished">
+										08/08/2020 at 3:52 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Bjorn,</p>
+<p>Good catch. I updated the page to include instructions for how to update your .csproj file to make it run the text templating transform on every build.</p>
+<p>Please take a look at the step I added to the page &#8211; <strong>5 – Update .csproj to run the text template every time it builds. </strong></p>
+<p>Let me know if this helps.</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=2825#respond" data-commentid="2825" data-postid="812" data-belowelement="div-comment-2825" data-respondelement="respond" data-replyto="Reply to Mak" aria-label="Reply to Mak">Reply</a></span>				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+
+		<li id="comment-6661" class="comment even thread-odd thread-alt depth-1 parent">
+			<article class="comment-body" id="div-comment-6661" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Nikhil Kumar</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-6661">									<time datetime="2020-11-18T07:36:12-05:00" itemprop="datePublished">
+										11/18/2020 at 7:36 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>I have created the template for shared assembly info.tt its updating version number only once for the first build or rebuild.<br>
+If I change some code and try to build the whole project it&#8217;s not reflecting the version number.</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=6661#respond" data-commentid="6661" data-postid="812" data-belowelement="div-comment-6661" data-respondelement="respond" data-replyto="Reply to Nikhil Kumar" aria-label="Reply to Nikhil Kumar">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-6662" class="comment byuser comment-author-mak bypostauthor odd alt depth-2 parent">
+			<article class="comment-body" id="div-comment-6662" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-6662">									<time datetime="2020-11-18T08:11:45-05:00" itemprop="datePublished">
+										11/18/2020 at 8:11 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Nikhil,</p>
+<p>To confirm, did you do step 5 &#8211; Update .csproj to run the text template every time it builds?</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=6662#respond" data-commentid="6662" data-postid="812" data-belowelement="div-comment-6662" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-6663" class="comment even depth-3 parent">
+			<article class="comment-body" id="div-comment-6663" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Nikhil Kumar</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-6663">									<time datetime="2020-11-18T08:30:03-05:00" itemprop="datePublished">
+										11/18/2020 at 8:30 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Mak,<br>
+Yes, I did. if I do changes related to that project then the revision number getting updated.if anything other than that project it&#8217;s not updating.</p>
+<p>Below is my code in SharedAssembyInfo.tt</p>
+<p>using System.Reflection;</p>
+<p>[assembly: AssemblyConfiguration(&#8220;&#8221;)]<br>
+[assembly: AssemblyCompany(&#8220;GRIDSMART Technologies, Inc.&#8221;)]<br>
+[assembly: AssemblyCopyright(&#8220;Copyright © GTI 2019&#8221;)]<br>
+[assembly: AssemblyTrademark(&#8220;&#8221;)]<br>
+[assembly: AssemblyCulture(&#8220;&#8221;)]<br>
+[assembly: AssemblyVersion(&#8220;&#8230;&#8221;)]</p>
+<p> And followed all the steps included the below line in .csproj</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=6663#respond" data-commentid="6663" data-postid="812" data-belowelement="div-comment-6663" data-respondelement="respond" data-replyto="Reply to Nikhil Kumar" aria-label="Reply to Nikhil Kumar">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-6664" class="comment byuser comment-author-mak bypostauthor odd alt depth-4">
+			<article class="comment-body" id="div-comment-6664" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-6664">									<time datetime="2020-11-18T08:45:53-05:00" itemprop="datePublished">
+										11/18/2020 at 8:45 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>The text template only runs if the project is built. If there&#8217;s no changes in the project, then clicking &#8220;Build&#8221; in Visual Studio won&#8217;t build that project. Therefore it won&#8217;t run the text template. </p>
+<p>I&#8217;m not aware of a way to make &#8220;Build&#8221; build all projects, even if there are no changes.</p>
+<p>However, since it sounds like you want to run the text template every time, regardless of changes to the project, it really sounds like you want to use &#8220;Rebuild&#8221; instead of &#8220;Build&#8221; every time. That&#8217;s the simplest solution. There may be other ways to force VS to build your unchanged project, but &#8220;Rebuild&#8221; definitely makes it do that.</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=6664#respond" data-commentid="6664" data-postid="812" data-belowelement="div-comment-6664" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+
+		<li id="comment-8217" class="comment even thread-even depth-1 parent">
+			<article class="comment-body" id="div-comment-8217" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Chris Navarro</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-8217">									<time datetime="2021-02-17T20:38:55-05:00" itemprop="datePublished">
+										02/17/2021 at 8:38 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>when i try to add a text template all i see is the option for text file. what am i missing?</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=8217#respond" data-commentid="8217" data-postid="812" data-belowelement="div-comment-8217" data-respondelement="respond" data-replyto="Reply to Chris Navarro" aria-label="Reply to Chris Navarro">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-8228" class="comment byuser comment-author-mak bypostauthor odd alt depth-2">
+			<article class="comment-body" id="div-comment-8228" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-8228">									<time datetime="2021-02-18T07:23:23-05:00" itemprop="datePublished">
+										02/18/2021 at 7:23 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Chris,</p>
+<p>That&#8217;s unusual that the Text Template is missing. What version of Visual Studio are you using? Which .NET version? and which language (C# or VB)?</p>
+<p>Do you have the Text Template Transformation component installed? </p>
+<p>Update (2021-3-27): I just ran into this when using a specific project type. You can just add the Text File, change the extension to .tt, and paste in the text templating code (use the code shown in this article as a starting point). VS updates the .csproj the same way as if you had added a Text Template new item. I think this is a bug in VS, where it&#8217;s not showing the Text Template item as an option, even though it&#8217;s installed.</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=8228#respond" data-commentid="8228" data-postid="812" data-belowelement="div-comment-8228" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+
+		<li id="comment-8881" class="comment even thread-odd thread-alt depth-1 parent">
+			<article class="comment-body" id="div-comment-8881" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Sid</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-8881">									<time datetime="2021-03-26T17:15:09-04:00" itemprop="datePublished">
+										03/26/2021 at 5:15 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Mak, </p>
+<p>Do you have a sample for Blazor .net core. Auto increment?</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=8881#respond" data-commentid="8881" data-postid="812" data-belowelement="div-comment-8881" data-respondelement="respond" data-replyto="Reply to Sid" aria-label="Reply to Sid">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-8926" class="comment byuser comment-author-mak bypostauthor odd alt depth-2">
+			<article class="comment-body" id="div-comment-8926" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-8926">									<time datetime="2021-03-27T09:09:42-04:00" itemprop="datePublished">
+										03/27/2021 at 9:09 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Sid,</p>
+<p>Thanks for your question. I realized I didn&#8217;t have a section showing how to update a .NET Core .csproj. So I just added this section: <strong>Updating the .csproj in a .NET Core project</strong></p>
+<p>Regarding your question about Blazor .NET Core specifically, the instructions in the article (including the new .NET Core section) work fine. I just tried it out by creating a new Blazor app targeting .NET Core. I added the VersionAutoIncrement.tt and .csproj updates to all three projects (Shared/Client/Server). Then rebuilt the solution and it ran all the transforms and updated all of their assembly versions. Note: I haven&#8217;t used Blazor before, so I&#8217;m not sure if updating the version in all three projects would matter.</p>
+<p>A few things:<br>
+1. When I tried to add a new Text Template in the Client/Server projects, &#8220;Text Template&#8221; was missing from this list. I just picked a Text File and changed the extension to .tt and put the text templating code (from this article) and it was fine. It must be a bug in VS causing it to not show Text Template in this list of new items.</p>
+<p>2. The text template runs for each project separately. In this article, it shows how to put the TotalMinutes as part of the version. This means if you are building multiple projects, it&#8217;s possible for the final assembly versions to be different between different assemblies built together.</p>
+<p>Please try it out and let me know how it goes.</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=8926#respond" data-commentid="8926" data-postid="812" data-belowelement="div-comment-8926" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+
+		<li id="comment-9951" class="comment even thread-even depth-1 parent">
+			<article class="comment-body" id="div-comment-9951" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Fabien</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-9951">									<time datetime="2021-05-13T04:37:00-04:00" itemprop="datePublished">
+										05/13/2021 at 4:37 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Mak,</p>
+<p>Thanks. This is exactly what i was looking for ! It works well with .Net 5 (windows form app)<br>
+I have replaced the date with an increment counter at each build<br>
+So I manually manage major, minor, revision and build is automatically increase by 1</p>
+<p>Bye</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=9951#respond" data-commentid="9951" data-postid="812" data-belowelement="div-comment-9951" data-respondelement="respond" data-replyto="Reply to Fabien" aria-label="Reply to Fabien">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-9953" class="comment byuser comment-author-mak bypostauthor odd alt depth-2">
+			<article class="comment-body" id="div-comment-9953" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-9953">									<time datetime="2021-05-13T07:04:02-04:00" itemprop="datePublished">
+										05/13/2021 at 7:04 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>I&#8217;m glad to hear this helped you. Incrementing by 1 each build sounds like a good approach.</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=9953#respond" data-commentid="9953" data-postid="812" data-belowelement="div-comment-9953" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+
+		<li id="comment-10407" class="comment even thread-odd thread-alt depth-1 parent">
+			<article class="comment-body" id="div-comment-10407" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Chris P</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-10407">									<time datetime="2021-06-11T15:24:04-04:00" itemprop="datePublished">
+										06/11/2021 at 3:24 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Is there a way to reference the generated version number in an HTML page (i.e. layout page) to display the version number? Since I&#8217;ve never worked with templates or generated files, I can&#8217;t figure out the proper way to reference the generated cs file to access the assembly parameter.</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=10407#respond" data-commentid="10407" data-postid="812" data-belowelement="div-comment-10407" data-respondelement="respond" data-replyto="Reply to Chris P" aria-label="Reply to Chris P">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-10410" class="comment byuser comment-author-mak bypostauthor odd alt depth-2 parent">
+			<article class="comment-body" id="div-comment-10410" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-10410">									<time datetime="2021-06-11T16:49:25-04:00" itemprop="datePublished">
+										06/11/2021 at 4:49 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Chris,</p>
+<p>The generated assembly version can be accessed programmatically at runtime by calling System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;</p>
+<p>What type of project are you referring to?</p>
+<p>I just created an ASP.NET MVC project (with the default controllers and views) and got it to display the generated assembly version by doing this:<br>
+1. In Controllers &gt; HomeController.Index() I put <code>ViewBag.Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;</code><br>
+2. In Views &gt; Home &gt; Index.cshtml, I put <code>&lt;p&gt;@ViewBag.Version&lt;/p&gt;</code><br>
+3. Launch the homepage. The version appears at the bottom.</p>
+<p>I hope this helps. If not, please let me know what type of project you are doing exactly.</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=10410#respond" data-commentid="10410" data-postid="812" data-belowelement="div-comment-10410" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-10482" class="comment even depth-3 parent">
+			<article class="comment-body" id="div-comment-10482" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Chris P</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-10482">									<time datetime="2021-06-14T14:44:33-04:00" itemprop="datePublished">
+										06/14/2021 at 2:44 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>It is a .NET MVC project.  It&#8217;s just passing 0.0.0.0 for me.  The actual version in the generated .cs file is working as intended, but it&#8217;s not being referenced properly for some reason.  AssemblyInfo lines are commented out. Template is created and version is being generated on build.  Is there a reference to the generated file that I&#8217;m not making somewhere?</p>
+<p>I&#8217;m referencing it directly in the Layout vs. sending it from the controller:</p>
+<p>Version: @System.Reflection.Assembly.GetExecutingAssembly().GetName().Version</p>
+<p>is returning</p>
+<p>Version: 0.0.0.0</p>
+<p>But in the generated version file I see: [assembly: AssemblyVersion(&#8220;1.0.693.1116&#8221;)]</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=10482#respond" data-commentid="10482" data-postid="812" data-belowelement="div-comment-10482" data-respondelement="respond" data-replyto="Reply to Chris P" aria-label="Reply to Chris P">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-10509" class="comment byuser comment-author-mak bypostauthor odd alt depth-4 parent">
+			<article class="comment-body" id="div-comment-10509" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-10509">									<time datetime="2021-06-15T09:43:02-04:00" itemprop="datePublished">
+										06/15/2021 at 9:43 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Try using GetEntryAssembly() instead of GetExecutingAssembly(), like this:<br>
+<code>&lt;p&gt;@System.Reflection.Assembly.GetEntryAssembly().GetName().Version&lt;/p&gt;</code></p>
+<p>When you call <code>@System.Reflection.Assembly.GetExecutingAssembly().GetName().Version</code> directly in the view (instead of populating ViewBag.Version from the controller), the executing assembly is YourAssembly.Views.dll instead of YourAssembly.dll. This is why it&#8217;s showing version 0.0.0.0 (the version of YourAssembly.Views.dll) instead of 1.0.693.1116 (the version of YourAssembly.dll).</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=10509#respond" data-commentid="10509" data-postid="812" data-belowelement="div-comment-10509" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-10528" class="comment even depth-5 parent">
+			<article class="comment-body" id="div-comment-10528" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Chris P</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-10528">									<time datetime="2021-06-16T10:14:10-04:00" itemprop="datePublished">
+										06/16/2021 at 10:14 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>This got me closer, but causes a null reference error due to an issue between managed/unmanaged code. It did lead me on the correct path to locate a solution. To get it working directly in the layout page I used:</p>
+<p>typeof([application-namespace].MvcApplication).Assembly.GetName().Version</p>
+<p>This is great work and thanks for all your help in getting this rolling.</p>
+				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+
+		<li id="comment-10529" class="comment byuser comment-author-mak bypostauthor odd alt depth-5">
+			<article class="comment-body" id="div-comment-10529" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-10529">									<time datetime="2021-06-16T11:29:21-04:00" itemprop="datePublished">
+										06/16/2021 at 11:29 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>I&#8217;m glad you were able to solve it! Thanks for sharing what worked for you &#8211; I&#8217;m sure it&#8217;ll help others who run into the same scenario.</p>
+				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+
+		<li id="comment-11433" class="comment even thread-even depth-1 parent">
+			<article class="comment-body" id="div-comment-11433" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">HASAN ANDIZ</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-11433">									<time datetime="2021-09-01T08:49:34-04:00" itemprop="datePublished">
+										09/01/2021 at 8:49 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hello,<br>
+What is the VB version of this code.<br>
+typeof([application-namespace].MvcApplication).Assembly.GetName().Version</p>
+<p>I get the NullReferenceException as well for a web application in visual studio 2019 in visual basic.</p>
+<p>I appreciate all the work you guys done and thank you for your help.</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=11433#respond" data-commentid="11433" data-postid="812" data-belowelement="div-comment-11433" data-respondelement="respond" data-replyto="Reply to HASAN ANDIZ" aria-label="Reply to HASAN ANDIZ">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-11434" class="comment byuser comment-author-mak bypostauthor odd alt depth-2">
+			<article class="comment-body" id="div-comment-11434" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-11434">									<time datetime="2021-09-01T11:00:28-04:00" itemprop="datePublished">
+										09/01/2021 at 11:00 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Hasan,</p>
+<p>I got this working in an ASP.NET Web App using VB.NET with the following:</p>
+<p><code>@(GetType(YourProjectNamespace.MvcApplication).Assembly.GetName().Version)</code></p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=11434#respond" data-commentid="11434" data-postid="812" data-belowelement="div-comment-11434" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+
+		<li id="comment-12278" class="comment even thread-odd thread-alt depth-1 parent">
+			<article class="comment-body" id="div-comment-12278" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Michele</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-12278">									<time datetime="2021-10-18T10:32:32-04:00" itemprop="datePublished">
+										10/18/2021 at 10:32 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Mak<br>
+Thank you for the great instructions, it worked exactly as you said. Do you know how I could reference and use the version created during the build in Wix toolset&#8217;s .wxs file?</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=12278#respond" data-commentid="12278" data-postid="812" data-belowelement="div-comment-12278" data-respondelement="respond" data-replyto="Reply to Michele" aria-label="Reply to Michele">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-12303" class="comment byuser comment-author-mak bypostauthor odd alt depth-2">
+			<article class="comment-body" id="div-comment-12303" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-12303">									<time datetime="2021-10-19T12:54:37-04:00" itemprop="datePublished">
+										10/19/2021 at 12:54 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Let&#8217;s say you&#8217;re auto-generating build numbers for a file called ASPNETVersion.dll. And you&#8217;re including this file in the WSX file with the following definition:</p>
+<p>&lt;File <strong>Id=&#8221;MyDLL&#8221;</strong> Name=&#8221;ASPNETVersion.dll&#8221; Source=&#8221;C:\Projects\ASPNETVersion.dll&#8221; /&gt;</p>
+<p>To set the installer version to this DLL&#8217;s file version, do this:</p>
+<p>&lt;Product Id=&#8221;*&#8221; Name=&#8221;Wix&#8221; Language=&#8221;1033&#8243; <strong>Version=&#8221;!(bind.fileVersion.MyDLL)&#8221;</strong> Manufacturer=&#8221;Test&#8221; UpgradeCode=&#8221;23efaa51-e3b8-46d6-85bb-888f84123ef6&#8243;&gt;</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=12303#respond" data-commentid="12303" data-postid="812" data-belowelement="div-comment-12303" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+
+		<li id="comment-12935" class="comment even thread-even depth-1 parent">
+			<article class="comment-body" id="div-comment-12935" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Peter</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-12935">									<time datetime="2021-11-26T07:01:25-05:00" itemprop="datePublished">
+										11/26/2021 at 7:01 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Mak<br>
+is it possible to include a prompt that asks &#8220;do you want to increment the build version?&#8221; and then based on the choice increments the assembly version or leaves it unchanged? I have a build configuration for which I sometimes need to autoincrement but at other times I want to leave the versions unchanged.</p>
+<p>Thanks!</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=12935#respond" data-commentid="12935" data-postid="812" data-belowelement="div-comment-12935" data-respondelement="respond" data-replyto="Reply to Peter" aria-label="Reply to Peter">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-13002" class="comment byuser comment-author-mak bypostauthor odd alt depth-2">
+			<article class="comment-body" id="div-comment-13002" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-13002">									<time datetime="2021-11-30T14:33:29-05:00" itemprop="datePublished">
+										11/30/2021 at 2:33 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Are there any conditions you can check instead of prompting the user? Let&#8217;s say you want to always auto-increment when doing a Release build. In that case, the simplest option is to make the transformation step conditional on the build configuration. To do that, in your .csproj file, move the TransformOnBuild property to its own PropertyGroup and add a condition based on the build configuration:</p>
+<p><code>&lt;PropertyGroup Condition=&quot;'$(Configuration)'=='Release'&quot;&gt;<br>
+	&lt;TransformOnBuild&gt;true&lt;/TransformOnBuild&gt;<br>
+&lt;/PropertyGroup&gt;</code></p>
+<p><em>Note: This makes all transformations conditional. So if you have more T4 templates than just the one for auto-incrementing, you may not want to do this.</em></p>
+<p>If there&#8217;s no conditions and it&#8217;s truly up to the user to decide each time, you may want to consider running the T4 template manually when needed instead of running it automatically with a prompt.</p>
+<p>(paraphrased from our email conversation about this)</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=13002#respond" data-commentid="13002" data-postid="812" data-belowelement="div-comment-13002" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+
+		<li id="comment-13894" class="comment even thread-odd thread-alt depth-1 parent">
+			<article class="comment-body" id="div-comment-13894" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Rob Byram</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-13894">									<time datetime="2021-12-28T16:44:31-05:00" itemprop="datePublished">
+										12/28/2021 at 4:44 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Thinking about doing this for a Xamarin project. I have a couple of questions, 1&#8230;do you think it would work for that type of project. 2&#8230;My ideal would be for this to auto increment when I am making changes and building locally, then after committing my changes and kicking off an azure pipeline I would prefer it not increment there. The reason I would want that is so when a QA and a PROD version are each built by the pipeline, they would have the same version number. Any thoughts on how that could work?</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=13894#respond" data-commentid="13894" data-postid="812" data-belowelement="div-comment-13894" data-respondelement="respond" data-replyto="Reply to Rob Byram" aria-label="Reply to Rob Byram">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-14025" class="comment byuser comment-author-mak bypostauthor odd alt depth-2">
+			<article class="comment-body" id="div-comment-14025" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-14025">									<time datetime="2022-01-03T13:56:09-05:00" itemprop="datePublished">
+										01/03/2022 at 1:56 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Rob,</p>
+<p>1. This works with Xamarin projects. I created a Xamarin project, followed the steps in this article, and then output the assembly version to a textbox. When running in the Android emulator, it showed the auto-generated version number in the textbox.<br>
+<code>var txtVersion = FindViewById&lt;Android.Widget.TextView&gt;(Resource.Id.appversion);<br>
+txtVersion.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();</code></p>
+<p>Note: This doesn&#8217;t update the verisonCode/versionName properties in AndroidManifest.xml.</p>
+<p>2. Let&#8217;s say you&#8217;re using the Debug configuration for local builds. You can make the auto-increment only run for this build configuration by making the TransformOnBuild property conditional on the build configuration (like this in the .csproj file):</p>
+<p><code>&lt;PropertyGroup Condition="'$(Configuration)'=='Debug'"&gt;<br>
+&lt;TransformOnBuild&gt;true&lt;/TransformOnBuild&gt;<br>
+&lt;/PropertyGroup&gt;</code></p>
+<p>This makes ALL transformations conditional, so if you have any other T4 templates, be aware.</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=14025#respond" data-commentid="14025" data-postid="812" data-belowelement="div-comment-14025" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+
+		<li id="comment-14234" class="comment even thread-even depth-1 parent">
+			<article class="comment-body" id="div-comment-14234" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Brad Vick</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-14234">									<time datetime="2022-01-14T16:24:37-05:00" itemprop="datePublished">
+										01/14/2022 at 4:24 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>I used your solution for a DotNetFramework project a while back, I recently upgraded this project to DotNet 6.0 using VS 2022.<br>
+ I am running into an issue with importing the Microsoft.TextTemplating.targets.  </p>
+<p>Has anyone successfully used this with Dotnet 6.0 is VS 2022?</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=14234#respond" data-commentid="14234" data-postid="812" data-belowelement="div-comment-14234" data-respondelement="respond" data-replyto="Reply to Brad Vick" aria-label="Reply to Brad Vick">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-14281" class="comment byuser comment-author-mak bypostauthor odd alt depth-2 parent">
+			<article class="comment-body" id="div-comment-14281" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-14281">									<time datetime="2022-01-17T11:37:53-05:00" itemprop="datePublished">
+										01/17/2022 at 11:37 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Brad,</p>
+<p>I tested out the instructions in VS2022 and it works. I tried your scenario &#8211; upgrading a project to .NET 6 and VS2022. I was getting an error &#8211; &#8220;Microsoft.TextTemplating.targets was not imported&#8230; because the file doesn&#8217;t exist&#8221; &#8211; because I needed to update the path to v17.0 (for VS2022).</p>
+<p>1. Edit the .csproj file<br>
+2. Update &lt;Import Project=&#8221;$(MSBuildExtensionsPath)\Microsoft\VisualStudio\<strong>v17.0</strong>\TextTemplating\Microsoft.TextTemplating.targets&#8221; /&gt;</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=14281#respond" data-commentid="14281" data-postid="812" data-belowelement="div-comment-14281" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-16245" class="comment even depth-3 parent">
+			<article class="comment-body" id="div-comment-16245" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Vivien</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-16245">									<time datetime="2022-04-01T04:13:55-04:00" itemprop="datePublished">
+										04/01/2022 at 4:13 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi,</p>
+<p>You can also use $(VisualStudioVersion)<br>
+That&#8217;s means : </p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=16245#respond" data-commentid="16245" data-postid="812" data-belowelement="div-comment-16245" data-respondelement="respond" data-replyto="Reply to Vivien" aria-label="Reply to Vivien">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-16250" class="comment byuser comment-author-mak bypostauthor odd alt depth-4">
+			<article class="comment-body" id="div-comment-16250" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-16250">									<time datetime="2022-04-01T06:47:50-04:00" itemprop="datePublished">
+										04/01/2022 at 6:47 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Thanks Vivien. That&#8217;s a good suggestion.</p>
+<p>You can put that in the path (instead of hardcoding the version), which helps future-proof it a little bit:<br>
+$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v<strong>$(VisualStudioVersion)</strong>\TextTemplating\Microsoft.TextTemplating.targets&#8221;</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=16250#respond" data-commentid="16250" data-postid="812" data-belowelement="div-comment-16250" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+
+		<li id="comment-37039" class="comment even depth-4 parent">
+			<article class="comment-body" id="div-comment-37039" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Josh</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-37039">									<time datetime="2022-10-06T16:28:50-04:00" itemprop="datePublished">
+										10/06/2022 at 4:28 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>I&#8217;m such an idiot.  I scrolled down as far as the comment about conditional build options about 5 above this one and then proceeded to spend about an hour looking into how to do exactly what you had in your comment..  would have saved myself that time if I had just scrolled down a tiny bit more, lol.  </p>
+<p>Anyway, great comment, thanks for the info.</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=37039#respond" data-commentid="37039" data-postid="812" data-belowelement="div-comment-37039" data-respondelement="respond" data-replyto="Reply to Josh" aria-label="Reply to Josh">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-37189" class="comment byuser comment-author-admin odd alt depth-5">
+			<article class="comment-body" id="div-comment-37189" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Mak</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-37189">									<time datetime="2022-10-07T10:20:01-04:00" itemprop="datePublished">
+										10/07/2022 at 10:20 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>I&#8217;m glad this helped. And sorry about that &#8211; I&#8217;ve updated the article to mention the version variable Vivien talked about in this comment. Hopefully that helps people avoid this versioning trouble.</p>
+				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+
+		<li id="comment-14339" class="comment even thread-odd thread-alt depth-1 parent">
+			<article class="comment-body" id="div-comment-14339" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Dominik</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-14339">									<time datetime="2022-01-19T06:22:07-05:00" itemprop="datePublished">
+										01/19/2022 at 6:22 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Thank you for that! I was looking for easy way to increment versions of my project, and after long time(!) of looking for good solution for that &#8211; I have finally find it here.<br>
+I really appreciate that. Thank you once again</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=14339#respond" data-commentid="14339" data-postid="812" data-belowelement="div-comment-14339" data-respondelement="respond" data-replyto="Reply to Dominik" aria-label="Reply to Dominik">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-14340" class="comment byuser comment-author-mak bypostauthor odd alt depth-2">
+			<article class="comment-body" id="div-comment-14340" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-14340">									<time datetime="2022-01-19T07:24:20-05:00" itemprop="datePublished">
+										01/19/2022 at 7:24 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>That&#8217;s great, I&#8217;m glad to hear this helped!</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=14340#respond" data-commentid="14340" data-postid="812" data-belowelement="div-comment-14340" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+
+		<li id="comment-14375" class="comment even thread-even depth-1 parent">
+			<article class="comment-body" id="div-comment-14375" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Damo</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-14375">									<time datetime="2022-01-20T17:53:50-05:00" itemprop="datePublished">
+										01/20/2022 at 5:53 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>I want to just increment the revision by one each build, the other three I would manually control &#8211; how would I do this?</p>
+<p>FYI &#8211; using VS22</p>
+<p>thanks.</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=14375#respond" data-commentid="14375" data-postid="812" data-belowelement="div-comment-14375" data-respondelement="respond" data-replyto="Reply to Damo" aria-label="Reply to Damo">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-14395" class="comment byuser comment-author-mak bypostauthor odd alt depth-2 parent">
+			<article class="comment-body" id="div-comment-14395" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-14395">									<time datetime="2022-01-21T12:44:33-05:00" itemprop="datePublished">
+										01/21/2022 at 12:44 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>To do that, you&#8217;d have to read the current revision number from text template output file (ex: VersionAutoIncrement.cs) and increment it. You could use regex to parse out the revision number from the AssemblyVersion string, but I think it&#8217;s simpler to put the revision number in a comment at the top of the file &#8211; that makes it easier to extract.</p>
+<p>1. Host.TemplateFile gives you the full text template file path. You can use this to figure out the text template output file.<br>
+2. Read in the file. If you&#8217;re using the technique I mentioned, you can just read the first line.<br>
+3. Convert the revision number to an integer and increment it by 1<br>
+4. The build numbers use unsigned 16-bit integers (UInt16 / ushort). So watch out for the upper limit (65534). If you hit the upper limit, you&#8217;ll get a compile error. That&#8217;s why i&#8217;m using UInt16 below. When that goes over the limit, it&#8217;ll get an overflow exception, which will end up resetting the revision to 1. You can try to deal with this programmatically, but this would only happen after 65k builds, so personally I&#8217;d just keep it simple and tweak the numbers manually to fix it.</p>
+<p>Here&#8217;s a full example of a text template that increments the revision by 1:</p>
+<p>&lt;#@ template debug=&quot;false&quot; hostspecific=&quot;true&quot; language=&quot;C#&quot; #&gt;<br>
+&lt;#@ output extension=&quot;.cs&quot; #&gt;<br>
+&lt;#@ assembly name=&quot;System.Core&quot; #&gt;<br>
+&lt;#@ import namespace=&quot;System.IO&quot; #&gt;<br>
+&lt;#@ import namespace=&quot;System.Linq&quot; #&gt;<br>
+&lt;#</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;try<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string currentDirectory = Path.GetDirectoryName(this.Host.TemplateFile);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string fullPath = Path.Combine(currentDirectory, &quot;VersionAutoIncrement.cs&quot;);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string currentRevisionNumber = File.ReadLines(fullPath).First().Replace(&quot;//&quot;, &quot;&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Revision = Convert.ToUInt16(currentRevisionNumber);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Revision++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;catch( Exception )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Throws the first time since the output file doesn&#8217;t exist yet<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+#&gt;<br>
+//&lt;#= this.Revision  #&gt;<br>
+using System.Reflection;<br>
+[assembly: AssemblyVersion(&quot;1.0.0.&lt;#= this.Revision  #&gt;&quot;)]</p>
+<p>&lt;#+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;UInt16 Revision = 1;<br>
+#&gt;</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=14395#respond" data-commentid="14395" data-postid="812" data-belowelement="div-comment-14395" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-19755" class="comment even depth-3 parent">
+			<article class="comment-body" id="div-comment-19755" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Kees</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-19755">									<time datetime="2022-06-08T04:55:54-04:00" itemprop="datePublished">
+										06/08/2022 at 4:55 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Mak,</p>
+<p>This works great! Cool!<br>
+One question: If I publish the project as Release the transform is performed twice, once at the start of the build and once at the start of the publishing part, incrementing the Revision number in steps of 2. Is there a way to prevent that?</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=19755#respond" data-commentid="19755" data-postid="812" data-belowelement="div-comment-19755" data-respondelement="respond" data-replyto="Reply to Kees" aria-label="Reply to Kees">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-19810" class="comment byuser comment-author-mak bypostauthor odd alt depth-4">
+			<article class="comment-body" id="div-comment-19810" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-19810">									<time datetime="2022-06-08T16:47:54-04:00" itemprop="datePublished">
+										06/08/2022 at 4:47 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Kees.</p>
+<p>First, thank you, I&#8217;m glad to hear it worked for you! </p>
+<p>Second, I looked into your question. When you publish, it does a build first, which does a transformation. It should only be doing one transformation, but for some reason it&#8217;s running the transformations twice. One thing you can do is run the build and publish steps separately. You can do this by executing the publish command with the &#8211;no-build flag. When I tried this, it only ran the transformation in the build step.</p>
+<p>Here&#8217;s an example:<br>
+1. Do a build (manually from the UI or from the command line).<br>
+2. Publish by executing the following from the command line:<br>
+dotnet publish &#8211;no-build -c Release</p>
+<p>Note: When I tried this, I had to change the Import Project line in .csproj to the absolute path (instead of using the $(MSBuildExtensionsPath) variable, since this is different when using the dotnet tool). For example, here&#8217;s what the path is on my computer (VS2019 Community):<br>
+&lt;Import Project=&quot;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VisualStudio\v16.0\TextTemplating\Microsoft.TextTemplating.targets&quot; /&gt;</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=19810#respond" data-commentid="19810" data-postid="812" data-belowelement="div-comment-19810" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+
+		<li id="comment-14450" class="comment even thread-odd thread-alt depth-1">
+			<article class="comment-body" id="div-comment-14450" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Damo</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-14450">									<time datetime="2022-01-23T18:37:26-05:00" itemprop="datePublished">
+										01/23/2022 at 6:37 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Thanks for that &#8211; works a treat</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=14450#respond" data-commentid="14450" data-postid="812" data-belowelement="div-comment-14450" data-respondelement="respond" data-replyto="Reply to Damo" aria-label="Reply to Damo">Reply</a></span>				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+
+		<li id="comment-16172" class="comment odd alt thread-even depth-1 parent">
+			<article class="comment-body" id="div-comment-16172" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Gordon</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-16172">									<time datetime="2022-03-29T08:03:40-04:00" itemprop="datePublished">
+										03/29/2022 at 8:03 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>I have got this working in a VS 2022 / .Net Core 6 project, which is great. Just wondering if it&#8217;s possible to detect if a specific Publish setting is running, as I would like to not update the revision for one of them.</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=16172#respond" data-commentid="16172" data-postid="812" data-belowelement="div-comment-16172" data-respondelement="respond" data-replyto="Reply to Gordon" aria-label="Reply to Gordon">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-16180" class="comment byuser comment-author-mak bypostauthor even depth-2">
+			<article class="comment-body" id="div-comment-16180" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-16180">									<time datetime="2022-03-29T11:56:22-04:00" itemprop="datePublished">
+										03/29/2022 at 11:56 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>You can conditionally run the text templates. Let&#8217;s say you want to only run the auto-increment for Release builds. You can do this:<br>
+&lt;PropertyGroup Condition=&quot;&#039;$(Configuration)&#039;==&#039;Release&#039;&quot;&gt;<br>
+&lt;TransformOnBuild&gt;true&lt;/TransformOnBuild&gt;<br>
+&lt;/PropertyGroup&gt;</p>
+<p>(note: paraphrased from email exchange)</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=16180#respond" data-commentid="16180" data-postid="812" data-belowelement="div-comment-16180" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+
+		<li id="comment-35887" class="comment odd alt thread-odd thread-alt depth-1 parent">
+			<article class="comment-body" id="div-comment-35887" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">krs</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-35887">									<time datetime="2022-09-30T10:49:17-04:00" itemprop="datePublished">
+										09/30/2022 at 10:49 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Great solution! </p>
+<p>One problem I&#8217;ve encountered:<br>
+First time (no AssemblyInfo.cs on drive) It generates the AssemblyInfo.cs, but the file properties are filled with 0.0.0.0.<br>
+When running rebuild with an AssemblyInfo.cs present, the right info is present in the file properties.</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=35887#respond" data-commentid="35887" data-postid="812" data-belowelement="div-comment-35887" data-respondelement="respond" data-replyto="Reply to krs" aria-label="Reply to krs">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-35902" class="comment byuser comment-author-mak bypostauthor even depth-2">
+			<article class="comment-body" id="div-comment-35902" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-35902">									<time datetime="2022-09-30T12:08:22-04:00" itemprop="datePublished">
+										09/30/2022 at 12:08 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hey krs,</p>
+<p>Good catch. I was able to repro this behavior in a .NET Core project. It works fine in a .NET Framework project though. So this is probably a bug in the build system. It seems to be skipping the generated .cs file on the first build.</p>
+<p>To have it work on the first build, open the .tt file and hit Ctrl-S. This will run it, and it&#8217;ll generate the .cs file with the version number. Then when you Build, it&#8217;ll use the version number as expected.</p>
+<p>I&#8217;ll update the article with this info. Thanks again for pointing it out.</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=35902#respond" data-commentid="35902" data-postid="812" data-belowelement="div-comment-35902" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+
+		<li id="comment-37722" class="comment odd alt thread-even depth-1 parent">
+			<article class="comment-body" id="div-comment-37722" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">krs</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-37722">									<time datetime="2022-10-10T06:23:34-04:00" itemprop="datePublished">
+										10/10/2022 at 6:23 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>In my solution I wanted to keep some of the generated assembly info and modify only version numbers. So I’ve ended up replacing  &lt;!&#8211; false &#8211;&gt;<br>
+with individual disablers:<br>
+&lt;!&#8211;<br>
+	    false<br>
+	    false<br>
+	    false<br>
+	 &#8211;&gt;</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=37722#respond" data-commentid="37722" data-postid="812" data-belowelement="div-comment-37722" data-respondelement="respond" data-replyto="Reply to krs" aria-label="Reply to krs">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-37742" class="comment byuser comment-author-mak bypostauthor even depth-2">
+			<article class="comment-body" id="div-comment-37742" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-37742">									<time datetime="2022-10-10T10:21:07-04:00" itemprop="datePublished">
+										10/10/2022 at 10:21 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi krs, </p>
+<p>It looks like the comment system removed some info from your comment, but I think you&#8217;re referring to using the individual attributes (like GenerateAssemblyFileVersionAttribute) to control which attributes get auto-generated. That&#8217;s interesting!</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=37742#respond" data-commentid="37742" data-postid="812" data-belowelement="div-comment-37742" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+
+		<li id="comment-53103" class="comment odd alt thread-odd thread-alt depth-1 parent">
+			<article class="comment-body" id="div-comment-53103" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">chao</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-53103">									<time datetime="2023-06-16T03:26:31-04:00" itemprop="datePublished">
+										06/16/2023 at 3:26 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi, Mak.</p>
+<p>Thanks, it works greatly. But the version changes each time building, even if there aren&#8217;t any code changes. Every time I start debugging, the text is transformed, and version increased.</p>
+<p>Is there any way to generate new version if there are actual code changes?</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=53103#respond" data-commentid="53103" data-postid="812" data-belowelement="div-comment-53103" data-respondelement="respond" data-replyto="Reply to chao" aria-label="Reply to chao">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-53114" class="comment byuser comment-author-mak bypostauthor even depth-2">
+			<article class="comment-body" id="div-comment-53114" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-53114">									<time datetime="2023-06-16T11:15:54-04:00" itemprop="datePublished">
+										06/16/2023 at 11:15 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi,</p>
+<p>Your best bet is to only run transformation only if it&#8217;s a Release build. Therefore, during development when you have Build=Debug, it won&#8217;t run it. Refer to this comment for how to do that:<br>
+<a href="/auto-increment-build-numbers-in-visual-studio/#comment-13002" rel="ugc">Conditionally run transformation</a></p>
+<p>What&#8217;s happening is the &#8220;Up-to-Date check&#8221; (determines if a rebuild is needed) looks at the text transformation output and thinks your code has changed. Of course, this is wrong since the code was generated during the build itself. For a brief time, they had a very simple setting that you could use to exclude files from being considered in the Up-to-Date check. But then they changed it for some reason and that approach no longer works. Hence, the best way to deal with this now is to turn off transformation for Debug builds.</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=53114#respond" data-commentid="53114" data-postid="812" data-belowelement="div-comment-53114" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+
+		<li id="comment-54979" class="comment odd alt thread-even depth-1 parent">
+			<article class="comment-body" id="div-comment-54979" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Mike K</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-54979">									<time datetime="2023-08-26T09:13:20-04:00" itemprop="datePublished">
+										08/26/2023 at 9:13 am									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Thanks for this! I modified this to construct a version number of 2.CurrentYear-2000.DayInYear.MinuteInDay:</p>
+<p>2.23.237.787</p>
+<p>[assembly: AssemblyVersion(&#8220;&#8230;&#8221;)]</p>
+<p>Works great!</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=54979#respond" data-commentid="54979" data-postid="812" data-belowelement="div-comment-54979" data-respondelement="respond" data-replyto="Reply to Mike K" aria-label="Reply to Mike K">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-54984" class="comment byuser comment-author-mak bypostauthor even depth-2 parent">
+			<article class="comment-body" id="div-comment-54984" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-54984">									<time datetime="2023-08-26T15:20:58-04:00" itemprop="datePublished">
+										08/26/2023 at 3:20 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>You&#8217;re welcome &#8211; and thanks for sharing that example!</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=54984#respond" data-commentid="54984" data-postid="812" data-belowelement="div-comment-54984" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-54999" class="comment odd alt depth-3 parent">
+			<article class="comment-body" id="div-comment-54999" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Mike K</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-54999">									<time datetime="2023-08-27T17:16:25-04:00" itemprop="datePublished">
+										08/27/2023 at 5:16 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>It looks like my comment text was edited out partially&#8230;<br>
+Anyway, now I&#8217;ve run it a bit, and it&#8217;s weird but it ONLY updates the build number when I edit AutoVersionIncrement.tt.  This is a dotNet Framework project, VS 2019. I have the three Transform lines in every section of the csproj file, and I am clicking &#8216;Rebuild Project&#8217;.  </p>
+<p>How can you make the &#8220;up-to-date&#8221; check return TRUE for every build? This is a lab utility I use, so I prefer to have every single build reflect the change.  </p>
+<p>I tried using a pre-compile batch that uses TOUCH to update the script file, but that did not work.</p>
+<p>(comment 2)</p>
+<p>Here&#8217;s something else:  My Build menu now has an item that reads &#8216;Transform all T4 templates&#8217;. So I can run this first, before I build, and it will work for me. </p>
+<p>Thanks for this really useful info.</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=54999#respond" data-commentid="54999" data-postid="812" data-belowelement="div-comment-54999" data-respondelement="respond" data-replyto="Reply to Mike K" aria-label="Reply to Mike K">Reply</a></span>				</div>
+			</article>
+			<ul class="children">
+
+		<li id="comment-55024" class="comment byuser comment-author-mak bypostauthor even depth-4">
+			<article class="comment-body" id="div-comment-55024" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta" aria-label="Comment meta">
+										<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Maclain Wiltzer</cite>						</div>
+
+													<div class="entry-meta comment-metadata">
+								<a href="/auto-increment-build-numbers-in-visual-studio/#comment-55024">									<time datetime="2023-08-28T18:13:33-04:00" itemprop="datePublished">
+										08/28/2023 at 6:13 pm									</time>
+								</a>							</div>
+												</div>
+
+									</footer>
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Mike, </p>
+<p>So it sounds like you got it working how you wanted now?</p>
+<p>Note: Yeah, the comment system strips stuff out! Also, I combined your two comments into one, so they would be under the same comment you were replying to.</p>
+<span class="reply"><a rel="nofollow" class="comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/?replytocom=55024#respond" data-commentid="55024" data-postid="812" data-belowelement="div-comment-55024" data-respondelement="respond" data-replyto="Reply to Maclain Wiltzer" aria-label="Reply to Maclain Wiltzer">Reply</a></span>				</div>
+			</article>
+			</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+		</ol>
+<!-- .comment-list -->
+
+			<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/auto-increment-build-numbers-in-visual-studio/#respond" style="display:none;">Cancel reply</a></small>
+</h3>
+<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+<p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>
+<label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required>
+<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="812" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p>
+</form>	</div>
+<!-- #respond -->
+	
+</div>
+<!-- #comments -->
+			</div>
+
+					</main>
+	</div>
+
+	<div class="widget-area sidebar is-right-sidebar grid-25 tablet-grid-25 grid-parent" id="right-sidebar">
+	<div class="inside-right-sidebar">
+		<aside id="block-19" class="widget inner-padding widget_block"><div></div></aside>	</div>
+</div>
+
+	</div>
+</div>
+
+
+<div class="site-footer footer-bar-active footer-bar-align-right">
+			<footer class="site-info" aria-label="Site" itemtype="https://schema.org/WPFooter" itemscope>
+			<div class="inside-site-info grid-container grid-parent">
+						<div class="footer-bar">
+			<aside id="block-11" class="widget inner-padding widget_block"></aside><aside id="block-7" class="widget inner-padding widget_block"><a href="/about/">About</a> • <a href="/privacy-policy/">Privacy Policy</a></aside>		</div>
+						<div class="copyright-bar">
+					<span class="copyright">&copy; 2025 makolyte</span> &bull; Built with <a href="https://generatepress.com/" itemprop="url">GeneratePress</a>				</div>
+			</div>
+		</footer>
+		</div>
+
+<script id="generate-a11y">!function(){"use strict";if("querySelector"in document&&"addEventListener"in window){var e=document.body;e.addEventListener("mousedown",function(){e.classList.add("using-mouse")}),e.addEventListener("keydown",function(){e.classList.remove("using-mouse")})}}();</script><!--[if lte IE 11]>
+<script src="/wp-content/themes/generatepress/assets/js/classList.min.js?ver=3.3.1" id="generate-classlist-js"></script>
+<![endif]-->
+<script id="generate-menu-js-extra">var generatepressMenu = {"toggleOpenedSubMenus":"1","openSubMenuLabel":"Open Sub-Menu","closeSubMenuLabel":"Close Sub-Menu"};</script>
+<script src="/wp-content/themes/generatepress/assets/js/menu.min.js?ver=3.3.1" id="generate-menu-js"></script>
+<script id="generate-navigation-search-js-extra">var generatepressNavSearch = {"open":"Open Search Bar","close":"Close Search Bar"};</script>
+<script src="/wp-content/themes/generatepress/assets/js/navigation-search.min.js?ver=3.3.1" id="generate-navigation-search-js"></script>
+<script src="/wp-includes/js/comment-reply.min.js?ver=6.7.2" id="comment-reply-js" async data-wp-strategy="async"></script>
+
+</body>
+
+
+<!-- plugin=object-cache-pro client=phpredis metric#hits=2805 metric#misses=89 metric#hit-ratio=96.9 metric#bytes=924019 metric#prefetches=0 metric#store-reads=111 metric#store-writes=18 metric#store-hits=135 metric#store-misses=85 metric#sql-queries=22 metric#ms-total=796.69 metric#ms-cache=190.77 metric#ms-cache-avg=1.4904 metric#ms-cache-ratio=24.0 -->
+</html>
